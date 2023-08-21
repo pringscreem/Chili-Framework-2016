@@ -1,0 +1,14 @@
+August 19, 2023
+Project Start
+	Actions Taken
+	-Started Video 0
+	-Downloaded/unzipped framework
+	-Put it in the Github folder, uploaded it to Github
+	-Put a pixel on the screen ( "gfx.PutPixel()")
+	-Left open windows etc at the end of session
+
+August 20, 2023
+Video 0
+	Actions Taken
+	-Restarted video (faster to do this with everything left open from yesterday)
+	
