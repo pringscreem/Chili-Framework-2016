@@ -53,24 +53,42 @@ void Game::ComposeFrame()
 				for (int m = startY; m < startY + 100; m++)
 					gfx.PutPixel(k, m, 0, 0, 0);
 
-	int move = 100;
-	//Reticle Pixels:
-	gfx.PutPixel(395 + move, 300 + move, 255, 255, 255);
-	gfx.PutPixel(396 + move, 300 + move, 255, 255, 255);
-	gfx.PutPixel(397 + move, 300 + move, 255, 255, 255);
+	//int move = 100;
+	////Reticle Pixels:
+	//gfx.PutPixel(395 + move, 300 + move, 255, 255, 255);
+	//gfx.PutPixel(396 + move, 300 + move, 255, 255, 255);
+	//gfx.PutPixel(397 + move, 300 + move, 255, 255, 255);
+	//
+	//gfx.PutPixel(403 + move, 300 + move, 255, 255, 255);
+	//gfx.PutPixel(404 + move, 300 + move, 255, 255, 255);
+	//gfx.PutPixel(405 + move, 300 + move, 255, 255, 255);
+	//
+	//gfx.PutPixel(400 + move, 295 + move, 255, 255, 255);
+	//gfx.PutPixel(400 + move, 296 + move, 255, 255, 255);
+	//gfx.PutPixel(400 + move, 297 + move, 255, 255, 255);
+	//
+	//gfx.PutPixel(400 + move, 303 + move, 255, 255, 255);
+	//gfx.PutPixel(400 + move, 304 + move, 255, 255, 255);
+	//gfx.PutPixel(400 + move, 305 + move, 255, 255, 255);
+	//
+	//gfx.PutPixel(400 + move, 300 + move, 255, 255, 255); //ctrl + shift + space to pull up Intellisense function info
 
-	gfx.PutPixel(403 + move, 300 + move, 255, 255, 255);
-	gfx.PutPixel(404 + move, 300 + move, 255, 255, 255);
-	gfx.PutPixel(405 + move, 300 + move, 255, 255, 255);
-
-	gfx.PutPixel(400 + move, 295 + move, 255, 255, 255);
-	gfx.PutPixel(400 + move, 296 + move, 255, 255, 255);
-	gfx.PutPixel(400 + move, 297 + move, 255, 255, 255);
-
-	gfx.PutPixel(400 + move, 303 + move, 255, 255, 255);
-	gfx.PutPixel(400 + move, 304 + move, 255, 255, 255);
-	gfx.PutPixel(400 + move, 305 + move, 255, 255, 255);
-
-	gfx.PutPixel(400 + move, 300 + move, 255, 255, 255); //ctrl + shift + space to pull up Intellisense function info
-
+	////Put dots on the screen every 100 pixels
+	//int xFlag = 0, yFlag= 0;
+	//int red = 255, green = 255, blue = 255;
+	//while (yFlag < gfx.ScreenHeight)
+	//{
+	//		while(xFlag < gfx.ScreenWidth)
+	//		{
+	//			if((xFlag % 100 == 0) && (yFlag % 100 == 0))
+	//				{
+	//					gfx.PutPixel(xFlag, yFlag, red, green, blue);
+	//				}
+	//			//xFlag++;
+	//			xFlag += 100;
+	//		}
+	//	xFlag = 0;
+	//	yFlag += 100;
+	//	//yFlag++;
+	//}
 }
