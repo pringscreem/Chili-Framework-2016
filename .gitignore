@@ -396,3 +396,11 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+Engine/Debug/vc142.pdb
+Engine/Debug/vc142.idb
+Engine/Debug/Engine.tlog/link.read.1.tlog
+Engine/Debug/Engine.tlog/CL.read.1.tlog
+Engine/Debug/Engine.tlog/CL.command.1.tlog
+Engine/Debug/Engine.ilk
+Debug/Engine.pdb
+Debug/Engine.exe

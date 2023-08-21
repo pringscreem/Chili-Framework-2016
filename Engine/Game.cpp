@@ -52,5 +52,25 @@ void Game::ComposeFrame()
 	int startY = (gfx.ScreenHeight / 2) - 50;
 			for (int k = startX; k < startX + 100; k++)
 				for (int m = startY; m < startY + 100; m++)
-					gfx.PutPixel(k, m, 0, 255, 0);
+					gfx.PutPixel(k, m, 0, 0, 0);
+
+	int move = 100;
+	//Reticle Pixels:
+	gfx.PutPixel(395 + move, 300 + move, 255, 255, 255);
+	gfx.PutPixel(396 + move, 300 + move, 255, 255, 255);
+	gfx.PutPixel(397 + move, 300 + move, 255, 255, 255);
+
+	gfx.PutPixel(403 + move, 300 + move, 255, 255, 255);
+	gfx.PutPixel(404 + move, 300 + move, 255, 255, 255);
+	gfx.PutPixel(405 + move, 300 + move, 255, 255, 255);
+
+	gfx.PutPixel(400 + move, 295 + move, 255, 255, 255);
+	gfx.PutPixel(400 + move, 296 + move, 255, 255, 255);
+	gfx.PutPixel(400 + move, 297 + move, 255, 255, 255);
+
+	gfx.PutPixel(400 + move, 303 + move, 255, 255, 255);
+	gfx.PutPixel(400 + move, 304 + move, 255, 255, 255);
+	gfx.PutPixel(400 + move, 305 + move, 255, 255, 255);
+
+
 }
