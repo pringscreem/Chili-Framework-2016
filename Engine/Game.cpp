@@ -42,7 +42,6 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	gfx.PutPixel(700, 500, 0, 0, 255); //ctrl + shift + space to pull up Intellisense function info
 	for(int i = 0; i < gfx.ScreenWidth; i++) //800
 		for(int j = 0; j < gfx.ScreenHeight; j++) //600
 		{ 
@@ -72,5 +71,6 @@ void Game::ComposeFrame()
 	gfx.PutPixel(400 + move, 304 + move, 255, 255, 255);
 	gfx.PutPixel(400 + move, 305 + move, 255, 255, 255);
 
+	gfx.PutPixel(400 + move, 300 + move, 255, 255, 255); //ctrl + shift + space to pull up Intellisense function info
 
 }
