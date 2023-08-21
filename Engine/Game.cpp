@@ -42,7 +42,15 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	for(int i = 0; i < gfx.ScreenWidth; i++)
-		for(int j = 0; j < gfx.ScreenHeight; j++)
-			gfx.PutPixel(i, j, 0, 255, 255);
+	gfx.PutPixel(700, 500, 0, 0, 255); //ctrl + shift + space to pull up Intellisense function info
+	for(int i = 0; i < gfx.ScreenWidth; i++) //800
+		for(int j = 0; j < gfx.ScreenHeight; j++) //600
+		{ 
+			gfx.PutPixel(i, j, 0, 0, 255);
+		}
+	int startX = (gfx.ScreenWidth / 2) - 50;
+	int startY = (gfx.ScreenHeight / 2) - 50;
+			for (int k = startX; k < startX + 100; k++)
+				for (int m = startY; m < startY + 100; m++)
+					gfx.PutPixel(k, m, 0, 255, 0);
 }

@@ -1,0 +1,4 @@
+	-Useful Visual Studio tips: F5 to start with Debugger
+								arrows to move up/down the list of suggestions in Intellisense
+								tab to select the current suggestion from Intellisense
+								ctrl+shift+space to bring up the function info from Intellisense

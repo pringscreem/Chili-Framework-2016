@@ -11,4 +11,10 @@ August 20, 2023
 Video 0
 	Actions Taken
 	-Restarted video (faster to do this with everything left open from yesterday)
-	
+	-Got back to this late in the evening (~2400H) after interruptions
+	-Added a .gitignore file
+	-Copied a .gitignore file suggested in Stackoverflow
+	-Useful Visual Studio tips: F5 to start with Debugger
+								arrows to move up/down the list of suggestions in Intellisense
+								tab to select the current suggestion from Intellisense
+								ctrl+shift+space to bring up the function info from Intellisense
