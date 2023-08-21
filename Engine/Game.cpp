@@ -42,5 +42,7 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	gfx.PutPixel(100, 100, 255, 255, 255);
+	for(int i = 0; i < gfx.ScreenWidth; i++)
+		for(int j = 0; j < gfx.ScreenHeight; j++)
+			gfx.PutPixel(i, j, 0, 255, 255);
 }
