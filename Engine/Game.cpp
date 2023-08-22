@@ -42,53 +42,94 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	for(int i = 0; i < gfx.ScreenWidth; i++) //800
-		for(int j = 0; j < gfx.ScreenHeight; j++) //600
-		{ 
-			gfx.PutPixel(i, j, 0, 0, 255);
-		}
-	int startX = (gfx.ScreenWidth / 2) - 50;
-	int startY = (gfx.ScreenHeight / 2) - 50;
-			for (int k = startX; k < startX + 100; k++)
-				for (int m = startY; m < startY + 100; m++)
-					gfx.PutPixel(k, m, 0, 0, 0);
+	int x = 400, y = 300;
+	int red = 255, green = 255, blue = 255;
 
-	//int move = 100;
-	////Reticle Pixels:
-	//gfx.PutPixel(395 + move, 300 + move, 255, 255, 255);
-	//gfx.PutPixel(396 + move, 300 + move, 255, 255, 255);
-	//gfx.PutPixel(397 + move, 300 + move, 255, 255, 255);
-	//
-	//gfx.PutPixel(403 + move, 300 + move, 255, 255, 255);
-	//gfx.PutPixel(404 + move, 300 + move, 255, 255, 255);
-	//gfx.PutPixel(405 + move, 300 + move, 255, 255, 255);
-	//
-	//gfx.PutPixel(400 + move, 295 + move, 255, 255, 255);
-	//gfx.PutPixel(400 + move, 296 + move, 255, 255, 255);
-	//gfx.PutPixel(400 + move, 297 + move, 255, 255, 255);
-	//
-	//gfx.PutPixel(400 + move, 303 + move, 255, 255, 255);
-	//gfx.PutPixel(400 + move, 304 + move, 255, 255, 255);
-	//gfx.PutPixel(400 + move, 305 + move, 255, 255, 255);
-	//
-	//gfx.PutPixel(400 + move, 300 + move, 255, 255, 255); //ctrl + shift + space to pull up Intellisense function info
+	if (wnd.kbd.KeyIsPressed(VK_LEFT))
+	{
+		x -= 100;
+	}
+	else if(wnd.kbd.KeyIsPressed(VK_RIGHT))
+	{
+		x += 100;
+	}
+	else
+	{
+		x = 400;
+	}
 
-	////Put dots on the screen every 100 pixels
-	//int xFlag = 0, yFlag= 0;
-	//int red = 255, green = 255, blue = 255;
-	//while (yFlag < gfx.ScreenHeight)
-	//{
-	//		while(xFlag < gfx.ScreenWidth)
-	//		{
-	//			if((xFlag % 100 == 0) && (yFlag % 100 == 0))
-	//				{
-	//					gfx.PutPixel(xFlag, yFlag, red, green, blue);
-	//				}
-	//			//xFlag++;
-	//			xFlag += 100;
-	//		}
-	//	xFlag = 0;
-	//	yFlag += 100;
-	//	//yFlag++;
-	//}
+	if (wnd.kbd.KeyIsPressed(VK_UP))
+	{
+		y -= 100;
+	}
+	else if (wnd.kbd.KeyIsPressed(VK_DOWN))
+	{
+		y += 100;
+	}
+	else
+	{
+		y = 300;
+	}
+
+	if (wnd.kbd.KeyIsPressed(VK_SPACE))
+	{
+		red = 255;
+		green = 0;
+		blue = 0;
+	}
+	else
+	{
+		red = 255;
+		green = 255;
+		blue = 255;
+	}
+
+	if(wnd.kbd.KeyIsPressed(VK_SHIFT))
+	{
+		//Square Pixels
+		//Top Right
+		gfx.PutPixel(+5 + x, -5 + y, red, green, blue);
+		gfx.PutPixel(+5 + x, -4 + y, red, green, blue);
+		gfx.PutPixel(+5 + x, -3 + y, red, green, blue);
+		gfx.PutPixel(+4 + x, -5 + y, red, green, blue);
+		gfx.PutPixel(+3 + x, -5 + y, red, green, blue);
+
+		//Top Left
+		gfx.PutPixel(-5 + x, -5 + y, red, green, blue);
+		gfx.PutPixel(-5 + x, -4 + y, red, green, blue);
+		gfx.PutPixel(-5 + x, -3 + y, red, green, blue);
+		gfx.PutPixel(-4 + x, -5 + y, red, green, blue);
+		gfx.PutPixel(-3 + x, -5 + y, red, green, blue);
+
+		//Bottom Left
+		gfx.PutPixel(-5 + x, +5 + y, red, green, blue);
+		gfx.PutPixel(-5 + x, +4 + y, red, green, blue);
+		gfx.PutPixel(-5 + x, +3 + y, red, green, blue);
+		gfx.PutPixel(-4 + x, +5 + y, red, green, blue);
+		gfx.PutPixel(-3 + x, +5 + y, red, green, blue);
+
+		//Bottom Right
+		gfx.PutPixel(+5 + x, +5 + y, red, green, blue);
+		gfx.PutPixel(+5 + x, +4 + y, red, green, blue);
+		gfx.PutPixel(+5 + x, +3 + y, red, green, blue);
+		gfx.PutPixel(+4 + x, +5 + y, red, green, blue);
+		gfx.PutPixel(+3 + x, +5 + y, red, green, blue);
+	}
+	else
+	{
+		//Reticle Pixels:
+		gfx.PutPixel(-5 + x,     y, red, green, blue);
+		gfx.PutPixel(-4 + x,     y, red, green, blue);
+		gfx.PutPixel(-3 + x,     y, red, green, blue);
+		gfx.PutPixel(+5 + x,     y, red, green, blue);
+		gfx.PutPixel(+4 + x,     y, red, green, blue);
+		gfx.PutPixel(+3 + x,     y, red, green, blue);
+		gfx.PutPixel(     x,-5 + y, red, green, blue);
+		gfx.PutPixel(     x,-4 + y, red, green, blue);
+		gfx.PutPixel(     x,-3 + y, red, green, blue);
+		gfx.PutPixel(     x,+5 + y, red, green, blue);
+		gfx.PutPixel(     x,+4 + y, red, green, blue);
+		gfx.PutPixel(     x,+3 + y, red, green, blue);
+		gfx.PutPixel(     x,     y, red, green, blue); //shift + ctrl + space to pull up Intellisense function info
+	}
 }

@@ -18,3 +18,27 @@ Video 0
 								arrows to move up/down the list of suggestions in Intellisense
 								tab to select the current suggestion from Intellisense
 								ctrl+shift+space to bring up the function info from Intellisense
+
+August 21, 2023
+Video 1
+	Actions Taken
+	-Woke late, started after shower and late breakfast
+	-Double while-loop to put a pixel grid on the screen (every 100 pixels)
+	-Converted pixel grid loop to 48 iterations instead of 480,000 (800x600)
+		^This was done by using "counter += 100" instead of "counter++"
+	-Converted reticle to take x and y centre coordinates
+	-There is no single guiding principle governing the use of semicolons in C++:
+		https://web.archive.org/web/20100906085102/http://cpptalk.net/confused-about-the-meaning-of-the-semicolon-vt11965.html
+		https://stackoverflow.com/questions/785686/semicolon-after-class-declaration-braces
+August 21, 2023
+Video 2
+	Actions Taken
+	-See Video 1 notes above
+
+August 21, 2023
+Video 3
+	Actions Taken
+	-Lined up parameters for easier editing (use of whitespace for easier editing)
+	-Basic keyboard input (i.e. "  wnd.kbd.KeyIsPressed(/*virtual keycode*/)  ")
+	-Colour changes
+	-Cursor change
