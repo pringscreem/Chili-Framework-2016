@@ -42,3 +42,8 @@ Video 3
 	-Basic keyboard input (i.e. "  wnd.kbd.KeyIsPressed(/*virtual keycode*/)  ")
 	-Colour changes
 	-Cursor change
+
+August 22, 2023
+Video 3
+	Actions Taken
+	-Started video

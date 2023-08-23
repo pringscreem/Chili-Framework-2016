@@ -40,36 +40,36 @@ void Game::UpdateModel()
 {
 }
 
-void Game::ComposeFrame()
-{
 	int x = 400, y = 300;
 	int red = 255, green = 255, blue = 255;
+void Game::ComposeFrame()
+{
 
 	if (wnd.kbd.KeyIsPressed(VK_LEFT))
 	{
-		x -= 100;
-	}
+		x -= 3; //This is only  executed once because everytime the frame is drawn the variables are remade.
+	}			  //This is a consequence of the way we have it set up right now (variable declaration in ComposeFrame).
 	else if(wnd.kbd.KeyIsPressed(VK_RIGHT))
 	{
-		x += 100;
+		x += 3;
 	}
-	else
-	{
-		x = 400;
-	}
+	//else //We don't need the else statements because the frame creates the variables and resets them during creation everytime.
+	//{	 //It seems like the frame is drawn at the end of the ComposeFrame function.
+	//	x = 400;
+	//}
 
 	if (wnd.kbd.KeyIsPressed(VK_UP))
 	{
-		y -= 100;
+		y -= 3;
 	}
 	else if (wnd.kbd.KeyIsPressed(VK_DOWN))
 	{
-		y += 100;
+		y += 3;
 	}
-	else
-	{
-		y = 300;
-	}
+	//else
+	//{
+	//	y = 300;
+	//}
 
 	if (wnd.kbd.KeyIsPressed(VK_SPACE))
 	{
