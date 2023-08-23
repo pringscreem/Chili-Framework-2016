@@ -1,10 +1,2 @@
-﻿  compilation header save succeeded; see C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\FramebufferPS.shh
-  compilation header save succeeded; see C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\FramebufferVS.shh
-  DXErr.cpp
-  Game.cpp
-  Graphics.cpp
-  Keyboard.cpp
-  Main.cpp
-  MainWindow.cpp
-  Mouse.cpp
+﻿  Graphics.cpp
   Engine.vcxproj -> C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\x64\Debug\Engine.exe
