@@ -19,6 +19,7 @@
  *	along with The Chili DirectX Framework.  If not, see <http://www.gnu.org/licenses/>.  *
  ******************************************************************************************/
 #include "Mouse.h"
+#include <fstream>
 
 
 std::pair<int,int> Mouse::GetPos() const
@@ -78,6 +79,15 @@ void Mouse::OnMouseLeave()
 void Mouse::OnMouseEnter()
 {
 	isInWindow = true;
+	//Write the value of iterationCounter to a file named MyCounter.txt
+	//The previous location of this file (when using the Debug builder) was:
+	// C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Debug
+	int iterationCounter = 0;
+	std::ofstream MyMouseFile;
+	MyMouseFile.open("MyMouse.txt");
+	MyMouseFile << "The value of iterationCounter is " << iterationCounter;
+	MyMouseFile.close();
+
 }
 
 void Mouse::OnMouseMove( int newx,int newy )
