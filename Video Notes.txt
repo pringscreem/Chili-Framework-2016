@@ -44,6 +44,14 @@ Video 3
 	-Cursor change
 
 August 22, 2023
-Video 3
+Video 4
 	Actions Taken
-	-Started video
+	-Made cursor keep position instead of popping back to centre by moving x, y, r, g, b variables to global scope
+	-Reduced movement from 100 to 3 pixels
+
+August 23, 2023
+Video 4
+	Actions Taken
+	-Restarted video
+	-Stepped through program with Debugger
+

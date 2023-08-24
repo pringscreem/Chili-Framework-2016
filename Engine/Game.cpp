@@ -132,4 +132,32 @@ void Game::ComposeFrame()
 		gfx.PutPixel(     x,+3 + y, red, green, blue);
 		gfx.PutPixel(     x,     y, red, green, blue); //shift + ctrl + space to pull up Intellisense function info
 	}
+
+	int mouseRed = 0, mouseGreen = 0, mouseBlue = 255;
+	int mouseX = 400, mouseY = 300;
+	if(wnd.mouse.GetPosX() < gfx.ScreenWidth && wnd.mouse.GetPosX() > 0)
+	{
+		mouseX = wnd.mouse.GetPosX();	
+	}
+	if (wnd.mouse.GetPosY() < gfx.ScreenHeight && wnd.mouse.GetPosY() > 0)
+	{
+		mouseY = wnd.mouse.GetPosY();
+	}
+	if(wnd.mouse.LeftIsPressed() == true)
+	{
+		mouseRed = 255;
+	}
+	gfx.PutPixel(-5 + mouseX,     mouseY, mouseRed, mouseGreen, mouseBlue);
+	gfx.PutPixel(-4 + mouseX,     mouseY, mouseRed, mouseGreen, mouseBlue);
+	gfx.PutPixel(-3 + mouseX,     mouseY, mouseRed, mouseGreen, mouseBlue);
+	gfx.PutPixel(+5 + mouseX,     mouseY, mouseRed, mouseGreen, mouseBlue);
+	gfx.PutPixel(+4 + mouseX,     mouseY, mouseRed, mouseGreen, mouseBlue);
+	gfx.PutPixel(+3 + mouseX,     mouseY, mouseRed, mouseGreen, mouseBlue);
+	gfx.PutPixel(     mouseX,-5 + mouseY, mouseRed, mouseGreen, mouseBlue);
+	gfx.PutPixel(     mouseX,-4 + mouseY, mouseRed, mouseGreen, mouseBlue);
+	gfx.PutPixel(     mouseX,-3 + mouseY, mouseRed, mouseGreen, mouseBlue);
+	gfx.PutPixel(     mouseX,+5 + mouseY, mouseRed, mouseGreen, mouseBlue);
+	gfx.PutPixel(     mouseX,+4 + mouseY, mouseRed, mouseGreen, mouseBlue);
+	gfx.PutPixel(     mouseX,+3 + mouseY, mouseRed, mouseGreen, mouseBlue);
+	gfx.PutPixel(     mouseX,     mouseY, mouseRed, mouseGreen, mouseBlue);
 }
