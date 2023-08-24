@@ -44,14 +44,19 @@ Video 3
 	-Cursor change
 
 August 22, 2023
-Video 4
+Video 4.1
 	Actions Taken
 	-Made cursor keep position instead of popping back to centre by moving x, y, r, g, b variables to global scope
 	-Reduced movement from 100 to 3 pixels
 
 August 23, 2023
-Video 4
+Video 4.1
 	Actions Taken
 	-Restarted video
 	-Stepped through program with Debugger
+
+August 23, 2023
+Video 4.2
+	Actions Taken
+	-Created a mouse cursor that checks to make sure the mouse is in the window and moves to match mouse position
 
