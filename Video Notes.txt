@@ -60,15 +60,19 @@ Video 4.2
 	Actions Taken
 	-Created a mouse cursor that checks to make sure the mouse is in the window and moves to match mouse position
 
-August 23, 2023
+August 24, 2023
 Video 4.2
 	Actions Taken
 	-Resume from ~14:00
 	-Moved mouse cursor code into Removed Code.cc
 	-Moved cursor x,y,r,g,b into the Game class in Game.h (User Variables section at the bottom)
 
-August 23, 2023
-Video 4.2
+August 24, 2023
+Video 4.3
 	Actions Taken
 	-Moved logic into UpdateModel
+
+August 25, 2023
+Video 5
+	Actions Taken
 	-
