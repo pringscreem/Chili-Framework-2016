@@ -136,3 +136,64 @@
 //	}
 //}
 //
+
+////Mouse Cursor
+//int mouseRed = 0, mouseGreen = 0, mouseBlue = 255;
+//int mouseX = 400, mouseY = 300;
+//if (wnd.mouse.GetPosX() < gfx.ScreenWidth && wnd.mouse.GetPosX() > 0)
+//{
+//	mouseX = wnd.mouse.GetPosX();
+//}
+//if (wnd.mouse.GetPosY() < gfx.ScreenHeight && wnd.mouse.GetPosY() > 0)
+//{
+//	mouseY = wnd.mouse.GetPosY();
+//}
+//if (wnd.mouse.LeftIsPressed() == true)
+//{
+//	mouseRed = 255;
+//}
+//gfx.PutPixel(-5 + mouseX, mouseY, mouseRed, mouseGreen, mouseBlue);
+//gfx.PutPixel(-4 + mouseX, mouseY, mouseRed, mouseGreen, mouseBlue);
+//gfx.PutPixel(-3 + mouseX, mouseY, mouseRed, mouseGreen, mouseBlue);
+//gfx.PutPixel(+5 + mouseX, mouseY, mouseRed, mouseGreen, mouseBlue);
+//gfx.PutPixel(+4 + mouseX, mouseY, mouseRed, mouseGreen, mouseBlue);
+//gfx.PutPixel(+3 + mouseX, mouseY, mouseRed, mouseGreen, mouseBlue);
+//gfx.PutPixel(mouseX, -5 + mouseY, mouseRed, mouseGreen, mouseBlue);
+//gfx.PutPixel(mouseX, -4 + mouseY, mouseRed, mouseGreen, mouseBlue);
+//gfx.PutPixel(mouseX, -3 + mouseY, mouseRed, mouseGreen, mouseBlue);
+//gfx.PutPixel(mouseX, +5 + mouseY, mouseRed, mouseGreen, mouseBlue);
+//gfx.PutPixel(mouseX, +4 + mouseY, mouseRed, mouseGreen, mouseBlue);
+//gfx.PutPixel(mouseX, +3 + mouseY, mouseRed, mouseGreen, mouseBlue);
+//gfx.PutPixel(mouseX, mouseY, mouseRed, mouseGreen, mouseBlue);
+
+////Cursor position movement
+//if (wnd.kbd.KeyIsPressed(VK_LEFT))
+//{
+//	x -= 3;
+//}
+//else if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+//{
+//	x += 3;
+//}
+//
+//if (wnd.kbd.KeyIsPressed(VK_UP))
+//{
+//	y -= 3;
+//}
+//else if (wnd.kbd.KeyIsPressed(VK_DOWN))
+//{
+//	y += 3;
+//}
+//
+//if (wnd.kbd.KeyIsPressed(VK_SPACE))
+//{
+//	red = 255;
+//	green = 0;
+//	blue = 0;
+//}
+//else
+//{
+//	red = 255;
+//	green = 255;
+//	blue = 255;
+//}

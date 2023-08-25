@@ -43,4 +43,8 @@ private:
 	/********************************/
 	/*  User Variables              */
 	/********************************/
+	//These are still private
+	int x = 400, y = 300;
+	float xVel = 0, yVel = 0;
+	int red = 255, green = 255, blue = 255;
 };

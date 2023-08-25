@@ -38,39 +38,39 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-}
-
-	int x = 400, y = 300;
-	int red = 255, green = 255, blue = 255;
-void Game::ComposeFrame()
-{
-
+	//Velocity Change
 	if (wnd.kbd.KeyIsPressed(VK_LEFT))
 	{
-		x -= 3; //This is only  executed once because everytime the frame is drawn the variables are remade.
-	}			  //This is a consequence of the way we have it set up right now (variable declaration in ComposeFrame).
-	else if(wnd.kbd.KeyIsPressed(VK_RIGHT))
-	{
-		x += 3;
+		xVel -= 0.1;
 	}
-	//else //We don't need the else statements because the frame creates the variables and resets them during creation everytime.
-	//{	 //It seems like the frame is drawn at the end of the ComposeFrame function.
-	//	x = 400;
-	//}
+	else if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+	{
+		xVel += 0.1;
+	}
 
 	if (wnd.kbd.KeyIsPressed(VK_UP))
 	{
-		y -= 3;
+		yVel -= 0.1;
 	}
 	else if (wnd.kbd.KeyIsPressed(VK_DOWN))
 	{
-		y += 3;
+		yVel += 0.1;
 	}
-	//else
-	//{
-	//	y = 300;
-	//}
 
+	//Position Change
+	x = x + xVel;
+	y = y + yVel;
+
+	//Check Screen Boundaries
+	if ((x > gfx.ScreenWidth || x < 0) || (y > gfx.ScreenHeight || y < 0))
+	{
+		xVel = 0.0;
+		yVel = 0.0;
+		x = 400;
+		y = 300;
+	}
+
+	//Colour Change
 	if (wnd.kbd.KeyIsPressed(VK_SPACE))
 	{
 		red = 255;
@@ -83,6 +83,13 @@ void Game::ComposeFrame()
 		green = 255;
 		blue = 255;
 	}
+}
+
+
+void Game::ComposeFrame()
+{
+
+
 
 	if(wnd.kbd.KeyIsPressed(VK_SHIFT))
 	{
@@ -132,32 +139,4 @@ void Game::ComposeFrame()
 		gfx.PutPixel(     x,+3 + y, red, green, blue);
 		gfx.PutPixel(     x,     y, red, green, blue); //shift + ctrl + space to pull up Intellisense function info
 	}
-
-	int mouseRed = 0, mouseGreen = 0, mouseBlue = 255;
-	int mouseX = 400, mouseY = 300;
-	if(wnd.mouse.GetPosX() < gfx.ScreenWidth && wnd.mouse.GetPosX() > 0)
-	{
-		mouseX = wnd.mouse.GetPosX();	
-	}
-	if (wnd.mouse.GetPosY() < gfx.ScreenHeight && wnd.mouse.GetPosY() > 0)
-	{
-		mouseY = wnd.mouse.GetPosY();
-	}
-	if(wnd.mouse.LeftIsPressed() == true)
-	{
-		mouseRed = 255;
-	}
-	gfx.PutPixel(-5 + mouseX,     mouseY, mouseRed, mouseGreen, mouseBlue);
-	gfx.PutPixel(-4 + mouseX,     mouseY, mouseRed, mouseGreen, mouseBlue);
-	gfx.PutPixel(-3 + mouseX,     mouseY, mouseRed, mouseGreen, mouseBlue);
-	gfx.PutPixel(+5 + mouseX,     mouseY, mouseRed, mouseGreen, mouseBlue);
-	gfx.PutPixel(+4 + mouseX,     mouseY, mouseRed, mouseGreen, mouseBlue);
-	gfx.PutPixel(+3 + mouseX,     mouseY, mouseRed, mouseGreen, mouseBlue);
-	gfx.PutPixel(     mouseX,-5 + mouseY, mouseRed, mouseGreen, mouseBlue);
-	gfx.PutPixel(     mouseX,-4 + mouseY, mouseRed, mouseGreen, mouseBlue);
-	gfx.PutPixel(     mouseX,-3 + mouseY, mouseRed, mouseGreen, mouseBlue);
-	gfx.PutPixel(     mouseX,+5 + mouseY, mouseRed, mouseGreen, mouseBlue);
-	gfx.PutPixel(     mouseX,+4 + mouseY, mouseRed, mouseGreen, mouseBlue);
-	gfx.PutPixel(     mouseX,+3 + mouseY, mouseRed, mouseGreen, mouseBlue);
-	gfx.PutPixel(     mouseX,     mouseY, mouseRed, mouseGreen, mouseBlue);
 }
