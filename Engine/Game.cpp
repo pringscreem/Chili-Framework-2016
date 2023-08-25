@@ -41,31 +41,81 @@ void Game::UpdateModel()
 	//Velocity Change
 	if (wnd.kbd.KeyIsPressed(VK_LEFT))
 	{
-		xVel -= 0.1;
+		if (inhibitLeft)
+		{
+			//Do nothing
+		}
+		else
+		{
+			vx -= 1;
+			inhibitLeft = true;
+		}
 	}
-	else if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+	else
 	{
-		xVel += 0.1;
+		inhibitLeft = false;
 	}
-
+	
+	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+	{
+		if(inhibitRight)
+		{
+			//Do nothing
+		}
+		else
+		{
+			vx += 1;
+			inhibitRight = true;
+		}
+	}
+	else
+	{
+		inhibitRight = false;
+	}
+	
 	if (wnd.kbd.KeyIsPressed(VK_UP))
 	{
-		yVel -= 0.1;
+		if (inhibitUp)
+		{
+			//Do nothing
+		}
+		else
+		{
+			vy -= 1;
+			inhibitUp = true;
+		}
 	}
-	else if (wnd.kbd.KeyIsPressed(VK_DOWN))
+	else
 	{
-		yVel += 0.1;
+		inhibitUp = false;
+	}
+
+	if (wnd.kbd.KeyIsPressed(VK_DOWN))
+	{
+		if (inhibitDown)
+		{
+			//Do nothing
+		}
+		else
+		{
+			vy += 1;
+			inhibitDown = true;
+		}
+	}
+	else
+	{
+		inhibitDown = false;
 	}
 
 	//Position Change
-	x = x + xVel;
-	y = y + yVel;
+	x = x + vx;
+	y = y + vy;
 
 	//Check Screen Boundaries
 	if ((x > gfx.ScreenWidth || x < 0) || (y > gfx.ScreenHeight || y < 0))
 	{
-		xVel = 0.0;
-		yVel = 0.0;
+		vx = 0.0;
+		vy = 0.0;
 		x = 400;
 		y = 300;
 	}
@@ -83,15 +133,20 @@ void Game::UpdateModel()
 		green = 255;
 		blue = 255;
 	}
+	if(wnd.kbd.KeyIsPressed(VK_SHIFT))
+	{
+		shapeIsChanged = true;
+	}
+	else if (!wnd.kbd.KeyIsPressed(VK_SHIFT))
+	{
+		shapeIsChanged = false; //a.k.a. "shiftIsPressed" or "controlIsPressed"
+	}
 }
 
 
 void Game::ComposeFrame()
 {
-
-
-
-	if(wnd.kbd.KeyIsPressed(VK_SHIFT))
+	if(shapeIsChanged)
 	{
 		//Square Pixels
 		//Top Right

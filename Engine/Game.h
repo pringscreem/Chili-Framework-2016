@@ -45,6 +45,12 @@ private:
 	/********************************/
 	//These are still private
 	int x = 400, y = 300;
-	float xVel = 0, yVel = 0;
+	int vx = 0, vy = 0;
 	int red = 255, green = 255, blue = 255;
+	bool shapeIsChanged = false;
+	bool colourIsChanged = false; //a.k.a. "shiftIsPressed" or "controlIsPressed"
+	bool inhibitUp = false;
+	bool inhibitDown = false;
+	bool inhibitLeft = false;
+	bool inhibitRight = false;
 };

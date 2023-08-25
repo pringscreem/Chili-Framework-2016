@@ -3,3 +3,9 @@
 								tab to select the current suggestion from Intellisense
 								shift+ctrl+space to bring up the function info from Intellisense
 							****ctrl + click to go to the definition or declaration of a function/variable
+
+	-In this particular case, separating logic from the draw call means remoiving all they keypress checks 
+	 from ComposeFrame (and putting them in UpdateModel)
+
+	 -****We can just put a reference object into a class instead of using pointers if we want.****
+	  ****	 Reference objects cannot be reassigned (or set to null) the way that pointers can.****
