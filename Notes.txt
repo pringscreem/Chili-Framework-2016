@@ -9,3 +9,5 @@
 
 	 -****We can just put a reference object into a class instead of using pointers if we want.****
 	  ****	 Reference objects cannot be reassigned (or set to null) the way that pointers can.****
+
+	  //shift + ctrl + space to pull up Intellisense function info

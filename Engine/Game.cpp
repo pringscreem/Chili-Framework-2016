@@ -21,6 +21,8 @@
 #include "MainWindow.h"
 #include "Game.h"
 
+
+
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
@@ -133,15 +135,6 @@ void Game::UpdateModel()
 		vy = 0;
 	}
 
-	////Check Screen Boundaries
-	//if ((x > gfx.ScreenWidth - 5 || x < 0 + 5) || (y > gfx.ScreenHeight - 5 || y < 0 + 5))
-	//{
-	//	vx = 0;
-	//	vy = 0;
-	//	x = 400; //This just resets the position to the centre
-	//	y = 300; //His version (leave it at the nearest edge position) 
-	//			 //is better, but he uses hardcoded values.
-	//}
 
 
 		
@@ -151,7 +144,7 @@ void Game::UpdateModel()
 	{
 		red = 255;
 		green = 0;
-		blue = 0;
+		blue = 255;
 	}
 	else if (!wnd.kbd.KeyIsPressed(VK_SPACE))
 	{
@@ -159,15 +152,6 @@ void Game::UpdateModel()
 		green = 255;
 		blue = 255;
 	}
-	//Central Column Colour Change
-	if(200 < x && x < 600 && !wnd.kbd.KeyIsPressed(VK_SPACE))
-	{
-		inCentralColumn = true;
-		red = 0;
-		green = 255;
-		blue = 0;
-	}
-
 
 	//Shape Change
 	if(wnd.kbd.KeyIsPressed(VK_SHIFT))
@@ -178,6 +162,21 @@ void Game::UpdateModel()
 	{
 		shapeIsChanged = false; //a.k.a. "shiftIsPressed" or "controlIsPressed"
 	}
+
+	//Collision Colour Change 
+	CollisionCheck(x, y, x2, y2, hasCollided);
+	if (hasCollided)
+	{
+		red2 = 255;
+		green2 = 0;
+		blue2 = 0;
+	}
+	if (!hasCollided)
+	{
+		red2 = 255;
+		green2 = 255;
+		blue2 = 255;
+	}
 }
 
 
@@ -185,50 +184,89 @@ void Game::ComposeFrame()
 {
 	if(shapeIsChanged)
 	{
-		//Square Pixels
-		//Top Right
-		gfx.PutPixel(+5 + x, -5 + y, red, green, blue);
-		gfx.PutPixel(+5 + x, -4 + y, red, green, blue);
-		gfx.PutPixel(+5 + x, -3 + y, red, green, blue);
-		gfx.PutPixel(+4 + x, -5 + y, red, green, blue);
-		gfx.PutPixel(+3 + x, -5 + y, red, green, blue);
-
-		//Top Left
-		gfx.PutPixel(-5 + x, -5 + y, red, green, blue);
-		gfx.PutPixel(-5 + x, -4 + y, red, green, blue);
-		gfx.PutPixel(-5 + x, -3 + y, red, green, blue);
-		gfx.PutPixel(-4 + x, -5 + y, red, green, blue);
-		gfx.PutPixel(-3 + x, -5 + y, red, green, blue);
-
-		//Bottom Left
-		gfx.PutPixel(-5 + x, +5 + y, red, green, blue);
-		gfx.PutPixel(-5 + x, +4 + y, red, green, blue);
-		gfx.PutPixel(-5 + x, +3 + y, red, green, blue);
-		gfx.PutPixel(-4 + x, +5 + y, red, green, blue);
-		gfx.PutPixel(-3 + x, +5 + y, red, green, blue);
-
-		//Bottom Right
-		gfx.PutPixel(+5 + x, +5 + y, red, green, blue);
-		gfx.PutPixel(+5 + x, +4 + y, red, green, blue);
-		gfx.PutPixel(+5 + x, +3 + y, red, green, blue);
-		gfx.PutPixel(+4 + x, +5 + y, red, green, blue);
-		gfx.PutPixel(+3 + x, +5 + y, red, green, blue);
+		DrawBox(x, y, red, green, blue);
 	}
 	else
 	{
-		//Reticle Pixels:
-		gfx.PutPixel(-5 + x,     y, red, green, blue);
-		gfx.PutPixel(-4 + x,     y, red, green, blue);
-		gfx.PutPixel(-3 + x,     y, red, green, blue);
-		gfx.PutPixel(+5 + x,     y, red, green, blue);
-		gfx.PutPixel(+4 + x,     y, red, green, blue);
-		gfx.PutPixel(+3 + x,     y, red, green, blue);
-		gfx.PutPixel(     x,-5 + y, red, green, blue);
-		gfx.PutPixel(     x,-4 + y, red, green, blue);
-		gfx.PutPixel(     x,-3 + y, red, green, blue);
-		gfx.PutPixel(     x,+5 + y, red, green, blue);
-		gfx.PutPixel(     x,+4 + y, red, green, blue);
-		gfx.PutPixel(     x,+3 + y, red, green, blue);
-		gfx.PutPixel(     x,     y, red, green, blue); //shift + ctrl + space to pull up Intellisense function info
+		DrawReticle(x, y, red, green, blue);
 	}
+	//Draw Second Box
+	DrawBox(x2, y2, red2, green2, blue2);
+}
+
+
+void Game::DrawBox(int x, int y, int red, int green, int blue)
+{
+	//Square Pixels
+	//Top Right
+	gfx.PutPixel(+5 + x, -5 + y, red, green, blue);
+	gfx.PutPixel(+5 + x, -4 + y, red, green, blue);
+	gfx.PutPixel(+5 + x, -3 + y, red, green, blue);
+	gfx.PutPixel(+4 + x, -5 + y, red, green, blue);
+	gfx.PutPixel(+3 + x, -5 + y, red, green, blue);
+
+	//Top Left
+	gfx.PutPixel(-5 + x, -5 + y, red, green, blue);
+	gfx.PutPixel(-5 + x, -4 + y, red, green, blue);
+	gfx.PutPixel(-5 + x, -3 + y, red, green, blue);
+	gfx.PutPixel(-4 + x, -5 + y, red, green, blue);
+	gfx.PutPixel(-3 + x, -5 + y, red, green, blue);
+
+	//Bottom Left
+	gfx.PutPixel(-5 + x, +5 + y, red, green, blue);
+	gfx.PutPixel(-5 + x, +4 + y, red, green, blue);
+	gfx.PutPixel(-5 + x, +3 + y, red, green, blue);
+	gfx.PutPixel(-4 + x, +5 + y, red, green, blue);
+	gfx.PutPixel(-3 + x, +5 + y, red, green, blue);
+
+	//Bottom Right
+	gfx.PutPixel(+5 + x, +5 + y, red, green, blue);
+	gfx.PutPixel(+5 + x, +4 + y, red, green, blue);
+	gfx.PutPixel(+5 + x, +3 + y, red, green, blue);
+	gfx.PutPixel(+4 + x, +5 + y, red, green, blue);
+	gfx.PutPixel(+3 + x, +5 + y, red, green, blue);
+}
+
+void Game::DrawReticle(int x, int y, int red, int green, int blue)
+{
+	//Reticle Pixels:
+	gfx.PutPixel(-5 + x, y, red, green, blue);
+	gfx.PutPixel(-4 + x, y, red, green, blue);
+	gfx.PutPixel(-3 + x, y, red, green, blue);
+	gfx.PutPixel(+5 + x, y, red, green, blue);
+	gfx.PutPixel(+4 + x, y, red, green, blue);
+	gfx.PutPixel(+3 + x, y, red, green, blue);
+	gfx.PutPixel(x, -5 + y, red, green, blue);
+	gfx.PutPixel(x, -4 + y, red, green, blue);
+	gfx.PutPixel(x, -3 + y, red, green, blue);
+	gfx.PutPixel(x, +5 + y, red, green, blue);
+	gfx.PutPixel(x, +4 + y, red, green, blue);
+	gfx.PutPixel(x, +3 + y, red, green, blue);
+	gfx.PutPixel(x, y, red, green, blue);
+}
+
+void Game::CollisionCheck(int x, int y, int x2, int y2, bool& hasCollided)
+{
+	//Helper Variables
+	//Box 1 (User-Controlled Box)
+	int xMin = x - 5;
+	int xMax = x + 5;
+	int yMin = y - 5;
+	int yMax = y + 5;
+	//Box 2 (Target Box)
+	int x2Min = x2 - 5;
+	int x2Max = x2 + 5;
+	int y2Min = y2 - 5;
+	int y2Max = y2 + 5;
+
+	if((x2Min < xMax) && (x2Min < xMin))
+	{
+		//The left (min) edge of Box 2 is in bounds.
+		if(y2Min < yMax) && (y2Min < yMin))
+		{
+			//
+		}
+	}
+
+
 }

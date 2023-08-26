@@ -197,3 +197,94 @@
 //	green = 255;
 //	blue = 255;
 //}
+
+	////Check Screen Boundaries
+	//if ((x > gfx.ScreenWidth - 5 || x < 0 + 5) || (y > gfx.ScreenHeight - 5 || y < 0 + 5))
+	//{
+	//	vx = 0;
+	//	vy = 0;
+	//	x = 400; //This just resets the position to the centre
+	//	y = 300; //His version (leave it at the nearest edge position) 
+	//			 //is better, but he uses hardcoded values.
+	//}
+
+	//}
+	////Central Column Colour Change
+	//if(200 < x && x < 600 && !wnd.kbd.KeyIsPressed(VK_SPACE))
+	//{
+	//	inCentralColumn = true;
+	//	red = 0;
+	//	green = 255;
+	//	blue = 0;
+	//}
+
+			////Reticle Pixels:
+		//gfx.PutPixel(-5 + x,     y, red, green, blue);
+		//gfx.PutPixel(-4 + x,     y, red, green, blue);
+		//gfx.PutPixel(-3 + x,     y, red, green, blue);
+		//gfx.PutPixel(+5 + x,     y, red, green, blue);
+		//gfx.PutPixel(+4 + x,     y, red, green, blue);
+		//gfx.PutPixel(+3 + x,     y, red, green, blue);
+		//gfx.PutPixel(     x,-5 + y, red, green, blue);
+		//gfx.PutPixel(     x,-4 + y, red, green, blue);
+		//gfx.PutPixel(     x,-3 + y, red, green, blue);
+		//gfx.PutPixel(     x,+5 + y, red, green, blue);
+		//gfx.PutPixel(     x,+4 + y, red, green, blue);
+		//gfx.PutPixel(     x,+3 + y, red, green, blue);
+		//gfx.PutPixel(     x,     y, red, green, blue);
+
+				////Square Pixels
+		////Top Right
+		//gfx.PutPixel(+5 + x, -5 + y, red, green, blue);
+		//gfx.PutPixel(+5 + x, -4 + y, red, green, blue);
+		//gfx.PutPixel(+5 + x, -3 + y, red, green, blue);
+		//gfx.PutPixel(+4 + x, -5 + y, red, green, blue);
+		//gfx.PutPixel(+3 + x, -5 + y, red, green, blue);
+		//
+		////Top Left
+		//gfx.PutPixel(-5 + x, -5 + y, red, green, blue);
+		//gfx.PutPixel(-5 + x, -4 + y, red, green, blue);
+		//gfx.PutPixel(-5 + x, -3 + y, red, green, blue);
+		//gfx.PutPixel(-4 + x, -5 + y, red, green, blue);
+		//gfx.PutPixel(-3 + x, -5 + y, red, green, blue);
+		//
+		////Bottom Left
+		//gfx.PutPixel(-5 + x, +5 + y, red, green, blue);
+		//gfx.PutPixel(-5 + x, +4 + y, red, green, blue);
+		//gfx.PutPixel(-5 + x, +3 + y, red, green, blue);
+		//gfx.PutPixel(-4 + x, +5 + y, red, green, blue);
+		//gfx.PutPixel(-3 + x, +5 + y, red, green, blue);
+		//
+		////Bottom Right
+		//gfx.PutPixel(+5 + x, +5 + y, red, green, blue);
+		//gfx.PutPixel(+5 + x, +4 + y, red, green, blue);
+		//gfx.PutPixel(+5 + x, +3 + y, red, green, blue);
+		//gfx.PutPixel(+4 + x, +5 + y, red, green, blue);
+		//gfx.PutPixel(+3 + x, +5 + y, red, green, blue);
+
+	////Collision Check
+	//hasCollided = false; //The reset is important.
+	//
+	////X Collision
+	////Check Right Side
+	//if ((x2 < x) && (x - x2 < 5))
+	//{
+	//	hasCollided = true;
+	//}
+	////Check Left Side
+	//if ((x2 > x) && (x2 - x < 5))
+	//{
+	//	hasCollided = true;
+	//}
+	//
+	////Y Collision
+	////Check Bottom Side
+	//if ((y2 < y) && (y - y2 < 5))
+	//{
+	//	hasCollided = true;
+	//}
+	////Check Top Side
+	//if ((y2 > y) && (y2 - y < 5))
+	//{
+	//	hasCollided = true;
+	//}

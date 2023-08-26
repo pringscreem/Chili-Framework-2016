@@ -37,6 +37,9 @@ private:
 	/********************************/
 	/*  User Functions              */
 	/********************************/
+	void DrawBox(int x, int y, int red, int green, int blue);
+	void DrawReticle(int x, int y, int red, int green, int blue);
+	void CollisionCheck(int x, int y, int x2, int y2, bool& hasCollided);
 private:
 	MainWindow& wnd;
 	Graphics gfx;
@@ -44,6 +47,7 @@ private:
 	/*  User Variables              */
 	/********************************/
 	//These are still private
+	//Box 1 (User-Controlled Box)
 	int x = 400, y = 300;
 	int vx = 0, vy = 0;
 	int red = 255, green = 255, blue = 255;
@@ -54,4 +58,11 @@ private:
 	bool inhibitLeft = false;
 	bool inhibitRight = false;
 	bool inCentralColumn = false;
+
+	//Box 2 (Target Box)
+	int x2 = gfx.ScreenWidth / 2, y2 = gfx.ScreenHeight / 2;
+	int red2 = 0, green2 = 255, blue2 = 0;
+
+	//Collision Check
+	bool hasCollided = false;
 };
