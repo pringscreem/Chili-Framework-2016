@@ -81,4 +81,5 @@ Video 5
 August 26, 2023
 Video 6
 	Actions Taken
+	-Created a second box and created a collision check to test if boxes overlap
 	-

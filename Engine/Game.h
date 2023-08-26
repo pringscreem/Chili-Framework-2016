@@ -39,7 +39,7 @@ private:
 	/********************************/
 	void DrawBox(int x, int y, int red, int green, int blue);
 	void DrawReticle(int x, int y, int red, int green, int blue);
-	void CollisionCheck(int x, int y, int x2, int y2, bool& hasCollided);
+	void CollisionCheck(int x_fixed, int y_fixed, int x_mobile, int y_mobile, bool& hasCollided);
 private:
 	MainWindow& wnd;
 	Graphics gfx;
@@ -48,9 +48,9 @@ private:
 	/********************************/
 	//These are still private
 	//Box 1 (User-Controlled Box)
-	int x = 400, y = 300;
-	int vx = 0, vy = 0;
-	int red = 255, green = 255, blue = 255;
+	int x_mobile = 400, y_mobile = 300;
+	int vx_mobile = 0, vy_mobile = 0;
+	int red_mobile = 255, green_mobile = 255, blue_mobile = 255;
 	bool shapeIsChanged = false;
 	bool colourIsChanged = false; //a.k.a. "shiftIsPressed" or "controlIsPressed"
 	bool inhibitUp = false;
@@ -60,8 +60,8 @@ private:
 	bool inCentralColumn = false;
 
 	//Box 2 (Target Box)
-	int x2 = gfx.ScreenWidth / 2, y2 = gfx.ScreenHeight / 2;
-	int red2 = 0, green2 = 255, blue2 = 0;
+	int x_fixed = gfx.ScreenWidth / 2, y_fixed = gfx.ScreenHeight / 2;
+	int red_fixed = 0, green_fixed = 255, blue_fixed = 0;
 
 	//Collision Check
 	bool hasCollided = false;

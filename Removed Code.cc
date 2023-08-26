@@ -201,8 +201,8 @@
 	////Check Screen Boundaries
 	//if ((x > gfx.ScreenWidth - 5 || x < 0 + 5) || (y > gfx.ScreenHeight - 5 || y < 0 + 5))
 	//{
-	//	vx = 0;
-	//	vy = 0;
+	//	vx_mobile = 0;
+	//	vy_mobile = 0;
 	//	x = 400; //This just resets the position to the centre
 	//	y = 300; //His version (leave it at the nearest edge position) 
 	//			 //is better, but he uses hardcoded values.
@@ -267,24 +267,40 @@
 	//
 	////X Collision
 	////Check Right Side
-	//if ((x2 < x) && (x - x2 < 5))
+	//if ((x_mobile < x) && (x - x_mobile < 5))
 	//{
 	//	hasCollided = true;
 	//}
 	////Check Left Side
-	//if ((x2 > x) && (x2 - x < 5))
+	//if ((x_mobile > x) && (x_mobile - x < 5))
 	//{
 	//	hasCollided = true;
 	//}
 	//
 	////Y Collision
 	////Check Bottom Side
-	//if ((y2 < y) && (y - y2 < 5))
+	//if ((y_mobile < y) && (y - y_mobile < 5))
 	//{
 	//	hasCollided = true;
 	//}
 	////Check Top Side
-	//if ((y2 > y) && (y2 - y < 5))
+	//if ((y_mobile > y) && (y_mobile - y < 5))
 	//{
 	//	hasCollided = true;
+	//}
+
+	////Repeated code from collision check
+	//else if((x_mobileMax >= xMin) && (x_mobileMax <= xMax))
+	//{
+	//	//The right (max) edge of Box 2 is in bounds.
+	//	if ((y_mobileMin <= yMax) && (y_mobileMin >= yMin))
+	//	{
+	//		//Top of Box 2 is in bounds.
+	//		hasCollided = true;
+	//	}
+	//	if ((y_mobileMax >= yMin) && (y_mobileMax <= yMax))
+	//	{
+	//		//Bottom of Box 2 is in bounds.
+	//		hasCollided = true;
+	//	}
 	//}

@@ -11,3 +11,5 @@
 	  ****	 Reference objects cannot be reassigned (or set to null) the way that pointers can.****
 
 	  //shift + ctrl + space to pull up Intellisense function info
+
+	  ****The abstraction of xMax etc. was much faster to deal with than the actual numbers themselves.
