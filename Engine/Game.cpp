@@ -110,15 +110,34 @@ void Game::UpdateModel()
 	//Position Change
 	x = x + vx;
 	y = y + vy;
-
 	//Check Screen Boundaries
-	if ((x > gfx.ScreenWidth || x < 0) || (y > gfx.ScreenHeight || y < 0))
+	if(x + 5 > 799) //5 == cursor radius
 	{
-		vx = 0.0;
-		vy = 0.0;
-		x = 400;
-		y = 300;
+		x = 799 - 5;
 	}
+	if (x - 5 < 0)
+	{
+		x = 0 + 5;
+	}
+	
+	if (y - 5 < 0)
+	{
+		y = 0 + 5;
+	}
+	if (y + 5 > 599)
+	{
+		y = 599 - 5;
+	}
+
+	////Check Screen Boundaries
+	//if ((x > gfx.ScreenWidth - 5 || x < 0 + 5) || (y > gfx.ScreenHeight - 5 || y < 0 + 5))
+	//{
+	//	vx = 0.0;
+	//	vy = 0.0;
+	//	x = 400; //This just resets the position to the centre
+	//	y = 300; //His version (leave it at the nearest edge position) 
+	//			 //is better, but he uses hardcoded values.
+	//}
 
 	//Colour Change
 	if (wnd.kbd.KeyIsPressed(VK_SPACE))
