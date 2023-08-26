@@ -75,4 +75,5 @@ Video 4.3
 August 25, 2023
 Video 5
 	Actions Taken
-	-
+	-Screen boundary checks fixed
+	-Value checks for colour change

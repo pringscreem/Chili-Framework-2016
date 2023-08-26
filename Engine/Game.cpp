@@ -114,34 +114,37 @@ void Game::UpdateModel()
 	if(x + 5 >= gfx.ScreenWidth) //5 == cursor radius
 	{
 		x = gfx.ScreenWidth - 6;//6 == cursor radius + 1
-		vx = 0.0;
+		vx = 0;
 	}
 	if (x - 5 < 0)
 	{
 		x = 0 + 5;
-		vx = 0.0;
+		vx = 0;
 	}
 	
 	if (y - 5 < 0)
 	{
 		y = 0 + 5;
-		vy = 0.0;
+		vy = 0;
 	}
 	if (y + 5 >= gfx.ScreenHeight)
 	{
 		y = gfx.ScreenHeight - 6;
-		vy = 0.0;
+		vy = 0;
 	}
 
 	////Check Screen Boundaries
 	//if ((x > gfx.ScreenWidth - 5 || x < 0 + 5) || (y > gfx.ScreenHeight - 5 || y < 0 + 5))
 	//{
-	//	vx = 0.0;
-	//	vy = 0.0;
+	//	vx = 0;
+	//	vy = 0;
 	//	x = 400; //This just resets the position to the centre
 	//	y = 300; //His version (leave it at the nearest edge position) 
 	//			 //is better, but he uses hardcoded values.
 	//}
+
+
+		
 
 	//Colour Change
 	if (wnd.kbd.KeyIsPressed(VK_SPACE))
@@ -150,12 +153,23 @@ void Game::UpdateModel()
 		green = 0;
 		blue = 0;
 	}
-	else
+	else if (!wnd.kbd.KeyIsPressed(VK_SPACE))
 	{
 		red = 255;
 		green = 255;
 		blue = 255;
 	}
+	//Central Column Colour Change
+	if(200 < x && x < 600 && !wnd.kbd.KeyIsPressed(VK_SPACE))
+	{
+		inCentralColumn = true;
+		red = 0;
+		green = 255;
+		blue = 0;
+	}
+
+
+	//Shape Change
 	if(wnd.kbd.KeyIsPressed(VK_SHIFT))
 	{
 		shapeIsChanged = true;

@@ -53,4 +53,5 @@ private:
 	bool inhibitDown = false;
 	bool inhibitLeft = false;
 	bool inhibitRight = false;
+	bool inCentralColumn = false;
 };
