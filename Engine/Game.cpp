@@ -111,22 +111,26 @@ void Game::UpdateModel()
 	x = x + vx;
 	y = y + vy;
 	//Check Screen Boundaries
-	if(x + 5 > 799) //5 == cursor radius
+	if(x + 5 >= gfx.ScreenWidth) //5 == cursor radius
 	{
-		x = 799 - 5;
+		x = gfx.ScreenWidth - 6;//6 == cursor radius + 1
+		vx = 0.0;
 	}
 	if (x - 5 < 0)
 	{
 		x = 0 + 5;
+		vx = 0.0;
 	}
 	
 	if (y - 5 < 0)
 	{
 		y = 0 + 5;
+		vy = 0.0;
 	}
-	if (y + 5 > 599)
+	if (y + 5 >= gfx.ScreenHeight)
 	{
-		y = 599 - 5;
+		y = gfx.ScreenHeight - 6;
+		vy = 0.0;
 	}
 
 	////Check Screen Boundaries
