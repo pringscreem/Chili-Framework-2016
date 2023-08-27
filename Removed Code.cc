@@ -317,3 +317,20 @@
 //	green_mobile = 255;
 //	blue_mobile = 255;
 //}
+
+	////The previous collision check
+	////The actual check:
+	//if(((left_box1 <= right_box0) && (left_box1 >= left_box0)) || ((right_box1 >= left_box0) && (right_box1 <= right_box0)))
+	//{ //My check is different from his, but it has the same number of condition checks
+	//	//The left (_left) edge of Box 2 is in bounds.
+	//	if((top_box1 <= bottom_box0) && (top_box1 >= top_box0))
+	//	{
+	//		//Top of Box 1 is in bounds.
+	//		return true;
+	//	}
+	//	if((bottom_box1 >= top_box0) && (bottom_box1 <= bottom_box0))
+	//	{
+	//		//Bottom of Box 1 is in bounds.
+	//		return true;
+	//	}
+	//}

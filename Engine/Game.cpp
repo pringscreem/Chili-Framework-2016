@@ -244,32 +244,21 @@ void Game::DrawReticle(const int x, const int y, const int red, const int green,
 bool Game::OverlapTest(const int x_box0, const int y_box0, const int x_box1, const int y_box1)
 {
 	//Helper Variables
-	bool hasCollided = false; //Default fail, check for pass
-	//Box 1 (User-Controlled Box)
-	const int x_box0Min = x_box0 - 5;
-	const int x_box0Max = x_box0 + 5;
-	const int y_box0Min = y_box0- 5;
-	const int y_box0Max = y_box0+ 5;
-	//Box 2 (Target Box)
-	const int x_box1Min = x_box1 - 5;
-	const int x_box1Max = x_box1 + 5;
-	const int y_box1Min = y_box1 - 5;
-	const int y_box1Max = y_box1 + 5;
+	//Box 0 (User-Controlled Box)
+	const int left_box0 = x_box0 - 5;
+	const int right_box0 = x_box0 + 5;
+	const int top_box0 = y_box0 - 5;
+	const int bottom_box0 = y_box0 + 5;
+	//Box 1 (Target Box)
+	const int left_box1 = x_box1 - 5;
+	const int right_box1 = x_box1 + 5;
+	const int top_box1 = y_box1 - 5;
+	const int bottom_box1 = y_box1 + 5;
 
-	//The actual check:
-	if(((x_box1Min <= x_box0Max) && (x_box1Min >= x_box0Min)) || ((x_box1Max >= x_box0Min) && (x_box1Max <= x_box0Max)))
-	{ //My check is different from his, but it has the same number of condition checks
-		//The left (min) edge of Box 2 is in bounds.
-		if((y_box1Min <= y_box0Max) && (y_box1Min >= y_box0Min))
-		{
-			//Top of Box 2 is in bounds.
-			hasCollided = true;
-		}
-		if((y_box1Max >= y_box0Min) && (y_box1Max <= y_box0Max))
-		{
-			//Bottom of Box 2 is in bounds.
-			hasCollided = true;
-		}
-	}
-	return hasCollided;
+
+	return
+		left_box0 <= right_box1 &&
+		right_box0 >= left_box1 &&
+		top_box0 <= bottom_box1 &&
+		bottom_box0 >= top_box1;
 }
