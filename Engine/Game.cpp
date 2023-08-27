@@ -108,17 +108,16 @@ void Game::UpdateModel()
 	{
 		inhibitDown = false;
 	}
-
+	
 	//Position Change
 	x_mobile = x_mobile + vx_mobile;
 	y_mobile= y_mobile+ vy_mobile;
 	//Check Screen Boundaries
 	CheckScreenBoundaries(x_mobile, y_mobile, vx_mobile, vy_mobile, gfx.ScreenWidth, gfx.ScreenHeight);
-	for (int i = 0; i < 4; i++)
-		for (int j = 0; j < 4; j++)
-		{
-			CheckScreenBoundaries(x_more_boxes[i], y_more_boxes[j], vx_more_boxes[i], vy_more_boxes[j], gfx.ScreenWidth, gfx.ScreenHeight);
-		}
+	CheckScreenBoundaries(x_more_boxes[0], y_more_boxes[0], vx_more_boxes[0], vy_more_boxes[0], gfx.ScreenWidth, gfx.ScreenHeight);
+	CheckScreenBoundaries(x_more_boxes[1], y_more_boxes[1], vx_more_boxes[1], vy_more_boxes[1], gfx.ScreenWidth, gfx.ScreenHeight);
+	CheckScreenBoundaries(x_more_boxes[2], y_more_boxes[2], vx_more_boxes[2], vy_more_boxes[2], gfx.ScreenWidth, gfx.ScreenHeight);
+	CheckScreenBoundaries(x_more_boxes[3], y_more_boxes[3], vx_more_boxes[3], vy_more_boxes[3], gfx.ScreenWidth, gfx.ScreenHeight);
 
 	//Colour Change
 	if (wnd.kbd.KeyIsPressed(VK_SPACE))
@@ -145,8 +144,12 @@ void Game::UpdateModel()
 	}
 
 	//Collision Check and Colour Change 
-	hasCollided = OverlapTest(x_fixed, y_fixed, x_mobile, y_mobile);
-	//He does the colour change in ComposeFrame
+	//If any of them return true, the flag is flipped to true
+	hasCollided = OverlapTest(x_fixed, y_fixed, x_mobile, y_mobile) || 
+					OverlapTest(x_more_boxes[0], y_more_boxes[0], x_mobile, y_mobile) ||
+					OverlapTest(x_more_boxes[1], y_more_boxes[1], x_mobile, y_mobile) ||
+					OverlapTest(x_more_boxes[2], y_more_boxes[2], x_mobile, y_mobile) ||
+					OverlapTest(x_more_boxes[3], y_more_boxes[3], x_mobile, y_mobile);
 }
 
 
@@ -171,11 +174,11 @@ void Game::ComposeFrame()
 	//Draw Second Box
 	DrawBox(x_fixed, y_fixed, red_fixed, green_fixed, blue_fixed);
 
-	for(int i = 0; i < 4; i++)
-		for(int j = 0 ; j < 4; j++)
-			{
-				DrawBox(x_more_boxes[i], y_more_boxes[j], 255, 255, 255);
-			}
+	//Draw More Boxes
+	DrawBox(x_more_boxes[0], y_more_boxes[0], 255, 255, 255);
+	DrawBox(x_more_boxes[1], y_more_boxes[1], 255, 255, 255);
+	DrawBox(x_more_boxes[2], y_more_boxes[2], 255, 255, 255);
+	DrawBox(x_more_boxes[3], y_more_boxes[3], 255, 255, 255);
 }
 
 //Draw 5x5 box (corners only)
@@ -215,7 +218,7 @@ void Game::DrawBox(const int x, const int y, const int red, const int green, con
 void Game::DrawReticle(const int x, const int y, const int red, const int green, const int blue)
 {
 	//Reticle Pixels:
-	gfx.PutPixel(-5 + x,      y, red, green, blue);
+	gfx.PutPixel(-5 + x,      y, red, green, blue); //Changed -5 to -6 (Debugger demo)
 	gfx.PutPixel(-4 + x,      y, red, green, blue);
 	gfx.PutPixel(-3 + x,      y, red, green, blue);
 	gfx.PutPixel(+5 + x,      y, red, green, blue);

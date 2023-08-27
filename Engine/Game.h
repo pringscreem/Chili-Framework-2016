@@ -71,8 +71,8 @@ private:
 	int red_fixed = 0, green_fixed = 255, blue_fixed = 0;
 
 	//More Boxes
-	int x_more_boxes[4] = {100, 200, 300, 900};
-	int y_more_boxes[4] = {100, 200, 300, 900};
+	int x_more_boxes[4] = {100, 200, 300, 700};
+	int y_more_boxes[4] = {100, 200, 300, 500};
 	int vx_more_boxes[4] = { 0,0,0,0 };
 	int vy_more_boxes[4] = { 0,0,0,0 };
 	//Collision Check

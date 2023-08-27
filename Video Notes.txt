@@ -88,4 +88,9 @@ Video 6
 August 26, 2023
 Video 7
 	Actions Taken
+	-Debugger demo
+
+August 27, 2023
+Video 8
+	Actions Taken
 	-
