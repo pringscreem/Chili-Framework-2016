@@ -41,6 +41,12 @@ private:
 	void DrawReticle(const int x, const int y, const int red, const int green, const int blue);
 	bool OverlapTest(const int x_fixed, const int y_fixed, const int x_mobile, const int y_mobile);
 	void CheckScreenBoundaries(int& x, int& y, int& vx, int& vy, const int ScreenWidth, const int ScreenHeight);
+	/********************************/
+	/*  Tutorial Functions          */
+	/********************************/
+	void ContainBox();
+	int ClampScreenX(int x);
+	int ClampScreenY(int y);
 private:
 	MainWindow& wnd;
 	Graphics gfx;

@@ -252,6 +252,8 @@ bool Game::OverlapTest(const int x_box0, const int y_box0, const int x_box1, con
 		bottom_box0 >= top_box1;
 }
 
+//Check the screen boundaries and enforce them by setting the x or y value within the bounds 
+//and resetting the x or y velocity to zero.
 void Game::CheckScreenBoundaries(int& x, int& y, int& vx, int& vy, const int ScreenWidth, const int ScreenHeight)
 {
 	if (x + 5 >= ScreenWidth) //5 == cursor radius
@@ -274,5 +276,72 @@ void Game::CheckScreenBoundaries(int& x, int& y, int& vx, int& vy, const int Scr
 	{
 		y = ScreenHeight - 6;
 		vy = 0;
+	}
+}
+
+//His function for checking/enforcing screen boundaries (tightly coupled to "_mobile" box)
+void Game::ContainBox()
+{
+	const int left = x_mobile - 5;
+	const int right = x_mobile + 5;
+	const int top = y_mobile - 5;
+	const int bottom = y_mobile + 5;
+
+	if (left < 0)
+	{
+		x_mobile = 5;
+	}
+	else if (right >= gfx.ScreenWidth)
+	{
+		x_mobile = gfx.ScreenWidth - 6;
+	}
+
+	if (top < 0)
+	{
+		y_mobile = 5;
+	}
+	else if (bottom >= gfx.ScreenHeight)
+	{
+		y_mobile = gfx.ScreenHeight - 6;
+	}
+}
+
+//His function for checking/enforcing x boundaries (not tightly coupled)
+int Game::ClampScreenX(int x)
+{
+	const int left = x - 5;
+	const int right = x + 5;
+
+	if (left < 0)
+	{
+		return 5;
+	}
+	else if (right >= gfx.ScreenWidth)
+	{
+		return gfx.ScreenWidth - 6;
+	}
+	else
+	{
+		return x;
+	}
+}
+
+//His function for checking/enforcing y boundaries (not tightly coupled)
+int Game::ClampScreenY(int y)
+{
+	const int top = y - 5;
+	const int bottom = y + 5;
+
+	if (top < 0)
+	{
+		return 5;
+	}
+	else if (bottom >= gfx.ScreenHeight)
+	{
+		return gfx.ScreenHeight - 6;
+	}
+	else
+	{
+		return y;
 	}
 }

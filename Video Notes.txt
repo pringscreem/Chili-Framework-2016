@@ -82,4 +82,10 @@ August 26, 2023
 Video 6
 	Actions Taken
 	-Created a second box and created a collision check to test if boxes overlap
+	-Moved screen boundary checks into a function
+	-Renaming, some refactoring
+
+August 26, 2023
+Video 7
+	Actions Taken
 	-
