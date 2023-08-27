@@ -334,3 +334,10 @@
 	//		return true;
 	//	}
 	//}
+
+	////Grid of boxes
+	//for (int i = 20; i < gfx.ScreenWidth - 20; i += 20)
+	//	for (int j = 20; j < gfx.ScreenHeight - 20; j += 20)
+	//	{
+	//		DrawBox(i, j, red_mobile + i, green_mobile + j, blue_mobile + i + j);
+	//	}

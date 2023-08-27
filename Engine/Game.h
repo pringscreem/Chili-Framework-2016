@@ -40,6 +40,7 @@ private:
 	void DrawBox(const int x, const int y, const int red, const int green, const int blue);
 	void DrawReticle(const int x, const int y, const int red, const int green, const int blue);
 	bool OverlapTest(const int x_fixed, const int y_fixed, const int x_mobile, const int y_mobile);
+	void CheckScreenBoundaries(int& x, int& y, int& vx, int& vy, const int ScreenWidth, const int ScreenHeight);
 private:
 	MainWindow& wnd;
 	Graphics gfx;
@@ -63,6 +64,11 @@ private:
 	int x_fixed = gfx.ScreenWidth / 2, y_fixed = gfx.ScreenHeight / 2;
 	int red_fixed = 0, green_fixed = 255, blue_fixed = 0;
 
+	//More Boxes
+	int x_more_boxes[4] = {100, 200, 300, 900};
+	int y_more_boxes[4] = {100, 200, 300, 900};
+	int vx_more_boxes[4] = { 0,0,0,0 };
+	int vy_more_boxes[4] = { 0,0,0,0 };
 	//Collision Check
 	bool hasCollided = false;
 };

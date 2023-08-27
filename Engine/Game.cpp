@@ -113,27 +113,12 @@ void Game::UpdateModel()
 	x_mobile = x_mobile + vx_mobile;
 	y_mobile= y_mobile+ vy_mobile;
 	//Check Screen Boundaries
-	if(x_mobile + 5 >= gfx.ScreenWidth) //5 == cursor radius
-	{
-		x_mobile= gfx.ScreenWidth - 6;//6 == cursor radius + 1
-		vx_mobile = 0;
-	}
-	if (x_mobile- 5 < 0)
-	{
-		x_mobile= 0 + 5;
-		vx_mobile = 0;
-	}
-	
-	if (y_mobile- 5 < 0)
-	{
-		y_mobile= 0 + 5;
-		vy_mobile = 0;
-	}
-	if (y_mobile+ 5 >= gfx.ScreenHeight)
-	{
-		y_mobile= gfx.ScreenHeight - 6;
-		vy_mobile = 0;
-	}
+	CheckScreenBoundaries(x_mobile, y_mobile, vx_mobile, vy_mobile, gfx.ScreenWidth, gfx.ScreenHeight);
+	for (int i = 0; i < 4; i++)
+		for (int j = 0; j < 4; j++)
+		{
+			CheckScreenBoundaries(x_more_boxes[i], y_more_boxes[j], vx_more_boxes[i], vy_more_boxes[j], gfx.ScreenWidth, gfx.ScreenHeight);
+		}
 
 	//Colour Change
 	if (wnd.kbd.KeyIsPressed(VK_SPACE))
@@ -162,7 +147,6 @@ void Game::UpdateModel()
 	//Collision Check and Colour Change 
 	hasCollided = OverlapTest(x_fixed, y_fixed, x_mobile, y_mobile);
 	//He does the colour change in ComposeFrame
-
 }
 
 
@@ -186,6 +170,12 @@ void Game::ComposeFrame()
 
 	//Draw Second Box
 	DrawBox(x_fixed, y_fixed, red_fixed, green_fixed, blue_fixed);
+
+	for(int i = 0; i < 4; i++)
+		for(int j = 0 ; j < 4; j++)
+			{
+				DrawBox(x_more_boxes[i], y_more_boxes[j], 255, 255, 255);
+			}
 }
 
 //Draw 5x5 box (corners only)
@@ -255,10 +245,34 @@ bool Game::OverlapTest(const int x_box0, const int y_box0, const int x_box1, con
 	const int top_box1 = y_box1 - 5;
 	const int bottom_box1 = y_box1 + 5;
 
-
 	return
 		left_box0 <= right_box1 &&
 		right_box0 >= left_box1 &&
 		top_box0 <= bottom_box1 &&
 		bottom_box0 >= top_box1;
+}
+
+void Game::CheckScreenBoundaries(int& x, int& y, int& vx, int& vy, const int ScreenWidth, const int ScreenHeight)
+{
+	if (x + 5 >= ScreenWidth) //5 == cursor radius
+	{
+		x = ScreenWidth - 6;//6 == cursor radius + 1
+		vx = 0;
+	}
+	if (x - 5 < 0)
+	{
+		x = 0 + 5;
+		vx = 0;
+	}
+
+	if (y - 5 < 0)
+	{
+		y = 0 + 5;
+		vy = 0;
+	}
+	if (y + 5 >= ScreenHeight)
+	{
+		y = ScreenHeight - 6;
+		vy = 0;
+	}
 }
