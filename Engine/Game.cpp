@@ -160,24 +160,21 @@ void Game::UpdateModel()
 	}
 
 	//Collision Check and Colour Change 
-	CollisionCheck(x_fixed, y_fixed, x_mobile, y_mobile, hasCollided);
-	if (hasCollided)
-	{
-		red_fixed = 255;
-		green_fixed = 0;
-		blue_fixed = 0;
-	}
-	else
-	{
-		red_fixed = 255;
-		green_fixed = 255;
-		blue_fixed = 255;
-	}
+	hasCollided = OverlapTest(x_fixed, y_fixed, x_mobile, y_mobile);
+	//He does the colour change in ComposeFrame
+
 }
 
 
 void Game::ComposeFrame()
 {
+	//Draw Reticle or Box
+	if (hasCollided)
+	{
+		red_mobile = 255;
+		green_mobile = 0;
+		blue_mobile = 0;
+	}
 	if(shapeIsChanged)
 	{
 		DrawBox(x_mobile, y_mobile, red_mobile, green_mobile, blue_mobile);
@@ -186,12 +183,13 @@ void Game::ComposeFrame()
 	{
 		DrawReticle(x_mobile, y_mobile, red_mobile, green_mobile, blue_mobile);
 	}
+
 	//Draw Second Box
 	DrawBox(x_fixed, y_fixed, red_fixed, green_fixed, blue_fixed);
 }
 
 //Draw 5x5 box (corners only)
-void Game::DrawBox(int x, int y, int red, int green, int blue)
+void Game::DrawBox(const int x, const int y, const int red, const int green, const int blue)
 {
 	//Square Pixels
 	//Top Right
@@ -224,7 +222,7 @@ void Game::DrawBox(int x, int y, int red, int green, int blue)
 }
 
 //Draw 5x5 reticle (with middle dot)
-void Game::DrawReticle(int x, int y, int red, int green, int blue)
+void Game::DrawReticle(const int x, const int y, const int red, const int green, const int blue)
 {
 	//Reticle Pixels:
 	gfx.PutPixel(-5 + x,      y, red, green, blue);
@@ -243,35 +241,35 @@ void Game::DrawReticle(int x, int y, int red, int green, int blue)
 }
 
 //Check if two 5x5 pixel objects overlap
-void Game::CollisionCheck(int x_fixed, int y_fixed, int x_mobile, int y_mobile, bool& hasCollided)
+bool Game::OverlapTest(const int x_box0, const int y_box0, const int x_box1, const int y_box1)
 {
 	//Helper Variables
+	bool hasCollided = false; //Default fail, check for pass
 	//Box 1 (User-Controlled Box)
-	int x_fixedMin = x_fixed - 5;
-	int x_fixedMax = x_fixed + 5;
-	int y_fixedMin = y_fixed- 5;
-	int y_fixedMax = y_fixed+ 5;
+	const int x_box0Min = x_box0 - 5;
+	const int x_box0Max = x_box0 + 5;
+	const int y_box0Min = y_box0- 5;
+	const int y_box0Max = y_box0+ 5;
 	//Box 2 (Target Box)
-	int x_mobileMin = x_mobile - 5;
-	int x_mobileMax = x_mobile + 5;
-	int y_mobileMin = y_mobile - 5;
-	int y_mobileMax = y_mobile + 5;
+	const int x_box1Min = x_box1 - 5;
+	const int x_box1Max = x_box1 + 5;
+	const int y_box1Min = y_box1 - 5;
+	const int y_box1Max = y_box1 + 5;
 
-	//Reset the flag before the check.
-	hasCollided = false;
 	//The actual check:
-	if(((x_mobileMin <= x_fixedMax) && (x_mobileMin >= x_fixedMin)) || ((x_mobileMax >= x_fixedMin) && (x_mobileMax <= x_fixedMax)))
+	if(((x_box1Min <= x_box0Max) && (x_box1Min >= x_box0Min)) || ((x_box1Max >= x_box0Min) && (x_box1Max <= x_box0Max)))
 	{ //My check is different from his, but it has the same number of condition checks
 		//The left (min) edge of Box 2 is in bounds.
-		if((y_mobileMin <= y_fixedMax) && (y_mobileMin >= y_fixedMin))
+		if((y_box1Min <= y_box0Max) && (y_box1Min >= y_box0Min))
 		{
 			//Top of Box 2 is in bounds.
 			hasCollided = true;
 		}
-		if((y_mobileMax >= y_fixedMin) && (y_mobileMax <= y_fixedMax))
+		if((y_box1Max >= y_box0Min) && (y_box1Max <= y_box0Max))
 		{
 			//Bottom of Box 2 is in bounds.
 			hasCollided = true;
 		}
 	}
+	return hasCollided;
 }

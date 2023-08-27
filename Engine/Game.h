@@ -37,9 +37,9 @@ private:
 	/********************************/
 	/*  User Functions              */
 	/********************************/
-	void DrawBox(int x, int y, int red, int green, int blue);
-	void DrawReticle(int x, int y, int red, int green, int blue);
-	void CollisionCheck(int x_fixed, int y_fixed, int x_mobile, int y_mobile, bool& hasCollided);
+	void DrawBox(const int x, const int y, const int red, const int green, const int blue);
+	void DrawReticle(const int x, const int y, const int red, const int green, const int blue);
+	bool OverlapTest(const int x_fixed, const int y_fixed, const int x_mobile, const int y_mobile);
 private:
 	MainWindow& wnd;
 	Graphics gfx;

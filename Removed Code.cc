@@ -304,3 +304,16 @@
 	//		hasCollided = true;
 	//	}
 	//}
+////Colour change when collision occurs
+//if (hasCollided)
+//{
+//	red_mobile = 255;
+//	green_mobile = 0;
+//	blue_mobile = 0;
+//}
+//else
+//{
+//	red_mobile = 255;
+//	green_mobile = 255;
+//	blue_mobile = 255;
+//}
