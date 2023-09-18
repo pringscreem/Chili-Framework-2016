@@ -4,7 +4,7 @@
 								shift+ctrl+space to bring up the function info from Intellisense
 							****ctrl + click to go to the definition or declaration of a function/variable
 
-	-In this particular case, separating logic from the draw call means remoiving all they keypress checks 
+	-In this particular case, separating logic from the draw call means removing all they keypress checks 
 	 from ComposeFrame (and putting them in UpdateModel)
 
 	 -****We can just put a reference object into a class instead of using pointers if we want.****
@@ -13,3 +13,11 @@
 	  //shift + ctrl + space to pull up Intellisense function info
 
 	  ****The abstraction of xMax etc. was much faster to deal with than the actual numbers themselves.
+
+	  ****It doesn't like it when you call library functions during the declaration of a variable (i.e. srand problems)
+
+	  ****Generally speaking, variables are what makes code portable: functions that take variables instead of using their access to
+	      class member variables are easier to reuse.
+
+	****The Debugger seems to be a useful way to find the general location of an error so that 
+	****you don't have to read the entire source code to find the bug.

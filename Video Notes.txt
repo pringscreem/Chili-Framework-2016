@@ -90,7 +90,14 @@ Video 7
 	Actions Taken
 	-Debugger demo
 
-August 27, 2023
+August 30, 2023
 Video 8
 	Actions Taken
-	-
+	-Debugger practice homework from Video 7
+	-Implemented Pong with member functions and member variables
+
+September 13, 2023
+Video 9
+	Actions Taken
+	-Wrote Pong
+	-Started playing with Bitmap Tool

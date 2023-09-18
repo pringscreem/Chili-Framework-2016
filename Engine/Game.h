@@ -41,6 +41,7 @@ private:
 	void DrawReticle(const int x, const int y, const int red, const int green, const int blue);
 	bool OverlapTest(const int x_fixed, const int y_fixed, const int x_mobile, const int y_mobile);
 	void CheckScreenBoundaries(int& x, int& y, int& vx, int& vy, const int ScreenWidth, const int ScreenHeight);
+	void DrawImage(int x, int y);
 	/********************************/
 	/*  Tutorial Functions          */
 	/********************************/
@@ -53,6 +54,8 @@ private:
 	/********************************/
 	/*  User Variables              */
 	/********************************/
+	int x = 0;
+	int y = 0;
 	//These are still private
 	//Box 1 (User-Controlled Box)
 	int x_mobile = 400, y_mobile = 300;

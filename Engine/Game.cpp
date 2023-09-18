@@ -155,30 +155,31 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	//Draw Reticle or Box
-	if (hasCollided)
-	{
-		red_mobile = 255;
-		green_mobile = 0;
-		blue_mobile = 0;
-	}
-	if(shapeIsChanged)
-	{
-		DrawBox(x_mobile, y_mobile, red_mobile, green_mobile, blue_mobile);
-	}
-	else
-	{
-		DrawReticle(x_mobile, y_mobile, red_mobile, green_mobile, blue_mobile);
-	}
-
-	//Draw Second Box
-	DrawBox(x_fixed, y_fixed, red_fixed, green_fixed, blue_fixed);
-
-	//Draw More Boxes
-	DrawBox(x_more_boxes[0], y_more_boxes[0], 255, 255, 255);
-	DrawBox(x_more_boxes[1], y_more_boxes[1], 255, 255, 255);
-	DrawBox(x_more_boxes[2], y_more_boxes[2], 255, 255, 255);
-	DrawBox(x_more_boxes[3], y_more_boxes[3], 255, 255, 255);
+	////Draw Reticle or Box
+	//if (hasCollided)
+	//{
+	//	red_mobile = 255;
+	//	green_mobile = 0;
+	//	blue_mobile = 0;
+	//}
+	//if(shapeIsChanged)
+	//{
+	//	DrawBox(x_mobile, y_mobile, red_mobile, green_mobile, blue_mobile);
+	//}
+	//else
+	//{
+	//	DrawReticle(x_mobile, y_mobile, red_mobile, green_mobile, blue_mobile);
+	//}
+	//
+	////Draw Second Box
+	//DrawBox(x_fixed, y_fixed, red_fixed, green_fixed, blue_fixed);
+	//
+	////Draw More Boxes
+	//DrawBox(x_more_boxes[0], y_more_boxes[0], 255, 255, 255);
+	//DrawBox(x_more_boxes[1], y_more_boxes[1], 255, 255, 255);
+	//DrawBox(x_more_boxes[2], y_more_boxes[2], 255, 255, 255);
+	//DrawBox(x_more_boxes[3], y_more_boxes[3], 255, 255, 255);
+	DrawImage(x, y);
 }
 
 //Draw 5x5 box (corners only)
@@ -347,4 +348,9 @@ int Game::ClampScreenY(int y)
 	{
 		return y;
 	}
+}
+
+void Game::DrawImage(int x, int y)
+{
+	//
 }
