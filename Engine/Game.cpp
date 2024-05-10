@@ -353,4 +353,11 @@ int Game::ClampScreenY(int y)
 void Game::DrawImage(int x, int y)
 {
 	//
+	for (int i = 0; i < gfx.ScreenHeight; i++)
+	{
+		for (int i = 0; i < gfx.ScreenWidth; i++)
+		{
+			gfx.PutPixel(x, y, 127, 0, 63);
+		}
+	}
 }
