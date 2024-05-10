@@ -101,3 +101,8 @@ Video 9
 	Actions Taken
 	-Wrote Pong
 	-Started playing with Bitmap Tool
+
+May 9, 224
+Refresher
+	-Added function to write output to a text file
+	-Fixed output function to not overwrite previously written text in output file

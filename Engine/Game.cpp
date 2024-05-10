@@ -20,6 +20,7 @@
  ******************************************************************************************/
 #include "MainWindow.h"
 #include "Game.h"
+#include <fstream>
 
 
 
@@ -352,12 +353,29 @@ int Game::ClampScreenY(int y)
 
 void Game::DrawImage(int x, int y)
 {
-	//
-	for (int i = 0; i < gfx.ScreenHeight; i++)
+	for (int i = 0; i < gfx.ScreenHeight - 1; i++)
 	{
-		for (int i = 0; i < gfx.ScreenWidth; i++)
+		for (int j = 0; j < gfx.ScreenWidth - 1; j++)
 		{
-			gfx.PutPixel(x, y, 127, 0, 63);
+			gfx.PutPixel(j, i, 63, 0, 63);
 		}
 	}
+	DrawReticle(gfx.ScreenWidth/2, gfx.ScreenHeight/2, 255, 0, 0);
+	if (!hasWrittenOutput)
+	{
+		RequestOutputTxt(gfx.ScreenWidth, gfx.ScreenHeight);
+		RequestOutputTxt(11111, 22222);
+		hasWrittenOutput = true;
+	}
 }
+
+void Game::RequestOutputTxt(int requestedOutput1, int requestedOutput2)
+{
+	std::ofstream MyOutputFile;
+	MyOutputFile.open("MyOutput.txt", std::ios_base::app);
+
+	MyOutputFile << "The value of requested output 1 is " << requestedOutput1 << '\n';
+	MyOutputFile << "The value of requested output 2 is " << requestedOutput2 << '\n';
+
+	MyOutputFile.close();
+} 

@@ -42,6 +42,7 @@ private:
 	bool OverlapTest(const int x_fixed, const int y_fixed, const int x_mobile, const int y_mobile);
 	void CheckScreenBoundaries(int& x, int& y, int& vx, int& vy, const int ScreenWidth, const int ScreenHeight);
 	void DrawImage(int x, int y);
+	void Game::RequestOutputTxt(int requestedOutput1, int requestedOutput2);
 	/********************************/
 	/*  Tutorial Functions          */
 	/********************************/
@@ -80,4 +81,7 @@ private:
 	int vy_more_boxes[4] = { 0,0,0,0 };
 	//Collision Check
 	bool hasCollided = false;
+
+	//Other Stuff
+	bool hasWrittenOutput = false;
 };
