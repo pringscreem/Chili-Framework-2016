@@ -23,3 +23,5 @@
 	****you don't have to read the entire source code to find the bug.
 
 	**********Chat-GPT is excellent for syntax questions e.g. How to not overwrite text in output file**********
+
+	*****The semi-colon after classes is a common error (reminder)*****
