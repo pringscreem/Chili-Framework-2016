@@ -1,2 +1,2 @@
-﻿  Game.cpp
-  Engine.vcxproj -> C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\x64\Debug\Engine.exe
+﻿Game.obj : error LNK2019: unresolved external symbol "public: void __cdecl Poo::Update(void)" (?Update@Poo@@QEAAXXZ) referenced in function "private: void __cdecl Game::UpdateModel(void)" (?UpdateModel@Game@@AEAAXXZ)
+C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\x64\Debug\Engine.exe : fatal error LNK1120: 1 unresolved externals

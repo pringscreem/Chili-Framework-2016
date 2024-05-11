@@ -81,8 +81,8 @@ void Game::UpdateModel()
 		poo2.x += poo2.vx;
 		poo2.y += poo2.vy;
 
-		//poo0.Update();
-		//poo1.Update();
+		poo0.Update();
+		poo1.Update();
 		poo2.Update();
 		
 
