@@ -55,7 +55,9 @@ private:
 	int dudeY = 300;
 	int dudeWidth = 20;
 	int dudeHeight = 20;
-	Poo poo;
+	Poo poo0;
+	Poo poo1;
+	Poo poo2;
 	bool isStarted = false;
 	/********************************/
 };

@@ -18,9 +18,12 @@
  *	You should have received a copy of the GNU General Public License					  *
  *	along with The Chili DirectX Framework.  If not, see <http://www.gnu.org/licenses/>.  *
  ******************************************************************************************/
+// #pragma once
+
 #include "MainWindow.h"
 #include "Game.h"
 #include <random>
+#include "Poo.h"
 
 Game::Game( MainWindow& wnd )
 	:
@@ -71,70 +74,29 @@ void Game::UpdateModel()
 		dudeX = ClampScreenX(dudeX, dudeWidth);
 		dudeY = ClampScreenY(dudeY, dudeHeight);
 
-		poo0.x += poo0vx;
-		poo0.y += poo0vy;
-		poo1.x += poo1vx;
-		poo1.y += poo1vy;
-		poo2.x += poo2vx;
-		poo2.y += poo2vy;
+		poo0.x += poo0.vx;
+		poo0.y += poo0.vy;
+		poo1.x += poo1.vx;
+		poo1.y += poo1.vy;
+		poo2.x += poo2.vx;
+		poo2.y += poo2.vy;
 
-		{
-			const int poo0.xold = poo0.x;
-			const int poo0.yold = poo0.y;
+		poo0.Update();
+		poo1.Update();
+		poo2.Update();
+		
 
-			poo0.x = ClampScreenX(poo0.x, pooWidth);
-			if (poo0.x != poo0.xold)
-			{
-				poo0vx = -poo0vx;
-			}
-			poo0.y = ClampScreenY(poo0.y, pooHeight);
-			if (poo0.y != poo0.yold)
-			{
-				poo0vy = -poo0vy;
-			}
-		}
+		if (IsColliding(dudeX, dudeY, dudeWidth, dudeHeight, poo0.x, poo0.y, poo0.width, poo0.height))
 		{
-			const int poo1.xold = poo1.x;
-			const int poo1.yold = poo1.y;
-
-			poo1.x = ClampScreenX(poo1.x, pooWidth);
-			if (poo1.x != poo1.xold)
-			{
-				poo1vx = -poo1vx;
-			}
-			poo1.y = ClampScreenY(poo1.y, pooHeight);
-			if (poo1.y != poo1.yold)
-			{
-				poo1vy = -poo1vy;
-			}
+			poo0.isEaten = true;
 		}
+		if (IsColliding(dudeX, dudeY, dudeWidth, dudeHeight, poo1.x, poo1.y, poo1.width, poo1.height))
 		{
-			const int poo2.xold = poo2.x;
-			const int poo2.yold = poo2.y;
-
-			poo2.x = ClampScreenX(poo2.x, pooWidth);
-			if (poo2.x != poo2.xold)
-			{
-				poo2vx = -poo2vx;
-			}
-			poo2.y = ClampScreenY(poo2.y, pooHeight);
-			if (poo2.y != poo2.yold)
-			{
-				poo2vy = -poo2vy;
-			}
+			poo1.isEaten = true;
 		}
-
-		if (IsColliding(dudeX, dudeY, dudeWidth, dudeHeight, poo0.x, poo0.y, pooWidth, pooHeight))
+		if (IsColliding(dudeX, dudeY, dudeWidth, dudeHeight, poo2.x, poo2.y, poo2.width, poo2.height))
 		{
-			poo0IsEaten = true;
-		}
-		if (IsColliding(dudeX, dudeY, dudeWidth, dudeHeight, poo1.x, poo1.y, pooWidth, pooHeight))
-		{
-			poo1IsEaten = true;
-		}
-		if (IsColliding(dudeX, dudeY, dudeWidth, dudeHeight, poo2.x, poo2.y, pooWidth, pooHeight))
-		{
-			poo2IsEaten = true;
+			poo2.isEaten = true;
 		}
 	}
 	else
@@ -29109,21 +29071,21 @@ void Game::ComposeFrame()
 	}
 	else
 	{
-		if (poo0IsEaten && poo1IsEaten && poo2IsEaten)
+		if (poo0.isEaten && poo1.isEaten && poo2.isEaten)
 		{
 			DrawGameOver(358, 268);
 		}
 
 		DrawFace(dudeX, dudeY);
-		if (!poo0IsEaten)
+		if (!poo0.isEaten)
 		{
 			DrawPoo(poo0.x, poo0.y);
 		}
-		if (!poo1IsEaten)
+		if (!poo1.isEaten)
 		{
 			DrawPoo(poo1.x, poo1.y);
 		}
-		if (!poo2IsEaten)
+		if (!poo2.isEaten)
 		{
 			DrawPoo(poo2.x, poo2.y);
 		}
