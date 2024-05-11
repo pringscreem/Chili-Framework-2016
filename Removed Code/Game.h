@@ -36,41 +36,52 @@ private:
 	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
-	void DrawFace(int x, int y);
-	void DrawPoo(int x, int y);
-	void DrawGameOver(int x, int y);
-	void DrawTitleScreen(int x, int y);
-	int ClampScreenX(int x, int width);
-	int ClampScreenY(int y, int height);
-	bool IsColliding(int x0, int y0, int width0, int height0,
-		int x1, int y1, int width1, int height1);
 	/********************************/
+	void DrawBox(const int x, const int y, const int red, const int green, const int blue);
+	void DrawReticle(const int x, const int y, const int red, const int green, const int blue);
+	bool OverlapTest(const int x_fixed, const int y_fixed, const int x_mobile, const int y_mobile);
+	void CheckScreenBoundaries(int& x, int& y, int& vx, int& vy, const int ScreenWidth, const int ScreenHeight);
+	void DrawImage(int x, int y);
+	void Game::RequestOutputTxt(int requestedOutput1, int requestedOutput2);
+	/********************************/
+	/*  Tutorial Functions          */
+	/********************************/
+	void ContainBox();
+	int ClampScreenX(int x);
+	int ClampScreenY(int y);
 private:
 	MainWindow& wnd;
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
-	int dudeX = 400;
-	int dudeY = 300;
-	int dudeWidth = 20;
-	int dudeHeight = 20;
-	int poo0X = 300;
-	int poo0Y = 150;
-	int poo0vx = 1;
-	int poo0vy = 1;
-	bool poo0IsEaten = false;
-	int poo1X = 100;
-	int poo1Y = 500;
-	int poo1vx = -1;
-	int poo1vy = 1;
-	bool poo1IsEaten = false;
-	int poo2X = 600;
-	int poo2Y = 400;
-	int poo2vx = 1;
-	int poo2vy = -1;
-	bool poo2IsEaten = false;
-	int pooWidth = 24;
-	int pooHeight = 24;
-	bool isStarted = false;
 	/********************************/
+	int x = 0;
+	int y = 0;
+	//These are still private
+	//Box 1 (User-Controlled Box)
+	int x_mobile = 400, y_mobile = 300;
+	int vx_mobile = 0, vy_mobile = 0;
+	int red_mobile = 255, green_mobile = 255, blue_mobile = 255;
+	bool shapeIsChanged = false;
+	bool colourIsChanged = false; //a.k.a. "shiftIsPressed" or "controlIsPressed"
+	bool inhibitUp = false;
+	bool inhibitDown = false;
+	bool inhibitLeft = false;
+	bool inhibitRight = false;
+	bool inCentralColumn = false;
+
+	//Box 2 (Target Box)
+	int x_fixed = gfx.ScreenWidth / 2, y_fixed = gfx.ScreenHeight / 2;
+	int red_fixed = 0, green_fixed = 255, blue_fixed = 0;
+
+	//More Boxes
+	int x_more_boxes[4] = {100, 200, 300, 700};
+	int y_more_boxes[4] = {100, 200, 300, 500};
+	int vx_more_boxes[4] = { 0,0,0,0 };
+	int vy_more_boxes[4] = { 0,0,0,0 };
+	//Collision Check
+	bool hasCollided = false;
+
+	//Other Stuff
+	bool hasWrittenOutput = false;
 };
