@@ -132,3 +132,5 @@ May 11, 2024
 	-My CheckRectangleKeys still worked for his version
 	-Modified my clamp function for his version (HisClampRectToScreen)
 	-Using Color class now
+	-HisCheckRetangleKeys
+	Left Off At 7:00

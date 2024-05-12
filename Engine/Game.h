@@ -42,16 +42,17 @@ private:
 	void CheckRectangleKeys(int& x, int& y, int& width, int& height);
 	void ClampMyRectToScreen(int& x, int& y, int& width, int& height);
 	void HisClampRectToScreen(int& x, int& y, int& width, int& height);
+	void HisCheckRectangleKeys(int& x0, int& y0, int& x1, int& y1);
 private:
 	MainWindow& wnd;
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
 	/********************************/
-	int xPos = 600;
-	int yPos = 600;
-	int width = 100;
-	int height = 100;
+	//int xPos = 600;
+	//int yPos = 600;
+	//int width = 100;
+	//int height = 100;
 	int x0 = 100;
 	int y0 = 100;
 	int x1 = 200;

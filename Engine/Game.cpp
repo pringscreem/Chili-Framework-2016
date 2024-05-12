@@ -76,12 +76,14 @@ void Game::ComposeFrame()
 	Color c;
 	//Color c(255, 255, 0); //Use the constructor to set RGB values
 	//e.g. Colors::Magenta; //Use the predefined colours that he set up
-	c.SetR(255);
-	c.SetG(255);
-	c.SetB(0);
-	CheckRectangleKeys(xPos, yPos, width, height);
-	HisClampRectToScreen(xPos, yPos, width, height);
-	gfx.DrawRect(xPos, yPos, xPos + width, yPos + height, c);
+	//c.SetR(255);
+	//c.SetG(255);
+	//c.SetB(0);
+	//CheckRectangleKeys(xPos, yPos, width, height);
+	HisCheckRectangleKeys(x0, y0, x1, y1);
+	HisClampRectToScreen(x0, y0, x1, y1);
+	//gfx.DrawRect(xPos, yPos, xPos + width, yPos + height, c);
+	gfx.DrawRect(x0, y0, x1, y1, Colors::Magenta);
 }
 
 void Game::DrawRectangle(int& x, int& y, int& width, int& height, Color c)
@@ -179,48 +181,91 @@ void Game::ClampMyRectToScreen(int& x, int& y, int& width, int& height)
 	}
 }
 
-void Game::HisClampRectToScreen(int& x, int& y, int& width, int& height)
+void Game::HisClampRectToScreen(int& x0, int& y0, int& x1, int& y1)
 {
-	//Check Width
+	//Check x1 (Right)
+	if (x1 >= Graphics::ScreenWidth)
+	{
+		x1 = Graphics::ScreenWidth - 1;
+	}
+	//Check x0 (Left)
+	if (x0 < 0)
+	{
+		x0 = 0;
+	}
+	//Check x0 (Right)
+	if (x0 >= Graphics::ScreenWidth)
+	{
+		x0 = Graphics::ScreenWidth - 1;
+	}
+	//Check x1 (Left)
+	if (x1 < 0)
+	{
+		x1 = 0;
+	}
 
-	if (width >= Graphics::ScreenWidth)
+	//Check y1 (Bottom)
+	if (y1 >= Graphics::ScreenHeight)
 	{
-		width = Graphics::ScreenWidth - 1;
+		y1 = Graphics::ScreenHeight - 1;
 	}
-	if (width < 0)
+	//Check y0 (Top)
+	if (y0 < 0)
 	{
-		width = 0;
+		y0 = 0;
 	}
-	const int right = x + width;
-	const int left = x;
-	//Check Left and Right Screen Edges
-	if (left < 0)
+	//Check y0 (Bottom)
+	if (y0 >= Graphics::ScreenHeight)
 	{
-		x = 1;
+		y0 = Graphics::ScreenHeight - 1;
 	}
-	else if (right >= Graphics::ScreenWidth)
+	//Check y1 (Top)
+	if (y1 < 0)
 	{
-		x = (Graphics::ScreenWidth - 1) - width;
+		y1 = 0;
+	}
+}
+
+//This still behaves badly if you deliberately crash into the wall
+void Game::HisCheckRectangleKeys(int& x0, int& y0, int& x1, int& y1)
+{
+	//WASD Keys
+	if (wnd.kbd.KeyIsPressed('W'))
+	{
+		y1--;
+	}
+	if (wnd.kbd.KeyIsPressed('A'))
+	{
+		x1--;
+	}
+	if (wnd.kbd.KeyIsPressed('S'))
+	{
+		y1++;
+	}
+	if (wnd.kbd.KeyIsPressed('D'))
+	{
+		x1++;
 	}
 
-	//Check Height
-	if (height >= Graphics::ScreenHeight)
+	//Arrow Keys
+	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
 	{
-		height = Graphics::ScreenHeight - 1;
+		x0++;
+		x1++;
 	}
-	if (height < 0)
+	if (wnd.kbd.KeyIsPressed(VK_LEFT))
 	{
-		height = 0;
+		x0--;
+		x1--;
 	}
-	//Check Top and Bottom Screen Edges
-	const int bottom = y + height;
-	const int top = y;
-	if (top < 0)
+	if (wnd.kbd.KeyIsPressed(VK_DOWN))
 	{
-		y = 1;
+		y0++;
+		y1++;
 	}
-	else if (bottom >= Graphics::ScreenHeight)
+	if (wnd.kbd.KeyIsPressed(VK_UP))
 	{
-		y = (Graphics::ScreenHeight - 1) - height;
+		y0--;
+		y1--;
 	}
 }
