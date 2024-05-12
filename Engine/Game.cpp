@@ -23,6 +23,9 @@
 #include "MainWindow.h"
 #include "Game.h"
 #include "MyRectangle.h"
+#include <iostream>
+#include <fstream>
+#include <string>
 
 Game::Game( MainWindow& wnd )
 	:
@@ -70,8 +73,8 @@ void Game::ComposeFrame()
 		y++;
 	} while(x < gfx.ScreenWidth && y < gfx.ScreenHeight);
 
-	//CheckRectangleKeys(myRect.x, myRect.y, myRect.width, myRect.height);
-	//DrawRectangle(myRect.x, myRect.y, myRect.width, myRect.height);
+	//MyCheckRectangleKeys(myRect.x, myRect.y, myRect.width, myRect.height);
+	//MyDrawRectangle(myRect.x, myRect.y, myRect.width, myRect.height);
 
 	Color c;
 	//Color c(255, 255, 0); //Use the constructor to set RGB values
@@ -79,16 +82,22 @@ void Game::ComposeFrame()
 	//c.SetR(255);
 	//c.SetG(255);
 	//c.SetB(0);
-	//CheckRectangleKeys(xPos, yPos, width, height);
+	//MyCheckRectangleKeys(xPos, yPos, width, height);
 	HisCheckRectangleKeys(x0, y0, x1, y1);
 	HisClampRectToScreen(x0, y0, x1, y1);
 	//gfx.DrawRect(xPos, yPos, xPos + width, yPos + height, c);
 	gfx.DrawRect(x0, y0, x1, y1, Colors::Magenta);
+
+	int v = 69;
+	int& r = v;
+	r += 420;
+	v -= 69;
+	MyOutputFileWriter("", v);
 }
 
-void Game::DrawRectangle(int& x, int& y, int& width, int& height, Color c)
+void Game::MyDrawRectangle(int& x, int& y, int& width, int& height)
 {
-	ClampMyRectToScreen(x, y, width, height);
+	MyClampRectToScreen(x, y, width, height);
 	//Draw a rectangle
 	for(int i = x - width / 2; i < x + width / 2; i++) //x
 		for(int j = y - height / 2; j < y + height / 2; j++) //y
@@ -97,7 +106,7 @@ void Game::DrawRectangle(int& x, int& y, int& width, int& height, Color c)
 		}
 }
 
-void Game::CheckRectangleKeys(int& x, int& y, int& width, int& height)
+void Game::MyCheckRectangleKeys(int& x, int& y, int& width, int& height)
 {
 	//WASD Keys
 	if(wnd.kbd.KeyIsPressed('W'))
@@ -136,7 +145,7 @@ void Game::CheckRectangleKeys(int& x, int& y, int& width, int& height)
 	}
 }
 
-void Game::ClampMyRectToScreen(int& x, int& y, int& width, int& height)
+void Game::MyClampRectToScreen(int& x, int& y, int& width, int& height)
 {
 	//Check Width
 	if(width >= Graphics::ScreenWidth)
@@ -267,5 +276,35 @@ void Game::HisCheckRectangleKeys(int& x0, int& y0, int& x1, int& y1)
 	{
 		y0--;
 		y1--;
+	}
+
+	//Mouse Buttons
+	if (wnd.mouse.LeftIsPressed())
+	{
+		x1 = wnd.mouse.GetPosX();
+		y1 = wnd.mouse.GetPosY();
+	}
+}
+
+void Game::MyOutputFileWriter(std::string outputString, int outputInt)
+{
+	if (!alreadyWroteOutput)
+	{
+		std::ofstream myOutputFile("MyOutputFile.txt", std::ios::app);
+
+		//Suggested Error Check
+		if (!myOutputFile.is_open())
+		{
+			std::cerr << "Error opening MyOutputFile.txt" << std::endl;
+		}
+
+		//Add Text to File
+		myOutputFile << "Add this text to the file\n" 
+					 << "And this should be on a new line" 
+					 << std::endl;
+		myOutputFile << "The output int is " << outputInt << std::endl;
+
+		myOutputFile.close();
+		alreadyWroteOutput = true;
 	}
 }

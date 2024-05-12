@@ -24,6 +24,9 @@
 #include "Mouse.h"
 #include "Graphics.h"
 #include "MyRectangle.h"
+#include <iostream>
+#include <fstream>
+#include <string>
 
 class Game
 {
@@ -38,11 +41,12 @@ private:
 	/********************************/
 	/*  User Functions              */
 	/********************************/
-	void DrawRectangle(int& x, int& y, int& width, int& height, Color c);
-	void CheckRectangleKeys(int& x, int& y, int& width, int& height);
-	void ClampMyRectToScreen(int& x, int& y, int& width, int& height);
+	void MyDrawRectangle(int& x, int& y, int& width, int& height);
+	void MyCheckRectangleKeys(int& x, int& y, int& width, int& height);
+	void MyClampRectToScreen(int& x, int& y, int& width, int& height);
 	void HisClampRectToScreen(int& x, int& y, int& width, int& height);
 	void HisCheckRectangleKeys(int& x0, int& y0, int& x1, int& y1);
+	void MyOutputFileWriter(std::string outputString, int outputInt); //My text file output function
 private:
 	MainWindow& wnd;
 	Graphics gfx;
@@ -57,6 +61,7 @@ private:
 	int y0 = 100;
 	int x1 = 200;
 	int y1 = 200;
+	bool alreadyWroteOutput = false;
 
 	MyRectangle myRect;
 };

@@ -134,3 +134,17 @@ May 11, 2024
 	-Using Color class now
 	-HisCheckRetangleKeys
 	Left Off At 7:00
+
+May 12, 2024
+	Video 11
+	-Set mouse click to drag the bottom right corner of the rectangle around
+	-The problem with this is that the rectangle doesn't render if the corner
+	 is above/left of the stationary corner
+	-The naive solution is to use if statements to test for the quadrant
+	-Can get away with three if statements and assume the fourth
+	-His solution is to swap the points if the other point is out of position (top/bot/left/right)
+	-This works because we are not using references (the value has been copied for the scope)
+	-He creates a helper function to swap the points, which requires references to work
+	-This creates an example to juxtapose references (helper function) and regular variables 
+	 (drawing the rectangle with copied variables)
+	-He is also demonstrating the debugger
