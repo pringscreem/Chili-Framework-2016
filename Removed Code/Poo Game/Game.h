@@ -38,18 +38,20 @@ private:
 	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
+	void DrawFace(int x, int y);
+	void DrawPoo(int x, int y);
+	void DrawGameOver(int x, int y);
+	void DrawTitleScreen(int x, int y);
 	/********************************/
-	void DrawRectangle();
-	void CheckRectangleKeys();
-	void ClampToScreen();
 private:
 	MainWindow& wnd;
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
+	Dude dude;
+	Poo poo0;
+	Poo poo1;
+	Poo poo2;
+	bool isStarted = false;
 	/********************************/
-	int recX = gfx.ScreenWidth/ 2;
-	int recY = gfx.ScreenHeight/ 2;
-	int recXSize = 100;
-	int recYSize = 100;
 };

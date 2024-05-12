@@ -102,7 +102,22 @@ Video 9
 	-Wrote Pong
 	-Started playing with Bitmap Tool
 
-May 9, 224
+May 9, 2024
 Refresher
 	-Added function to write output to a text file
 	-Fixed output function to not overwrite previously written text in output file
+
+May 10, 2024
+	Video 8, Video 8 Homework
+	-Start moving things into classes
+	-Bumped into linker error
+
+May 11, 2024
+	Video 9, Video 9 Homework
+	-Fixed linker error (have to manually add files to the "Solution" that Visual Studio uses -- See Notes)
+	-More moving into classes
+	-"static" keyword (share amongst all class instances)
+	-"constexpr" keyword (only initialize at compilation and never change)
+
+	Video 10
+	-Clear Game.h and Game.cpp (saved in Removed Code/Poo Game)

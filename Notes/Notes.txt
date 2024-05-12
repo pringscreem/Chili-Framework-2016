@@ -25,3 +25,49 @@
 	**********Chat-GPT is excellent for syntax questions e.g. How to not overwrite text in output file**********
 
 	*****The semi-colon after classes is a common error (reminder)*****
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+***********************************************************************************************************************
+*****		In order to fix the linker error (the linker could not find the class .cpp file), I had to manually *****
+*****		add the .h file to the Solution (in the Solution Explorer, under the Solution View), and then also  *****
+*****		manually add the .cpp file (Source Files > R-Click > Add > Existing Item > Choose correct file).    *****
+*****																											*****
+*****		Add the .h file:																					*****
+*****		"Switch between solutions and avilable view" > ChiliFramework 2016.sln > External Dependencies >	*****
+*****		Find the .h file > R-Click > Include In Project														*****
+***********************************************************************************************************************
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+static - keyword for making a variable a shared value amongst all instances of the class
+	   - we can change them using the class namespace (e.g. Poo::width = 12; vs regular 
+		 syntax: poo.width = 12;)
+
+constexpr - keyword to set a value to const at the time of compilation
+		  - the value is known at the time of compilation and will never change
+		  - constexpr can never change (e.g. "24" every single time the function is called)
+		  - const doesn't change for its' lifetime, but can be assigned different values when initialized
+			(e.g. "24" the first time the function is called, "12" the second time, etc.)
+
+***** Ctrl + d     - duplicate current line (use alt + arrow to move)
+
+***** You can create a function in the .h file and then R-Click > Quick Refactorings > Create Definition
+***** ^There is a button on the opened sub-window that will expand it to a tab (promote to full window)
+***** ^It will also provide you with the option to create the .cpp file if you haven't already
+
+***** The collapse option is in the Outlining R-Click menu:
+*****	R-Click > Outlining > Collapse Block
+
+*****	His Notes on For-Loops:
+				//Loop Initializer e.g. int x = 100;
+				//Loop Control - It has to pass the test in order to execure the code
+				//				 e.g. x < 600;
+				//Incrementer  - expression that is executed after the loop completes its' current iteration
+				//				 e.g. x++
+				//All of these are in (or used by/part of) a while-loop, they are just arranged differently.
+				for(int x = 100; x < 600; x++)
+				{
+					gfx.PutPixel(x, 100, 255, 255, 255);
+				}
+*****

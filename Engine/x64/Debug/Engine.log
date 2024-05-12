@@ -1,2 +1,12 @@
-﻿Game.obj : error LNK2019: unresolved external symbol "public: void __cdecl Poo::Update(void)" (?Update@Poo@@QEAAXXZ) referenced in function "private: void __cdecl Game::UpdateModel(void)" (?UpdateModel@Game@@AEAAXXZ)
+﻿  compilation header save succeeded; see C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\FramebufferPS.shh
+  compilation header save succeeded; see C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\FramebufferVS.shh
+  DXErr.cpp
+  Game.cpp
+  Graphics.cpp
+  Keyboard.cpp
+  Main.cpp
+  MainWindow.cpp
+  Mouse.cpp
+  Poo.cpp
+Game.obj : error LNK2019: unresolved external symbol "public: void __cdecl Dude::Update(void)" (?Update@Dude@@QEAAXXZ) referenced in function "private: void __cdecl Game::UpdateModel(void)" (?UpdateModel@Game@@AEAAXXZ)
 C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\x64\Debug\Engine.exe : fatal error LNK1120: 1 unresolved externals
