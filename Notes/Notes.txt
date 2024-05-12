@@ -29,13 +29,16 @@
 ***********************************************************************************************************************
 ***********************************************************************************************************************
 ***********************************************************************************************************************
-*****		In order to fix the linker error (the linker could not find the class .cpp file), I had to manually *****
-*****		add the .h file to the Solution (in the Solution Explorer, under the Solution View), and then also  *****
-*****		manually add the .cpp file (Source Files > R-Click > Add > Existing Item > Choose correct file).    *****
-*****																											*****
-*****		Add the .h file:																					*****
-*****		"Switch between solutions and avilable view" > ChiliFramework 2016.sln > External Dependencies >	*****
-*****		Find the .h file > R-Click > Include In Project														*****
+*****		In order to fix the linker error (the linker could not find the class .cpp file), I had to manually   *****
+*****		add the .h file to the Solution (in the Solution Explorer, under the Solution View), and then also    *****
+*****		manually add the .cpp file (Source Files > R-Click > Add > Existing Item > Choose correct file).      *****
+*****																											  *****
+*****		Add the .h file:																					  *****
+*****		"Switch between solutions and avilable view" > ChiliFramework 2016.sln > External Dependencies >	  *****
+*****		Find the .h file > R-Click > Include In Project														  *****
+*****																											  *****
+*****		********** RENAMING FILES CAUSES THE LINKER ERROR TO REAPPEAR **********							  *****
+*****																											  *****
 ***********************************************************************************************************************
 ***********************************************************************************************************************
 ***********************************************************************************************************************
@@ -71,3 +74,6 @@ constexpr - keyword to set a value to const at the time of compilation
 					gfx.PutPixel(x, 100, 255, 255, 255);
 				}
 *****
+
+***** If there are any problems with accidental find/replace in other files (e.g. Graphics.h), use his
+***** download files to replace the project files and continue.

@@ -22,6 +22,7 @@
 
 #include "MainWindow.h"
 #include "Game.h"
+#include "MyRectangle.h"
 
 Game::Game( MainWindow& wnd )
 	:
@@ -67,89 +68,159 @@ void Game::ComposeFrame()
 		gfx.PutPixel(100, y, 255 + x, 255 + x, 255 + x);
 		x++;
 		y++;
-	} while (x < gfx.ScreenWidth && y < gfx.ScreenHeight);
+	} while(x < gfx.ScreenWidth && y < gfx.ScreenHeight);
 
-	DrawRectangle();
+	//CheckRectangleKeys(myRect.x, myRect.y, myRect.width, myRect.height);
+	//DrawRectangle(myRect.x, myRect.y, myRect.width, myRect.height);
+
+	Color c;
+	//Color c(255, 255, 0); //Use the constructor to set RGB values
+	//e.g. Colors::Magenta; //Use the predefined colours that he set up
+	c.SetR(255);
+	c.SetG(255);
+	c.SetB(0);
+	CheckRectangleKeys(xPos, yPos, width, height);
+	HisClampRectToScreen(xPos, yPos, width, height);
+	gfx.DrawRect(xPos, yPos, xPos + width, yPos + height, c);
 }
 
-void Game::DrawRectangle()
+void Game::DrawRectangle(int& x, int& y, int& width, int& height, Color c)
 {
+	ClampMyRectToScreen(x, y, width, height);
 	//Draw a rectangle
-	for (int i = recX - recXSize / 2; i < recX + recXSize / 2; i++) //x
-		for (int j = recY - recYSize / 2; j < recY + recYSize / 2; j++) //j
+	for(int i = x - width / 2; i < x + width / 2; i++) //x
+		for(int j = y - height / 2; j < y + height / 2; j++) //y
 		{
 			gfx.PutPixel(i, j, 255, 255, 255);
-			CheckRectangleKeys();
-			ClampToScreen();
 		}
 }
 
-void Game::CheckRectangleKeys()
+void Game::CheckRectangleKeys(int& x, int& y, int& width, int& height)
 {
-	if (wnd.kbd.KeyIsPressed('W'))
+	//WASD Keys
+	if(wnd.kbd.KeyIsPressed('W'))
 	{
-		recYSize++;
+		height++;
 	}
-	if (wnd.kbd.KeyIsPressed('A'))
+	if(wnd.kbd.KeyIsPressed('A'))
 	{
-		recXSize--;
+		width--;
 	}
-	if (wnd.kbd.KeyIsPressed('S'))
+	if(wnd.kbd.KeyIsPressed('S'))
 	{
-		recYSize--;
+		height--;
 	}
-	if (wnd.kbd.KeyIsPressed('D'))
+	if(wnd.kbd.KeyIsPressed('D'))
 	{
-		recXSize++;
-	}
-	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
-	{
-		recX++;
-	}
-	if (wnd.kbd.KeyIsPressed(VK_LEFT))
-	{
-		recX--;
-	}
-	if (wnd.kbd.KeyIsPressed(VK_DOWN))
-	{
-		recY++;
-	}
-	if (wnd.kbd.KeyIsPressed(VK_UP))
-	{
-		recY--;
+		width++;
 	}
 
+	//Arrow Keys
+	if(wnd.kbd.KeyIsPressed(VK_RIGHT))
+	{
+		x++;
+	}
+	if(wnd.kbd.KeyIsPressed(VK_LEFT))
+	{
+		x--;
+	}
+	if(wnd.kbd.KeyIsPressed(VK_DOWN))
+	{
+		y++;
+	}
+	if(wnd.kbd.KeyIsPressed(VK_UP))
+	{
+		y--;
+	}
 }
 
-void Game::ClampToScreen()
+void Game::ClampMyRectToScreen(int& x, int& y, int& width, int& height)
 {
-	int width = recXSize / 2;
-	int height = recYSize / 2;
-	int x = recX;
-	int y = recY;
-	const int right = x + width;
-	if (x < 0)
+	//Check Width
+	if(width >= Graphics::ScreenWidth)
 	{
-		x = 0;
+		width = Graphics::ScreenWidth - 1;
+	}
+	if (width < 0)
+	{
+		width = 0;
+	}
+	const int right = x + (width / 2);
+	const int left = x - (width / 2);
+	//Check Left and Right Screen Edges
+	if(left < 0)
+	{
+		x = 1 + (width / 2);
+	}
+	else if(right >= Graphics::ScreenWidth)
+	{
+		x = (Graphics::ScreenWidth - 1) - (width / 2) - 1;
+	}
+
+	//Check Height
+	if(height >= Graphics::ScreenHeight)
+	{
+		height = Graphics::ScreenHeight - 1;
+	}
+	if (height < 0)
+	{
+		height = 0;
+	}
+	//Check Top and Bottom Screen Edges
+	const int bottom = y + (height / 2);
+	const int top = y - (height / 2);
+	if(top < 0)
+	{
+		y = 1 + (height / 2);
+	}
+	else if(bottom >= Graphics::ScreenHeight)
+	{
+		y = (Graphics::ScreenHeight - 1) - (height / 2) - 1;
+	}
+}
+
+void Game::HisClampRectToScreen(int& x, int& y, int& width, int& height)
+{
+	//Check Width
+
+	if (width >= Graphics::ScreenWidth)
+	{
+		width = Graphics::ScreenWidth - 1;
+	}
+	if (width < 0)
+	{
+		width = 0;
+	}
+	const int right = x + width;
+	const int left = x;
+	//Check Left and Right Screen Edges
+	if (left < 0)
+	{
+		x = 1;
 	}
 	else if (right >= Graphics::ScreenWidth)
 	{
 		x = (Graphics::ScreenWidth - 1) - width;
 	}
 
-	const int bottom = y + height;
-	if (y < 0)
+	//Check Height
+	if (height >= Graphics::ScreenHeight)
 	{
-		y = 0;
+		height = Graphics::ScreenHeight - 1;
+	}
+	if (height < 0)
+	{
+		height = 0;
+	}
+	//Check Top and Bottom Screen Edges
+	const int bottom = y + height;
+	const int top = y;
+	if (top < 0)
+	{
+		y = 1;
 	}
 	else if (bottom >= Graphics::ScreenHeight)
 	{
 		y = (Graphics::ScreenHeight - 1) - height;
 	}
 }
-
-//
-//int recX = gfx.ScreenWidth / 2;
-//int recY = gfx.ScreenHeight / 2;
-//int recXSize = 100;
-//int recYSize = 100;

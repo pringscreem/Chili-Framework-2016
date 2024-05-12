@@ -46,8 +46,3 @@ void Dude::ClampToScreen()
 		y = (Graphics::ScreenHeight - 1) - height;
 	}
 }
-
-void Dude::Asdf()
-{
-}
-

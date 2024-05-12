@@ -119,5 +119,16 @@ May 11, 2024
 	-"static" keyword (share amongst all class instances)
 	-"constexpr" keyword (only initialize at compilation and never change)
 
-	Video 10
+	Video 10, Video 10 Homework
 	-Clear Game.h and Game.cpp (saved in Removed Code/Poo Game)
+	-Tried to put the rectangle in its' own class, but it has too many dependencies 
+	 (keyboard, window, graphics)
+	-Used the centre of the rectangle as the reference point instead of the top left corner
+	-Renaming files causes the linker error to reappear
+	-He did the homework without making a rectangle class
+
+	Video 11
+	-Created a DrawRect function in the Graphics class
+	-My CheckRectangleKeys still worked for his version
+	-Modified my clamp function for his version (HisClampRectToScreen)
+	-Using Color class now

@@ -23,8 +23,7 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
-#include "Poo.h"
-#include "Dude.h"
+#include "MyRectangle.h"
 
 class Game
 {
@@ -39,17 +38,24 @@ private:
 	/********************************/
 	/*  User Functions              */
 	/********************************/
-	void DrawRectangle();
-	void CheckRectangleKeys();
-	void ClampToScreen();
+	void DrawRectangle(int& x, int& y, int& width, int& height, Color c);
+	void CheckRectangleKeys(int& x, int& y, int& width, int& height);
+	void ClampMyRectToScreen(int& x, int& y, int& width, int& height);
+	void HisClampRectToScreen(int& x, int& y, int& width, int& height);
 private:
 	MainWindow& wnd;
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
 	/********************************/
-	int recX = gfx.ScreenWidth/ 2;
-	int recY = gfx.ScreenHeight/ 2;
-	int recXSize = 100;
-	int recYSize = 100;
+	int xPos = 600;
+	int yPos = 600;
+	int width = 100;
+	int height = 100;
+	int x0 = 100;
+	int y0 = 100;
+	int x1 = 200;
+	int y1 = 200;
+
+	MyRectangle myRect;
 };
