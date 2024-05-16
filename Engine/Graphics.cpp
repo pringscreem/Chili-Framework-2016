@@ -318,27 +318,24 @@ void Graphics::PutPixel( int x,int y,Color c )
 
 void Graphics::DrawRect(int x0, int y0, int x1, int y1, Color c)
 {
-	TestAndSwap(x0, x1);
-	TestAndSwap(y0, y1);
-
-		for(int y = y0; y < y1; y++)
-			for (int x = x0; x < x1; x++)
-			{
-				PutPixel(x, y, c);
-			}
-}
-
-void Graphics::TestAndSwap(int& a, int& b)
-{
-	if (a > b)
+	//This function is not using references, so this will be fine 
+	//(doesn't change the values outside the function)
+	if (x0 > x1)
 	{
-		//a += b;
-		//b = a - b;
-		const int temp = a;
-		a = b;
-		b = temp;
+		std::swap(x0, x1);
 	}
+	if (y0 > y1)
+	{
+		std::swap(y0, y1);
+	}
+	for(int y = y0; y < y1; y++)
+		for (int x = x0; x < x1; x++)
+		{
+			PutPixel(x, y, c);
+		}
 }
+
+
 
 
 //////////////////////////////////////////////////

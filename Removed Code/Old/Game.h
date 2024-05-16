@@ -23,9 +23,6 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
-#include "Poo.h"
-#include "Dude.h"
-#include "MyRectangle.h"
 
 class Game
 {
@@ -39,21 +36,52 @@ private:
 	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
-	void DrawFace(int x, int y);
-	void DrawPoo(int x, int y);
-	void DrawGameOver(int x, int y);
-	void DrawTitleScreen(int x, int y);
 	/********************************/
+	void DrawBox(const int x, const int y, const int red, const int green, const int blue);
+	void DrawReticle(const int x, const int y, const int red, const int green, const int blue);
+	bool OverlapTest(const int x_fixed, const int y_fixed, const int x_mobile, const int y_mobile);
+	void CheckScreenBoundaries(int& x, int& y, int& vx, int& vy, const int ScreenWidth, const int ScreenHeight);
+	void DrawImage(int x, int y);
+	void Game::RequestOutputTxt(int requestedOutput1, int requestedOutput2);
+	/********************************/
+	/*  Tutorial Functions          */
+	/********************************/
+	void ContainBox();
+	int ClampScreenX(int x);
+	int ClampScreenY(int y);
 private:
 	MainWindow& wnd;
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
-	Dude dude;
-	Poo poo0;
-	Poo poo1;
-	Poo poo2;
-	MyRectangle myRect;
-	bool isStarted = false;
 	/********************************/
+	int x = 0;
+	int y = 0;
+	//These are still private
+	//Box 1 (User-Controlled Box)
+	int x_mobile = 400, y_mobile = 300;
+	int vx_mobile = 0, vy_mobile = 0;
+	int red_mobile = 255, green_mobile = 255, blue_mobile = 255;
+	bool shapeIsChanged = false;
+	bool colourIsChanged = false; //a.k.a. "shiftIsPressed" or "controlIsPressed"
+	bool inhibitUp = false;
+	bool inhibitDown = false;
+	bool inhibitLeft = false;
+	bool inhibitRight = false;
+	bool inCentralColumn = false;
+
+	//Box 2 (Target Box)
+	int x_fixed = gfx.ScreenWidth / 2, y_fixed = gfx.ScreenHeight / 2;
+	int red_fixed = 0, green_fixed = 255, blue_fixed = 0;
+
+	//More Boxes
+	int x_more_boxes[4] = {100, 200, 300, 700};
+	int y_more_boxes[4] = {100, 200, 300, 500};
+	int vx_more_boxes[4] = { 0,0,0,0 };
+	int vy_more_boxes[4] = { 0,0,0,0 };
+	//Collision Check
+	bool hasCollided = false;
+
+	//Other Stuff
+	bool hasWrittenOutput = false;
 };

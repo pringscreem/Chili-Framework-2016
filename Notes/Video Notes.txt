@@ -136,7 +136,7 @@ May 11, 2024
 	Left Off At 7:00
 
 May 12, 2024
-	Video 11
+	Video 11, Video 11 Homework
 	-Set mouse click to drag the bottom right corner of the rectangle around
 	-The problem with this is that the rectangle doesn't render if the corner
 	 is above/left of the stationary corner
@@ -148,3 +148,17 @@ May 12, 2024
 	-This creates an example to juxtapose references (helper function) and regular variables 
 	 (drawing the rectangle with copied variables)
 	-He is also demonstrating the debugger
+	-Wrote a text file writing function for output
+	-There is another version of a text file output function that I 
+	 wrote in Removed Code/Game.cpp
+	-The output file is in:
+ 	 C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Debug
+	-He removes the TestAndSwap function and replaces it with the Standard Library method
+	-Back to the Poo Game
+	-Const Correctness: const on references unless necessary
+						const after functions that should not change class variables
+	**Move Draw function into Dude class
+	**Write a DrawRectangle function that uses a single point and width/height (already done)
+
+May 15, 2024
+	Video 11 Homework

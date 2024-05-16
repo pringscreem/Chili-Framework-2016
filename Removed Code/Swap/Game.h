@@ -23,9 +23,10 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
-#include "Poo.h"
-#include "Dude.h"
 #include "MyRectangle.h"
+#include <iostream>
+#include <fstream>
+#include <string>
 
 class Game
 {
@@ -39,21 +40,28 @@ private:
 	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
-	void DrawFace(int x, int y);
-	void DrawPoo(int x, int y);
-	void DrawGameOver(int x, int y);
-	void DrawTitleScreen(int x, int y);
 	/********************************/
+	void MyDrawRectangle(int& x, int& y, int& width, int& height);
+	void MyCheckRectangleKeys(int& x, int& y, int& width, int& height);
+	void MyClampRectToScreen(int& x, int& y, int& width, int& height);
+	void HisClampRectToScreen(int& x, int& y, int& width, int& height);
+	void HisCheckRectangleKeys(int& x0, int& y0, int& x1, int& y1);
+	void MyOutputFileWriter(std::string outputString, int outputInt); //My text file output function
 private:
 	MainWindow& wnd;
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
-	Dude dude;
-	Poo poo0;
-	Poo poo1;
-	Poo poo2;
-	MyRectangle myRect;
-	bool isStarted = false;
 	/********************************/
+	//int xPos = 600;
+	//int yPos = 600;
+	//int width = 100;
+	//int height = 100;
+	int x0 = 100;
+	int y0 = 100;
+	int x1 = 200;
+	int y1 = 200;
+	bool alreadyWroteOutput = false;
+
+	MyRectangle myRect;
 };

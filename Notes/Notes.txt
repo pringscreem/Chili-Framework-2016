@@ -25,6 +25,27 @@
 	**********Chat-GPT is excellent for syntax questions e.g. How to not overwrite text in output file**********
 
 	*****The semi-colon after classes is a common error (reminder)*****
+	*********************************************************************************************
+	*********************************************************************************************
+	*********************************************************************************************
+	*****							Const Correctness										*****
+	*****Objects are always passed by reference, otherwise the performance suffers severely.*****
+	*****Potential problems with passing by reference are prevented by const correctness.   *****
+	*****We use const when we want to save processor time and memory by using references,   *****
+	*****but we don't actually want to change the object we are passing.				    *****
+	*****																				    *****
+	*****	As a consequence of this, we always use const for references 				    *****
+	*****				except when we are changing things.								    *****
+	*****																				    *****
+	*****	When you put the const after the function parameters (just before the 			*****
+	*****	semi-colon), it prevents the member function from changing any member variables	*****
+	*****	of its' class (it is not a mutator).											*****
+	*****																				    *****
+	*****																				    *****
+	*****																				    *****
+	*********************************************************************************************
+	*********************************************************************************************
+	*********************************************************************************************
 
 ***********************************************************************************************************************
 ***********************************************************************************************************************
@@ -77,3 +98,9 @@ constexpr - keyword to set a value to const at the time of compilation
 
 ***** If there are any problems with accidental find/replace in other files (e.g. Graphics.h), use his
 ***** download files to replace the project files and continue.
+
+*************************************************************************************************
+*****																						*****
+*****																						*****
+*****																						*****
+*************************************************************************************************
