@@ -6,17 +6,13 @@
 class Poo
 {
 	public:
-		Poo(int in_x, int in_y, int in_vx, int in_vy)
-		{
-			x = in_x;
-			y = in_y;
-			vx = in_vx;
-			vy = in_vy;
-		}
+	Poo(int in_x, int in_y, int in_vx, int in_vy);
 		void Update();
 		void ProcessConsumption(const Dude& dude); //This const means it doesn't change the argument's data
 		void Draw(Graphics& gfx) const; //This const means it doesn't change any class members
 		bool IsEaten() const; //Getter
+		void SetX(int in_x);
+		void SetY(int in_y);
 	private:
 		int x;
 		int y;

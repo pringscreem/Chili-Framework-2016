@@ -367,3 +367,33 @@ void Dude::Draw(Graphics& gfx) const
 		gfx.PutPixel(12 + x, 19 + y, 0, 0, 0);
 }
 
+
+void Dude::SetX(int in_x)
+{
+	x = in_x;
+}
+
+int Dude::GetX() const
+{
+	return x;
+}
+
+void Dude::SetY(int in_y)
+{
+	y = in_y;
+}
+
+int Dude::GetY() const
+{
+	return y;
+}
+
+int Dude::GetWidth() const
+{
+	return width;
+}
+
+int Dude::GetHeight() const
+{
+	return height;
+}

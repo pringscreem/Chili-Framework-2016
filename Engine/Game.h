@@ -42,6 +42,7 @@ private:
 	/*  User Functions              */
 	void DrawGameOver(int x, int y);
 	void DrawTitleScreen(int x, int y);
+	void InitializePooArr();
 	/********************************/
 private:
 	MainWindow& wnd;
@@ -56,6 +57,14 @@ private:
 	Poo poo0;
 	Poo poo1;
 	Poo poo2;
+	Poo poo3;
+	Poo poo4;
+	Poo poo5;
+	Poo poo6;
+	Poo poo7;
+	Poo poo8;
+
+	//Poo pooArr[9];
 	MyRectangle myRect;
 	bool isStarted = false;
 	/********************************/

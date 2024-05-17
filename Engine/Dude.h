@@ -9,9 +9,15 @@ class Dude
 		//void Update();
 		void ClampToScreen();
 		void Draw(Graphics& gfx) const;
+		void SetX(int in_x);
+		int GetX() const;
+		void SetY(int in_y);
+		int GetY() const;
+		int GetWidth() const;
+		int GetHeight() const;
+	private:
 		int x = 400;
 		int y = 300;
 		static constexpr int width = 20;
 		static constexpr int height = 20;
-	private:
 };

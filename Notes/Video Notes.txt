@@ -175,4 +175,19 @@ May 17, 2024
 	Video 12
 	-Encapsulation (making all the data private and creating setter/getter functions)
 	-He also plans to do constructors and initialization
-	-
+	-The order of variable initialization in the constructor is actually the order in the
+	 class definition (in the header file)
+	-Discussion of how to use Encapsulation properly:
+		Try to put all the required operations in member functions
+		Prefer just Getters, avoid Setters
+		Don't be dogmatic about it
+	-Also:
+		Encapsulation keeps the channels between each part stable so that you only have to change
+			one part at a time
+		It keeps the "spaghetti" inside each part's "box" so that the overall design isn't as 
+			difficult to work with
+	** Change the Dude class so that it uses Encapsulation
+			Added setters/getters for x and y
+			The alternative is to pass the keyboard input into the class
+			Passing the input would require adding the keyboard library or four input variables
+	** Change the number of Poo objects to 9

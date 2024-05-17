@@ -34,9 +34,15 @@ Game::Game( MainWindow& wnd )
 	rng( rd() ),
 	xDist( 0, 770),
 	yDist( 0, 570),
-	poo0( xDist( rng ), yDist( rng ), 1, 1),
+	poo0( xDist( rng ), yDist( rng ), 1, 1), //Avoid initializing with values that are initialized earlier in a class (like we do here)
 	poo1( xDist( rng ), yDist( rng ), 1, -1),
-	poo2( xDist( rng ), yDist( rng ), -1, 1)
+	poo2( xDist( rng ), yDist( rng ), -1, -1),
+	poo3( xDist( rng ), yDist( rng ), -1, 1),
+	poo4( xDist( rng ), yDist( rng ), 1, -1),
+	poo5( xDist( rng ), yDist( rng ), 1, 1),
+	poo6( xDist( rng ), yDist( rng ), -1, 1),
+	poo7( xDist( rng ), yDist( rng ), 1, -1),
+	poo8( xDist( rng ), yDist( rng ), -1, -1)
 {
 }
 
@@ -55,19 +61,19 @@ void Game::UpdateModel()
 		//dude.Update();
 		if (wnd.kbd.KeyIsPressed(VK_RIGHT))
 		{
-			dude.x += 2;
+			dude.SetX(dude.GetX() + 2);
 		}
 		if (wnd.kbd.KeyIsPressed(VK_LEFT))
 		{
-			dude.x -= 2;
+			dude.SetX(dude.GetX() - 2);
 		}
 		if (wnd.kbd.KeyIsPressed(VK_DOWN))
 		{
-			dude.y += 2;
+			dude.SetY(dude.GetY() + 2);
 		}
 		if (wnd.kbd.KeyIsPressed(VK_UP))
 		{
-			dude.y -= 2;
+			dude.SetY(dude.GetY() - 2);
 		}
 
 		dude.ClampToScreen();
@@ -28469,4 +28475,20 @@ void Game::ComposeFrame()
 			poo2.Draw(gfx);
 		}
 	}
+}
+
+
+void Game::InitializePooArr()
+{
+	//int pooArrSize = sizeof(pooArr) / sizeof(pooArr[0]);
+	//for (int i = 0; i < pooArrSize; i++)
+	//{
+	//	//
+	//	std::random_device rd;
+	//	std::mt19937 rng(rd());
+	//	std::uniform_int_distribution<int> xDist(0, 770);
+	//	std::uniform_int_distribution<int> yDist(0, 570);
+	//	pooArr[i].SetX( xDist(rng));
+	//	pooArr[i].SetY( yDist(rng));
+	//}
 }

@@ -124,3 +124,36 @@ constexpr - keyword to set a value to const at the time of compilation
 ***** Using setters/getters also minimizes maintenance changes
 ***** e.g. If we switch from x0, x1,... to x0, width,... we only have to change the 
 *****	   set/get functions
+
+				**************************************************
+				**************************************************
+				**********	THE ORDER OF INITIALIZATION **********
+				**********	 IS DETERMINED BY THE ORDER **********
+				**********	OF DECLARATION IN THE HEADER********** 
+				**********			FILE				**********
+				**************************************************
+				**************************************************
+				**************************************************
+				**************************************************
+
+***** ^Avoid initializing (in a constructor) with values that are initialized earlier in a class.
+
+***** You can move the definition from the header file to the definition (implementation) file
+	  using one of the quick refactoring options.
+
+*************************************************************************************************
+*************************************************************************************************
+***** Principle of Least Trust: Don't trust anyone not to screw anything up.
+		-Encapsulation prevents well-meaning individuals from screwing things up in your code.
+		-The number one person you have to protect your code form is yourself:
+		 you are going to come back to the code after you have forgotten how you wrote it, 
+		 and because you wrote it, you will have a false sense of competency even though 
+		 you have forgotten a lot of the details of how you wrote the code.
+***** There is such a thing as too much: dogmatically insisting upon Encapsulation absolutely 
+	  all of the time will cause gridlock because the code will become so hard to work with.
+***** Finding an acceptable balance comes from reading a lot of other people's code and writing 
+	  a lot of your own code.
+*************************************************************************************************
+*************************************************************************************************
+
+***** Try to do whole operation in the member functions so that you don't need setters/getters.

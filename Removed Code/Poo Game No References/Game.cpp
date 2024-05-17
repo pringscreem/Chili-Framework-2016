@@ -25,6 +25,7 @@
 #include <random>
 #include "Poo.h"
 #include "Dude.h"
+#include "..\..\Engine\Game.h"
 
 Game::Game( MainWindow& wnd )
 	:
