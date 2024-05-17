@@ -160,5 +160,7 @@ May 12, 2024
 	**Move Draw function into Dude class
 	**Write a DrawRectangle function that uses a single point and width/height (already done)
 
-May 15, 2024
+May 16, 2024
 	Video 11 Homework
+	-Dude.Draw written
+	-MyRectangle class uses a centre point and width/height variables

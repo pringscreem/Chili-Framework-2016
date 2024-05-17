@@ -101,6 +101,8 @@ constexpr - keyword to set a value to const at the time of compilation
 
 *************************************************************************************************
 *****																						*****
-*****																						*****
+*****				HE HAS US EXTENDING THE GRAPHICS CLASS SO								*****
+*****				THAT WE GET USED TO DEALING WITH THE CODEBASE							*****
+*****		THIS PREVENTS US FROM DEVELOPING A FEAR OF CHANGING THE CODEBASE					*****
 *****																						*****
 *************************************************************************************************
