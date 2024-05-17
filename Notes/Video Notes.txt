@@ -164,3 +164,15 @@ May 16, 2024
 	Video 11 Homework
 	-Dude.Draw written
 	-MyRectangle class uses a centre point and width/height variables
+	-He does the height/width rectangle differently: he makes a wrapper that uses the 
+	 point and height/width to calculate the necessary values and call the original 
+	 DrawRect function
+	-He also defines the function in the header file instead of the definition file
+	-Having the overloaded function adapt and call the other one reduces the amount 
+	 of maintenance
+
+May 17, 2024
+	Video 12
+	-Encapsulation (making all the data private and creating setter/getter functions)
+	-He also plans to do constructors and initialization
+	-

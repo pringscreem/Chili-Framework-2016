@@ -26,6 +26,7 @@
 #include "Poo.h"
 #include "Dude.h"
 #include "MyRectangle.h"
+#include <random>
 
 class Game
 {
@@ -47,6 +48,10 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
+	std::random_device rd;
+	std::mt19937 rng;
+	std::uniform_int_distribution<int> xDist; //0, 770
+	std::uniform_int_distribution<int> yDist;//0, 570
 	Dude dude;
 	Poo poo0;
 	Poo poo1;

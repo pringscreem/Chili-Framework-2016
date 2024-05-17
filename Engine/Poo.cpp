@@ -286,3 +286,8 @@ void Poo::Draw(Graphics& gfx) const
 		gfx.PutPixel(6 + x, 23 + y, 51, 28, 0);
 }
 
+bool Poo::IsEaten() const
+{
+	return false;
+}
+

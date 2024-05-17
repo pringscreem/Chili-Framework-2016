@@ -106,3 +106,21 @@ constexpr - keyword to set a value to const at the time of compilation
 *****		THIS PREVENTS US FROM DEVELOPING A FEAR OF CHANGING THE CODEBASE					*****
 *****																						*****
 *************************************************************************************************
+
+***** When you declare a function (.h) but don't define it (.cpp), you will get 
+			a Linker error, "Undefined external symbol".
+
+***** As long as you don't try to call an undefined function, 
+		it will not be detected by the compiler.
+
+***** Having one master function that is called by all the overloaded functions makes the 
+	  code easier to maintain and debug later because the actual work is happening in one place.
+
+***** He recommends avoiding setters/getters for everything because it defeats the purpose of
+***** having private variables.
+***** Making getters is fine, but setters should only be used when necessary.
+***** e.g. poo.x, poo.y, etc. are not needed by anything external, so they don't get a setter
+*****
+***** Using setters/getters also minimizes maintenance changes
+***** e.g. If we switch from x0, x1,... to x0, width,... we only have to change the 
+*****	   set/get functions
