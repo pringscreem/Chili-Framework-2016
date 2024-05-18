@@ -26,9 +26,11 @@
 #include "Poo.h"
 #include "Dude.h"
 #include "MyRectangle.h"
+#include <string> //RequestOutputTxt
+#include <fstream>//RequestOutputTxt
 
 Game::Game( MainWindow& wnd )
-	:
+	: //This colon starts the initializer list for the constructor
 	wnd( wnd ),
 	gfx( wnd ),
 	rng( rd() ),
@@ -37,13 +39,19 @@ Game::Game( MainWindow& wnd )
 	poo0( xDist( rng ), yDist( rng ), 1, 1), //Avoid initializing with values that are initialized earlier in a class (like we do here)
 	poo1( xDist( rng ), yDist( rng ), 1, -1),
 	poo2( xDist( rng ), yDist( rng ), -1, -1),
-	poo3( xDist( rng ), yDist( rng ), -1, 1),
-	poo4( xDist( rng ), yDist( rng ), 1, -1),
-	poo5( xDist( rng ), yDist( rng ), 1, 1),
-	poo6( xDist( rng ), yDist( rng ), -1, 1),
-	poo7( xDist( rng ), yDist( rng ), 1, -1),
-	poo8( xDist( rng ), yDist( rng ), -1, -1)
+	pooArr{ 
+			{xDist(rng), yDist(rng), 2, -1}, //The syntax for initializing an array of classes like this is a mess.
+			{xDist(rng), yDist(rng), -1, 2}, //You have to use curly braces instead of parentheses because
+			{xDist(rng), yDist(rng), -2, 1}, // otherwise it misinterprets what you want to be the element 
+			{xDist(rng), yDist(rng), 1, -2}, // values as function arguments instead.
+			{xDist(rng), yDist(rng), 2, 1},
+			{xDist(rng), yDist(rng), -1, 2},
+			{xDist(rng), yDist(rng), -2, 1},
+			{xDist(rng), yDist(rng), 1, -2},
+			{xDist(rng), yDist(rng), 2, -1}
+		  }
 {
+	//RequestOutputTxt("The Game constructor has been called. \n");
 }
 
 void Game::Go()
@@ -87,6 +95,11 @@ void Game::UpdateModel()
 		poo0.ProcessConsumption(dude);
 		poo1.ProcessConsumption(dude);
 		poo2.ProcessConsumption(dude);
+		for (int i = 0; i < pooArrSize; i++)
+		{
+			pooArr[i].Update();
+			pooArr[i].ProcessConsumption(dude);
+		}
 	}
 	else
 	{
@@ -28474,21 +28487,44 @@ void Game::ComposeFrame()
 		{
 			poo2.Draw(gfx);
 		}
+		for (int i = 0; i < pooArrSize; i++)
+		{
+			if (!pooArr[i].IsEaten())
+			{
+				pooArr[i].Draw(gfx);
+			}
+		}
 	}
 }
 
 
 void Game::InitializePooArr()
 {
+	//For now the array is initialized in the constructor's initialization list.
+	//RequestOutputTxt("Started InitializePooArr() \n");
+	//std::random_device rd;
+	//std::mt19937 rng(rd());
+	//std::uniform_int_distribution<int> xDist(0, 770);
+	//std::uniform_int_distribution<int> yDist(0, 570);
 	//int pooArrSize = sizeof(pooArr) / sizeof(pooArr[0]);
 	//for (int i = 0; i < pooArrSize; i++)
 	//{
-	//	//
-	//	std::random_device rd;
-	//	std::mt19937 rng(rd());
-	//	std::uniform_int_distribution<int> xDist(0, 770);
-	//	std::uniform_int_distribution<int> yDist(0, 570);
+	//RequestOutputTxt("Started for loop \n");
 	//	pooArr[i].SetX( xDist(rng));
 	//	pooArr[i].SetY( yDist(rng));
 	//}
+	//RequestOutputTxt("Finished InitializePooArr() \n");
+}
+
+void Game::RequestOutputTxt(std::string requestedOutput1/*, std::string requestedOutput2*/)
+{
+	//The output file is in :
+	//C:\msys64\home\ssonn\GitHub2023\Chili - Framework - 2016\Debug
+	std::ofstream MyOutputFile;
+	MyOutputFile.open("MyOutput.txt", std::ios_base::app);
+
+	MyOutputFile << "The value of requested output 1 is " << requestedOutput1 << '\n';
+	//MyOutputFile << "The value of requested output 2 is " << requestedOutput2 << '\n';
+
+	MyOutputFile.close();
 }

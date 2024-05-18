@@ -157,3 +157,15 @@ constexpr - keyword to set a value to const at the time of compilation
 *************************************************************************************************
 
 ***** Try to do whole operation in the member functions so that you don't need setters/getters.
+
+***** The "inline" keyword can cause Linker errors because it allows multiple definitions of 
+		the function in different files.
+		Removing the "inline" from the Poo constructor fixed the Linker error.
+
+***** The "inline" keyword tells the compiler to try to put the function body everywhere that 
+		the function is called.  This can result in multiple function definitions
+
+*************************************************************************************************
+***** ^Reset zoom to fit the line above
+
+***** The wiki has notes about some of the gotcha's in the homework, etc.

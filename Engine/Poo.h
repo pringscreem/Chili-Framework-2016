@@ -6,7 +6,8 @@
 class Poo
 {
 	public:
-	Poo(int in_x, int in_y, int in_vx, int in_vy);
+		Poo(int in_x, int in_y, int in_vx, int in_vy);
+		Poo();
 		void Update();
 		void ProcessConsumption(const Dude& dude); //This const means it doesn't change the argument's data
 		void Draw(Graphics& gfx) const; //This const means it doesn't change any class members

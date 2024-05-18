@@ -172,7 +172,7 @@ May 16, 2024
 	 of maintenance
 
 May 17, 2024
-	Video 12
+	Video 12, Video 12 Homework
 	-Encapsulation (making all the data private and creating setter/getter functions)
 	-He also plans to do constructors and initialization
 	-The order of variable initialization in the constructor is actually the order in the
@@ -191,3 +191,4 @@ May 17, 2024
 			The alternative is to pass the keyboard input into the class
 			Passing the input would require adding the keyboard library or four input variables
 	** Change the number of Poo objects to 9
+	-The initialization of an array in a constructor is tricky.

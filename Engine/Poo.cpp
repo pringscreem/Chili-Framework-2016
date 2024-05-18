@@ -4,12 +4,20 @@
 #include "Graphics.h"
 #include "Dude.h"
 
-inline Poo::Poo(int in_x, int in_y, int in_vx, int in_vy)
+Poo::Poo(int in_x, int in_y, int in_vx, int in_vy)
 {
 	x = in_x;
 	y = in_y;
 	vx = in_vx;
 	vy = in_vy;
+}
+
+Poo::Poo()
+{
+	x = 100;
+	y = 100;
+	vx = 1;
+	vy = 1;
 }
 
 void Poo::Update()
