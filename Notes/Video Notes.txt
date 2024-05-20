@@ -192,3 +192,4 @@ May 17, 2024
 			Passing the input would require adding the keyboard library or four input variables
 	** Change the number of Poo objects to 9
 	-The initialization of an array in a constructor is tricky.
+	-He includes the keyboard in the Dude class and uses it in an Update function

@@ -13,8 +13,8 @@ class Dude
 		int GetX() const;
 		void SetY(int in_y);
 		int GetY() const;
-		int GetWidth() const;
-		int GetHeight() const;
+		static int GetWidth();
+		static int GetHeight();
 	private:
 		int x = 400;
 		int y = 300;
