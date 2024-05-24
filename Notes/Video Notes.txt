@@ -193,3 +193,7 @@ May 17, 2024
 	** Change the number of Poo objects to 9
 	-The initialization of an array in a constructor is tricky.
 	-He includes the keyboard in the Dude class and uses it in an Update function
+
+May 24, 2024
+	Video 12 Homework
+	-Forgot to change the game over condition (hardcoded to three poos)
