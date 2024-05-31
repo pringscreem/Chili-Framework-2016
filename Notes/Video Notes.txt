@@ -200,3 +200,6 @@ May 24, 2024
 
 May 31, 2024
 	Video 12 Homework
+	-Updated the game over condition 
+	-Moving the keyboard checks into the Dude class requires passing the MainWindow instance 
+	 from the Game class

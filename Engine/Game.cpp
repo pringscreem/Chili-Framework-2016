@@ -36,9 +36,6 @@ Game::Game( MainWindow& wnd )
 	rng( rd() ),
 	xDist( 0, 770),
 	yDist( 0, 570),
-	//poo0( xDist( rng ), yDist( rng ), 1, 1), //Avoid initializing with values that are initialized earlier in a class (like we do here)
-	//poo1( xDist( rng ), yDist( rng ), 1, -1),
-	//poo2( xDist( rng ), yDist( rng ), -1, -1),
 	pooArr{ 
 			{xDist(rng), yDist(rng), 2, -1}, //The syntax for initializing an array of classes like this is a mess.
 			{xDist(rng), yDist(rng), -1, 2}, //You have to use curly braces instead of parentheses because
@@ -66,7 +63,6 @@ void Game::UpdateModel()
 {
 	if (isStarted)
 	{
-		//dude.Update();
 		if (wnd.kbd.KeyIsPressed(VK_RIGHT))
 		{
 			dude.SetX(dude.GetX() + 2);
@@ -85,25 +81,11 @@ void Game::UpdateModel()
 		}
 
 		dude.ClampToScreen();
-		//dude.x = ClampScreenX(dude.x, dude.width);
-		//dude.y = ClampScreenY(dude.y, dude.height);
 
-		//poo0.Update();
-		//poo1.Update();
-		//poo2.Update();
-
-		//poo0.ProcessConsumption(dude);
-		//poo1.ProcessConsumption(dude);
-		//poo2.ProcessConsumption(dude);
 		for (int i = 0; i < pooArrSize; i++)
 		{
 			pooArr[i].Update();
 			pooArr[i].ProcessConsumption(dude);
-			//if (pooArr[i].IsEaten())
-			//{
-			//	numPoosEaten++;
-			//	RequestOutputTxt(numPoosEaten);
-			//}
 		}
 	}
 	else
@@ -28474,24 +28456,9 @@ void Game::ComposeFrame()
 	}
 	else
 	{
-		//if (allPooIsEaten)
-		//{
-		//	DrawGameOver(358, 268);
-		//}
 		dude.Draw(gfx);
 
-		//if (!poo0.IsEaten())
-		//{
-		//	poo0.Draw(gfx);
-		//}
-		//if (!poo1.IsEaten())
-		//{
-		//	poo1.Draw(gfx);
-		//}
-		//if (!poo2.IsEaten())
-		//{
-		//	poo2.Draw(gfx);
-		//}
+		numPoosEaten = 0;
 		for (int i = 0; i < pooArrSize; i++)
 		{
 			if (!pooArr[i].IsEaten())
@@ -28500,6 +28467,7 @@ void Game::ComposeFrame()
 			}
 			else
 			{
+				numPoosEaten++; //We'll just recount the eaten poos each time
 				if (numPoosEaten >= pooArrSize)
 				{
 						DrawGameOver(358, 268);
