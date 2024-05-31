@@ -36,19 +36,19 @@ Game::Game( MainWindow& wnd )
 	std::mt19937 rng(rd());
 	std::uniform_int_distribution<int> xDist(0, 770);
 	std::uniform_int_distribution<int> yDist(0, 570);
-	poo0.x = xDist(rng);
-	poo0.y = yDist(rng);
-	poo1.x = xDist(rng);
-	poo1.y = yDist(rng);
-	poo2.x = xDist(rng);
-	poo2.y = yDist(rng);
-
-	poo0.vx = 1; //xDist(rng) % 3;
-	poo0.vy = 1; //yDist(rng) % 3;
-	poo1.vx = -1; //xDist(rng) % 3;
-	poo1.vy = 1; //yDist(rng) % 3;
-	poo2.vx = 1; //xDist(rng) % 3;
-	poo2.vy = -1; //yDist(rng) % 3;
+//	poo0.x = xDist(rng);
+//	poo0.y = yDist(rng);
+//	poo1.x = xDist(rng);
+//	poo1.y = yDist(rng);
+//	poo2.x = xDist(rng);
+//	poo2.y = yDist(rng);
+//
+//	poo0.vx = 1; //xDist(rng) % 3;
+//	poo0.vy = 1; //yDist(rng) % 3;
+//	poo1.vx = -1; //xDist(rng) % 3;
+//	poo1.vy = 1; //yDist(rng) % 3;
+//	poo2.vx = 1; //xDist(rng) % 3;
+//	poo2.vy = -1; //yDist(rng) % 3;
 }
 
 void Game::Go()
@@ -85,13 +85,13 @@ void Game::UpdateModel()
 		//dude.x = ClampScreenX(dude.x, dude.width);
 		//dude.y = ClampScreenY(dude.y, dude.height);
 
-		poo0.Update();
-		poo1.Update();
-		poo2.Update();
+		//poo0.Update();
+		//poo1.Update();
+		//poo2.Update();
 
-		poo0.ProcessConsumption(dude.x, dude.y, dude.width, dude.height);
-		poo1.ProcessConsumption(dude.x, dude.y, dude.width, dude.height);
-		poo2.ProcessConsumption(dude.x, dude.y, dude.width, dude.height);
+		//poo0.ProcessConsumption(dude.x, dude.y, dude.width, dude.height);
+		//poo1.ProcessConsumption(dude.x, dude.y, dude.width, dude.height);
+		//poo2.ProcessConsumption(dude.x, dude.y, dude.width, dude.height);
 	}
 	else
 	{
@@ -29016,23 +29016,30 @@ void Game::ComposeFrame()
 	}
 	else
 	{
-		if (poo0.isEaten && poo1.isEaten && poo2.isEaten)
-		{
-			DrawGameOver(358, 268);
-		}
+		//if (poo0.isEaten && poo1.isEaten && poo2.isEaten)
+		//{
+		//	DrawGameOver(358, 268);
+		//}
 
 		DrawFace(dude.x, dude.y);
-		if (!poo0.isEaten)
+		//if (!poo0.isEaten)
+		//{
+		//	Game::DrawPoo(poo0.x, poo0.y);
+		//}
+		//if (!poo1.isEaten)
+		//{
+		//	Game::DrawPoo(poo1.x, poo1.y);
+		//}
+		//if (!poo2.isEaten)
+		//{
+		//	Game::DrawPoo(poo2.x, poo2.y);
+		//}
+		for (int i = 0; i < pooArrSize; i++)
 		{
-			Game::DrawPoo(poo0.x, poo0.y);
-		}
-		if (!poo1.isEaten)
-		{
-			Game::DrawPoo(poo1.x, poo1.y);
-		}
-		if (!poo2.isEaten)
-		{
-			Game::DrawPoo(poo2.x, poo2.y);
+			if (!pooArr[i].IsEaten())
+			{
+				pooArr[i].Draw(gfx);
+			}
 		}
 	}
 }

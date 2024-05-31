@@ -36,9 +36,9 @@ Game::Game( MainWindow& wnd )
 	rng( rd() ),
 	xDist( 0, 770),
 	yDist( 0, 570),
-	poo0( xDist( rng ), yDist( rng ), 1, 1), //Avoid initializing with values that are initialized earlier in a class (like we do here)
-	poo1( xDist( rng ), yDist( rng ), 1, -1),
-	poo2( xDist( rng ), yDist( rng ), -1, -1),
+	//poo0( xDist( rng ), yDist( rng ), 1, 1), //Avoid initializing with values that are initialized earlier in a class (like we do here)
+	//poo1( xDist( rng ), yDist( rng ), 1, -1),
+	//poo2( xDist( rng ), yDist( rng ), -1, -1),
 	pooArr{ 
 			{xDist(rng), yDist(rng), 2, -1}, //The syntax for initializing an array of classes like this is a mess.
 			{xDist(rng), yDist(rng), -1, 2}, //You have to use curly braces instead of parentheses because
@@ -88,17 +88,22 @@ void Game::UpdateModel()
 		//dude.x = ClampScreenX(dude.x, dude.width);
 		//dude.y = ClampScreenY(dude.y, dude.height);
 
-		poo0.Update();
-		poo1.Update();
-		poo2.Update();
+		//poo0.Update();
+		//poo1.Update();
+		//poo2.Update();
 
-		poo0.ProcessConsumption(dude);
-		poo1.ProcessConsumption(dude);
-		poo2.ProcessConsumption(dude);
+		//poo0.ProcessConsumption(dude);
+		//poo1.ProcessConsumption(dude);
+		//poo2.ProcessConsumption(dude);
 		for (int i = 0; i < pooArrSize; i++)
 		{
 			pooArr[i].Update();
 			pooArr[i].ProcessConsumption(dude);
+			//if (pooArr[i].IsEaten())
+			//{
+			//	numPoosEaten++;
+			//	RequestOutputTxt(numPoosEaten);
+			//}
 		}
 	}
 	else
@@ -28469,29 +28474,36 @@ void Game::ComposeFrame()
 	}
 	else
 	{
-		if (poo0.IsEaten() && poo1.IsEaten() && poo2.IsEaten())
-		{
-			DrawGameOver(358, 268);
-		}
+		//if (allPooIsEaten)
+		//{
+		//	DrawGameOver(358, 268);
+		//}
 		dude.Draw(gfx);
 
-		if (!poo0.IsEaten())
-		{
-			poo0.Draw(gfx);
-		}
-		if (!poo1.IsEaten())
-		{
-			poo1.Draw(gfx);
-		}
-		if (!poo2.IsEaten())
-		{
-			poo2.Draw(gfx);
-		}
+		//if (!poo0.IsEaten())
+		//{
+		//	poo0.Draw(gfx);
+		//}
+		//if (!poo1.IsEaten())
+		//{
+		//	poo1.Draw(gfx);
+		//}
+		//if (!poo2.IsEaten())
+		//{
+		//	poo2.Draw(gfx);
+		//}
 		for (int i = 0; i < pooArrSize; i++)
 		{
 			if (!pooArr[i].IsEaten())
 			{
 				pooArr[i].Draw(gfx);
+			}
+			else
+			{
+				if (numPoosEaten >= pooArrSize)
+				{
+						DrawGameOver(358, 268);
+				}
 			}
 		}
 	}
@@ -28516,14 +28528,14 @@ void Game::InitializePooArr()
 	//RequestOutputTxt("Finished InitializePooArr() \n");
 }
 
-void Game::RequestOutputTxt(std::string requestedOutput1/*, std::string requestedOutput2*/)
+void Game::RequestOutputTxt(/*std::string requestedOutput1,*/ int requestedOutputNum/*, std::string requestedOutput2*/)
 {
 	//The output file is in :
 	//C:\msys64\home\ssonn\GitHub2023\Chili - Framework - 2016\Debug
 	std::ofstream MyOutputFile;
 	MyOutputFile.open("MyOutput.txt", std::ios_base::app);
 
-	MyOutputFile << "The value of requested output 1 is " << requestedOutput1 << '\n';
+	MyOutputFile << "The value of requested output number is " << requestedOutputNum << '\n';
 	//MyOutputFile << "The value of requested output 2 is " << requestedOutput2 << '\n';
 
 	MyOutputFile.close();

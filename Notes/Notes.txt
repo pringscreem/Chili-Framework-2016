@@ -169,3 +169,15 @@ constexpr - keyword to set a value to const at the time of compilation
 ***** ^Reset zoom to fit the line above
 
 ***** The wiki has notes about some of the gotcha's in the homework, etc.
+
+***** You can declare as many variables as you want in the declaration part of the for-loop syntax:
+*****	e.g. for(int i = 0, int myCount = 10, char myChar = ''; i < arrSize; i++)
+
+***** It might be useful to have a function for getting the number of elements in an array.
+
+***** Investigate Later: passing pointers to a function 
+						(default deep copy when not passing by reference)
+						Is the pointer itself being passed by copy?
+						The variable passed in holds the address (which should be the same), but 
+						is the actual address of the pointer variable handled in the same manner 
+						(deep copy)?

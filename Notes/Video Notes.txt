@@ -197,3 +197,6 @@ May 17, 2024
 May 24, 2024
 	Video 12 Homework
 	-Forgot to change the game over condition (hardcoded to three poos)
+
+May 31, 2024
+	Video 12 Homework
