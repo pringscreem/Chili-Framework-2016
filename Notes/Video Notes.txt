@@ -202,4 +202,7 @@ May 31, 2024
 	Video 12 Homework
 	-Updated the game over condition 
 	-Moving the keyboard checks into the Dude class requires passing the MainWindow instance 
-	 from the Game class
+	 from the Game class (see how he does it...) ===> He doesn't have to pass the window, just 
+													  a reference to the keyboard (it gets the 
+													  instance of the keyboard when it is called 
+													  in Game)

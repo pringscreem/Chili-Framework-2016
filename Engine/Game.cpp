@@ -63,22 +63,23 @@ void Game::UpdateModel()
 {
 	if (isStarted)
 	{
-		if (wnd.kbd.KeyIsPressed(VK_RIGHT))
-		{
-			dude.SetX(dude.GetX() + 2);
-		}
-		if (wnd.kbd.KeyIsPressed(VK_LEFT))
-		{
-			dude.SetX(dude.GetX() - 2);
-		}
-		if (wnd.kbd.KeyIsPressed(VK_DOWN))
-		{
-			dude.SetY(dude.GetY() + 2);
-		}
-		if (wnd.kbd.KeyIsPressed(VK_UP))
-		{
-			dude.SetY(dude.GetY() - 2);
-		}
+		dude.Update(wnd.kbd);
+		//if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+		//{
+		//	dude.SetX(dude.GetX() + 2);
+		//}
+		//if (wnd.kbd.KeyIsPressed(VK_LEFT))
+		//{
+		//	dude.SetX(dude.GetX() - 2);
+		//}
+		//if (wnd.kbd.KeyIsPressed(VK_DOWN))
+		//{
+		//	dude.SetY(dude.GetY() + 2);
+		//}
+		//if (wnd.kbd.KeyIsPressed(VK_UP))
+		//{
+		//	dude.SetY(dude.GetY() - 2);
+		//}
 
 		dude.ClampToScreen();
 

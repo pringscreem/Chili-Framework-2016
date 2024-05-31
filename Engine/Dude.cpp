@@ -3,25 +3,26 @@
 #include "Dude.h"
 #include "Graphics.h"
 
-//void Dude::Update()
-//{
-//	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
-//	{
-//		dude.x += 1;
-//	}
-//	if (wnd.kbd.KeyIsPressed(VK_LEFT))
-//	{
-//		dude.x -= 1;
-//	}
-//	if (wnd.kbd.KeyIsPressed(VK_DOWN))
-//	{
-//		dude.y += 1;
-//	}
-//	if (wnd.kbd.KeyIsPressed(VK_UP))
-//	{
-//		dude.y -= 1;
-//	}
-//}
+
+void Dude::Update(const Keyboard& kbd)
+{
+	if (kbd.KeyIsPressed(VK_RIGHT))
+	{
+		x += speed;
+	}
+	if (kbd.KeyIsPressed(VK_LEFT))
+	{
+		x -= speed;
+	}
+	if (kbd.KeyIsPressed(VK_DOWN))
+	{
+		y += speed;
+	}
+	if (kbd.KeyIsPressed(VK_UP))
+	{
+		y -= speed;
+	}
+}
 
 void Dude::ClampToScreen()
 {
