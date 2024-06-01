@@ -14,8 +14,8 @@ class Dude
 		int GetX() const;
 		void SetY(int in_y);
 		int GetY() const;
-		static int GetWidth();
-		static int GetHeight();
+		int GetWidth() const; //Keeping these non-static makes it less likely that later changes will break stuff.
+		int GetHeight() const;
 	private:
 		int x = 400;
 		int y = 300;

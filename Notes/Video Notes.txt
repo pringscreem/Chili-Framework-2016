@@ -205,4 +205,9 @@ May 31, 2024
 	 from the Game class (see how he does it...) ===> He doesn't have to pass the window, just 
 													  a reference to the keyboard (it gets the 
 													  instance of the keyboard when it is called 
-													  in Game)
+													  in Game, and the keyboard is a member of 
+													  the window)
+	-He does the change in number of Poos the easy way (copy/paste more of the same)
+
+	Video 13
+	-

@@ -55,14 +55,9 @@ private:
 	std::uniform_int_distribution<int> xDist; //0, 770
 	std::uniform_int_distribution<int> yDist;//0, 570
 	Dude dude;
-	//Poo poo0;
-	//Poo poo1;
-	//Poo poo2;
-
 
 	Poo pooArr[9];
 	int pooArrSize = sizeof(pooArr) / sizeof(pooArr[0]);
-	//bool allPooIsEaten = false;
 	int numPoosEaten = 0;
 
 	MyRectangle myRect;

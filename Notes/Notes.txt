@@ -83,6 +83,9 @@ constexpr - keyword to set a value to const at the time of compilation
 ***** The collapse option is in the Outlining R-Click menu:
 *****	R-Click > Outlining > Collapse Block
 
+*****	Select the part you want to expand/collapse and press Ctrl + M, Ctr + M (i.e. Ctr-M twice)
+*****	to toggle the expansion/collapse of the blocks in the selected text
+
 *****	His Notes on For-Loops:
 				//Loop Initializer e.g. int x = 100;
 				//Loop Control - It has to pass the test in order to execure the code
@@ -181,3 +184,16 @@ constexpr - keyword to set a value to const at the time of compilation
 						The variable passed in holds the address (which should be the same), but 
 						is the actual address of the pointer variable handled in the same manner 
 						(deep copy)?
+
+***** To view memory addresses, values, etc.:
+*****	Create a breakpoint
+*****	When it pauses at the breakpoint, use Debug->Windows->Locals to open the window
+*****	The window appears at the bottom, there are several options (Autos, Watch 1, etc.)
+*****	Autos - current statement
+*****	Locals - current scope
+*****	Watch - whichever variables you assign to watch
+
+***** Chat GPT was very helpful for Visual Studio instructions.
+
+***** Add a Breakpoint, start Debugging with F5, and then press F10 to step through the program, 
+***** F11 to go deeper into a statement.  Shift + F5 stops the debugging.

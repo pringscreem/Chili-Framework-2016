@@ -389,12 +389,12 @@ int Dude::GetY() const
 	return y;
 }
 
-int Dude::GetWidth()
+int Dude::GetWidth() const
 {
 	return width;
 }
 
-int Dude::GetHeight()
+int Dude::GetHeight() const
 {
 	return height;
 }

@@ -20,6 +20,7 @@
  ******************************************************************************************/
  #pragma once
 
+#include <iostream>
 #include "MainWindow.h"
 #include "Game.h"
 #include <random>
@@ -37,15 +38,15 @@ Game::Game( MainWindow& wnd )
 	xDist( 0, 770),
 	yDist( 0, 570),
 	pooArr{ 
-			{xDist(rng), yDist(rng), 2, -1}, //The syntax for initializing an array of classes like this is a mess.
-			{xDist(rng), yDist(rng), -1, 2}, //You have to use curly braces instead of parentheses because
-			{xDist(rng), yDist(rng), -2, 1}, // otherwise it misinterprets what you want to be the element 
-			{xDist(rng), yDist(rng), 1, -2}, // values as function arguments instead.
-			{xDist(rng), yDist(rng), 2, 1},
-			{xDist(rng), yDist(rng), -1, 2},
-			{xDist(rng), yDist(rng), -2, 1},
-			{xDist(rng), yDist(rng), 1, -2},
-			{xDist(rng), yDist(rng), 2, -1}
+			{xDist(rng), yDist(rng), 1, -1}, //The syntax for initializing an array of classes like this is a mess.
+			{xDist(rng), yDist(rng), -1, 1}, //You have to use curly braces instead of parentheses because
+			{xDist(rng), yDist(rng), -1, 1}, // otherwise it misinterprets what you want to be the element 
+			{xDist(rng), yDist(rng), 1, -1}, // values as function arguments instead.
+			{xDist(rng), yDist(rng), 1, 1},
+			{xDist(rng), yDist(rng), -1, 1},
+			{xDist(rng), yDist(rng), -1, 1},
+			{xDist(rng), yDist(rng), 1, -1},
+			{xDist(rng), yDist(rng), 1, -1}
 		  }
 {
 	//RequestOutputTxt("The Game constructor has been called. \n");
@@ -64,22 +65,6 @@ void Game::UpdateModel()
 	if (isStarted)
 	{
 		dude.Update(wnd.kbd);
-		//if (wnd.kbd.KeyIsPressed(VK_RIGHT))
-		//{
-		//	dude.SetX(dude.GetX() + 2);
-		//}
-		//if (wnd.kbd.KeyIsPressed(VK_LEFT))
-		//{
-		//	dude.SetX(dude.GetX() - 2);
-		//}
-		//if (wnd.kbd.KeyIsPressed(VK_DOWN))
-		//{
-		//	dude.SetY(dude.GetY() + 2);
-		//}
-		//if (wnd.kbd.KeyIsPressed(VK_UP))
-		//{
-		//	dude.SetY(dude.GetY() - 2);
-		//}
 
 		dude.ClampToScreen();
 
@@ -28449,33 +28434,48 @@ void Game::DrawTitleScreen(int x, int y)
 
 void Game::ComposeFrame()
 {
-	myRect.MyDrawRectangle(gfx);
-	gfx.DrawRectDim(600, 600, 300, 200, Colors::Blue);
-	if (!isStarted)
-	{
-		DrawTitleScreen(325,211);
-	}
-	else
-	{
-		dude.Draw(gfx);
+	//myRect.MyDrawRectangle(gfx);
+	//gfx.DrawRectDim(600, 600, 300, 200, Colors::Blue);
+	//if (!isStarted)
+	//{
+	//	DrawTitleScreen(325,211);
+	//}
+	//else
+	//{
+	//	for (int i = 0, numPoosEaten = 0; i < pooArrSize; i++)
+	//	{
+	//		if (!pooArr[i].IsEaten())
+	//		{
+	//			pooArr[i].Draw(gfx);
+	//		}
+	//		else
+	//		{
+	//			numPoosEaten++; //We'll just recount the eaten poos each time
+	//			if (numPoosEaten >= pooArrSize)
+	//			{
+	//					DrawGameOver(358, 268);
+	//			}
+	//		}
+	//	}
+	//	dude.Draw(gfx);
+	//}
 
-		numPoosEaten = 0;
-		for (int i = 0; i < pooArrSize; i++)
-		{
-			if (!pooArr[i].IsEaten())
-			{
-				pooArr[i].Draw(gfx);
-			}
-			else
-			{
-				numPoosEaten++; //We'll just recount the eaten poos each time
-				if (numPoosEaten >= pooArrSize)
-				{
-						DrawGameOver(358, 268);
-				}
-			}
-		}
+	/********************************/
+	/*  Array Tutorial Variables    */
+	std::mt19937 rng(69); //We are initializing with the same value everytime, so we get the same results everytime
+	std::uniform_int_distribution<int> dist(0, 420);
+
+	constexpr int size = 30000;
+	int n[size];
+	int sum = 0;
+	for (int i = 0; i < size; i++)
+	{
+		n[i] = dist(rng);
+		sum += n[i];
 	}
+
+	int result = sum / size;
+	/********************************/
 }
 
 
