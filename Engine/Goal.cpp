@@ -64,11 +64,29 @@ void Goal::ProcessConsumption(const Dude& dude)
 	}
 }
 
-void Goal::Draw(Graphics& gfx) const
+void Goal::Draw(Graphics& gfx)
 {
 	assert(initialized == true);
-	//ClampToScreen();
-	Color colour = Colors::Red;
+	//Update colour
+	if (goingUp)
+	{
+		green++;
+		blue++;
+		if (green > 254 || blue > 254)
+		{
+			goingUp = false;
+		}
+	}
+	else
+	{
+		green--;
+		blue--;
+		if (green < 1 || blue < 1)
+		{
+			goingUp = true;
+		}
+	}
+	Color colour(red, green, blue);
 	gfx.DrawRectDim(x, y, width, height, colour);
 }
 
