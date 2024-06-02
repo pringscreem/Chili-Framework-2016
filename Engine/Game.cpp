@@ -68,7 +68,7 @@ void Game::UpdateModel()
 
 		dude.ClampToScreen();
 
-		for (int i = 0; i < pooArrSize; i++)
+		for (int i = 0; i < nPoo; i++)
 		{
 			pooArr[i].Update();
 			pooArr[i].ProcessConsumption(dude);
@@ -28434,54 +28434,62 @@ void Game::DrawTitleScreen(int x, int y)
 
 void Game::ComposeFrame()
 {
-	//myRect.MyDrawRectangle(gfx);
-	//gfx.DrawRectDim(600, 600, 300, 200, Colors::Blue);
-	//if (!isStarted)
-	//{
-	//	DrawTitleScreen(325,211);
-	//}
-	//else
-	//{
-	//	for (int i = 0, numPoosEaten = 0; i < pooArrSize; i++)
-	//	{
-	//		if (!pooArr[i].IsEaten())
-	//		{
-	//			pooArr[i].Draw(gfx);
-	//		}
-	//		else
-	//		{
-	//			numPoosEaten++; //We'll just recount the eaten poos each time
-	//			if (numPoosEaten >= pooArrSize)
-	//			{
-	//					DrawGameOver(358, 268);
-	//			}
-	//		}
-	//	}
-	//	dude.Draw(gfx);
-	//}
+	myRect.MyDrawRectangle(gfx);
+	gfx.DrawRectDim(600, 600, 300, 200, Colors::Blue);
+	if (!isStarted)
+	{
+		DrawTitleScreen(325,211);
+	}
+	else
+	{
+		//Check for Game Over
+		bool allEaten = true;
+		for (int i = 0; i < nPoo; i++)
+		{
+			allEaten = allEaten && pooArr[i].IsEaten();
+			if (!allEaten)
+			{
+				break;
+			}
+		}
+		if (allEaten = true)
+		{
+			DrawGameOver(358, 268);
+		}
+
+		//Draw the Poos
+		for (int i = 0; i < nPoo; i++)
+		{
+			if (!pooArr[i].IsEaten())
+			{
+				pooArr[i].Draw(gfx);
+			}
+		}
+		dude.Draw(gfx);
+	}
 
 	/********************************/
 	/*  Array Tutorial Variables    */
-	std::mt19937 rng(69); //We are initializing with the same value everytime, so we get the same results everytime
-	std::uniform_int_distribution<int> dist(0, 420);
-
-	constexpr int size = 30000;
-	int n[size];
-	int sum = 0;
-	for (int i = 0; i < size; i++)
-	{
-		n[i] = dist(rng);
-		sum += n[i];
-	}
-
-	int result = sum / size;
+	//std::mt19937 rng(69); //We are initializing with the same value everytime, so we get the same results everytime
+	//std::uniform_int_distribution<int> dist(0, 420);
+	//
+	//constexpr int size = 30000;
+	//int n[size];
+	//int sum = 0;
+	//for (int i = 0; i < size; i++)
+	//{
+	//	n[i] = dist(rng);
+	//	sum += n[i];
+	//}
+	//
+	//int result = sum / size;
 	/********************************/
 }
 
 
 void Game::InitializePooArr()
 {
-	//For now the array is initialized in the constructor's initialization list.
+	////For now the array is initialized in the constructor's initialization list.
 	//RequestOutputTxt("Started InitializePooArr() \n");
 	//std::random_device rd;
 	//std::mt19937 rng(rd());

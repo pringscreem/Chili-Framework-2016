@@ -56,8 +56,8 @@ private:
 	std::uniform_int_distribution<int> yDist;//0, 570
 	Dude dude;
 
-	Poo pooArr[9];
-	int pooArrSize = sizeof(pooArr) / sizeof(pooArr[0]);
+	static constexpr int nPoo = 1000;
+	Poo pooArr[nPoo];
 	int numPoosEaten = 0;
 
 	MyRectangle myRect;

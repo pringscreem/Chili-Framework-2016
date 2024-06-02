@@ -197,3 +197,11 @@ constexpr - keyword to set a value to const at the time of compilation
 
 ***** Add a Breakpoint, start Debugging with F5, and then press F10 to step through the program, 
 ***** F11 to go deeper into a statement.  Shift + F5 stops the debugging.
+
+***** The Rule of Three/Law of the Big Three, in C++, claims that if a class defines any of the 
+***** following three functions, it should define all three:
+***** Copy Constructor
+***** Copy Assignment Constructor
+***** Destructor
+*****	This refers to defining the functions instead of using the default functions that the 
+*****	compiler creates for you.
