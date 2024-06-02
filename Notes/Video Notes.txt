@@ -209,5 +209,14 @@ May 31, 2024
 													  the window)
 	-He does the change in number of Poos the easy way (copy/paste more of the same)
 
+June 1, 2024
 	Video 13
-	-
+	-Array demo
+	-Swap Poo class to an array of Poos
+	-Change the Poo Constructor to an Init function with a check (one-time initialization)
+	** Change the objective of the game from collecting the poo to avoiding the poo
+	** Change the goal to reaching the red square
+	** Draw the Game Over graphic on top of everything else
+	** Extra Challenge: Make the square cycle between white and red
+	**					Add a graphic to the top left that lengthens when you collect the 
+	**					red squares

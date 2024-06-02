@@ -36,20 +36,14 @@ Game::Game( MainWindow& wnd )
 	gfx( wnd ),
 	rng( rd() ),
 	xDist( 0, 770),
-	yDist( 0, 570),
-	pooArr{ 
-			{xDist(rng), yDist(rng), 1, -1}, //The syntax for initializing an array of classes like this is a mess.
-			{xDist(rng), yDist(rng), -1, 1}, //You have to use curly braces instead of parentheses because
-			{xDist(rng), yDist(rng), -1, 1}, // otherwise it misinterprets what you want to be the element 
-			{xDist(rng), yDist(rng), 1, -1}, // values as function arguments instead.
-			{xDist(rng), yDist(rng), 1, 1},
-			{xDist(rng), yDist(rng), -1, 1},
-			{xDist(rng), yDist(rng), -1, 1},
-			{xDist(rng), yDist(rng), 1, -1},
-			{xDist(rng), yDist(rng), 1, -1}
-		  }
+	yDist( 0, 570)
 {
 	//RequestOutputTxt("The Game constructor has been called. \n");
+	std::uniform_int_distribution<int> vDist(-1, 1);
+	for(int i = 0; i < nPoo; i++)
+	{
+		poos[i].Init(xDist(rng), yDist(rng), vDist(rng), vDist(rng));
+	}
 }
 
 void Game::Go()
@@ -65,13 +59,12 @@ void Game::UpdateModel()
 	if (isStarted)
 	{
 		dude.Update(wnd.kbd);
-
 		dude.ClampToScreen();
 
 		for (int i = 0; i < nPoo; i++)
 		{
-			pooArr[i].Update();
-			pooArr[i].ProcessConsumption(dude);
+			poos[i].Update();
+			poos[i].ProcessConsumption(dude);
 		}
 	}
 	else
@@ -28434,8 +28427,6 @@ void Game::DrawTitleScreen(int x, int y)
 
 void Game::ComposeFrame()
 {
-	myRect.MyDrawRectangle(gfx);
-	gfx.DrawRectDim(600, 600, 300, 200, Colors::Blue);
 	if (!isStarted)
 	{
 		DrawTitleScreen(325,211);
@@ -28444,15 +28435,21 @@ void Game::ComposeFrame()
 	{
 		//Check for Game Over
 		bool allEaten = true;
+		bool anyEaten = false;
 		for (int i = 0; i < nPoo; i++)
 		{
-			allEaten = allEaten && pooArr[i].IsEaten();
+			allEaten = allEaten && poos[i].IsEaten();
 			if (!allEaten)
 			{
 				break;
 			}
+			//anyEaten = anyEaten || poos[i].IsEaten();
+			//if (anyEaten)
+			//{
+			//	break;
+			//}
 		}
-		if (allEaten = true)
+		if (allEaten == true)
 		{
 			DrawGameOver(358, 268);
 		}
@@ -28460,9 +28457,9 @@ void Game::ComposeFrame()
 		//Draw the Poos
 		for (int i = 0; i < nPoo; i++)
 		{
-			if (!pooArr[i].IsEaten())
+			if (!poos[i].IsEaten())
 			{
-				pooArr[i].Draw(gfx);
+				poos[i].Draw(gfx);
 			}
 		}
 		dude.Draw(gfx);

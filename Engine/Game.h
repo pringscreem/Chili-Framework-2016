@@ -57,7 +57,7 @@ private:
 	Dude dude;
 
 	static constexpr int nPoo = 1000;
-	Poo pooArr[nPoo];
+	Poo poos[nPoo];
 	int numPoosEaten = 0;
 
 	MyRectangle myRect;

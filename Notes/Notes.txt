@@ -205,3 +205,31 @@ constexpr - keyword to set a value to const at the time of compilation
 ***** Destructor
 *****	This refers to defining the functions instead of using the default functions that the 
 *****	compiler creates for you.
+
+***** Watch out for "==" errors.  It might be better to go with just the statement of the bool 
+***** in if statements etc. to avoid the error (once you are familiar with the idiosyncrasies of 
+***** the syntax it is not as bad to read).
+
+
+*************************************************************************************************
+*************************************************************************************************
+*****					One-Use Lockout, On Init Functions:
+***** 
+***** We can use a private bool to set up one-use functions (Check the bool and then flip it).
+***** 
+***** Asserts are taken out when you compile in Release instead of Debug mode
+***** There are commonly used conventions for compiling code only in the development version.
+***** One example is to define a macro and use #define NDEBUG and #ifndef NDEBUG ... #endif
+***** 
+***** The reason we don't like the Init function without a one-use lockout (with a bool) is that 
+***** it break encapsulation by allowing access to the private variables.
+***** The one-use lockout fixes this.
+***** 
+***** Using an Init function creates the risk of creating an uninitialized instance of the class
+***** 
+***** Vectors will allow us to use the class' Constructor, which negates the need for the 
+***** Init workaround and Assert fix for restoring Encapsulation.
+*************************************************************************************************
+*************************************************************************************************
+
+***** The DrawRect function that he made doesn't clamp to the screen (mine does)

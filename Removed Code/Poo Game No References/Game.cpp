@@ -29036,9 +29036,9 @@ void Game::ComposeFrame()
 		//}
 		for (int i = 0; i < pooArrSize; i++)
 		{
-			if (!pooArr[i].IsEaten())
+			if (!poos[i].IsEaten())
 			{
-				pooArr[i].Draw(gfx);
+				poos[i].Draw(gfx);
 			}
 		}
 	}
