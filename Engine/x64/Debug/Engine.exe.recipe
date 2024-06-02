@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\x64\Debug\Engine.exe</FullPath>
+      <FullPath>C:\msys64\home\ssonn\GitHub2023\x64\Debug\Engine.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

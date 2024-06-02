@@ -27,6 +27,7 @@
 #include "Dude.h"
 #include "MyRectangle.h"
 #include <random>
+#include "Goal.h"
 
 class Game
 {
@@ -56,11 +57,13 @@ private:
 	std::uniform_int_distribution<int> yDist;//0, 570
 	Dude dude;
 
-	static constexpr int nPoo = 1000;
+	static constexpr int nPoo = 1;
 	Poo poos[nPoo];
-	int numPoosEaten = 0;
 
 	MyRectangle myRect;
 	bool isStarted = false;
+
+	Goal* goal = new Goal;
+	int numGoalsEaten = 0;
 	/********************************/
 };

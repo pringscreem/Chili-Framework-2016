@@ -29,6 +29,7 @@
 #include "MyRectangle.h"
 #include <string> //RequestOutputTxt
 #include <fstream>//RequestOutputTxt
+#include "Goal.h"
 
 Game::Game( MainWindow& wnd )
 	: //This colon starts the initializer list for the constructor
@@ -44,6 +45,7 @@ Game::Game( MainWindow& wnd )
 	{
 		poos[i].Init(xDist(rng), yDist(rng), vDist(rng), vDist(rng));
 	}
+	goal->Init(xDist(rng), yDist(rng), 0, 0);
 }
 
 void Game::Go()
@@ -58,9 +60,22 @@ void Game::UpdateModel()
 {
 	if (isStarted)
 	{
+		//Dude
 		dude.Update(wnd.kbd);
 		dude.ClampToScreen();
 
+		//Goal
+		goal->Update();
+		goal->ProcessConsumption(dude);
+		if (goal->IsEaten())
+		{
+			numGoalsEaten++;
+			delete goal;
+			goal = new Goal;
+			goal->Init(xDist(rng), yDist(rng), 0, 0);
+		}
+
+		//Poos
 		for (int i = 0; i < nPoo; i++)
 		{
 			poos[i].Update();
@@ -28433,25 +28448,20 @@ void Game::ComposeFrame()
 	}
 	else
 	{
+		//Draw Goal Square
+		if (!goal->IsEaten())
+		{
+			goal->Draw(gfx);
+		}
 		//Check for Game Over
-		bool allEaten = true;
 		bool anyEaten = false;
 		for (int i = 0; i < nPoo; i++)
 		{
-			allEaten = allEaten && poos[i].IsEaten();
-			if (!allEaten)
+			anyEaten = anyEaten || poos[i].IsEaten();
+			if (anyEaten)
 			{
 				break;
 			}
-			//anyEaten = anyEaten || poos[i].IsEaten();
-			//if (anyEaten)
-			//{
-			//	break;
-			//}
-		}
-		if (allEaten == true)
-		{
-			DrawGameOver(358, 268);
 		}
 
 		//Draw the Poos
@@ -28463,6 +28473,15 @@ void Game::ComposeFrame()
 			}
 		}
 		dude.Draw(gfx);
+
+		//Draw the Game Over graphic last so it is on top
+		if (anyEaten == true)
+		{
+			DrawGameOver(358, 268);
+		}
+
+		//Draw the Score Meter
+		gfx.DrawRectDim(10, 10, numGoalsEaten * 10, 10, Colors::Blue);
 	}
 
 	/********************************/

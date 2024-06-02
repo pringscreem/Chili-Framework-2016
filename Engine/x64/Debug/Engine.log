@@ -3,6 +3,7 @@
   Dude.cpp
   DXErr.cpp
   Game.cpp
+  Goal.cpp
   Graphics.cpp
   Keyboard.cpp
   Main.cpp
@@ -10,14 +11,6 @@
   Mouse.cpp
   MyRectangle.cpp
   Poo.cpp
-C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\Game.cpp(40,1): error C2512: 'Poo': no appropriate default constructor available
-C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\Poo.h(6,7): message : see declaration of 'Poo' (compiling source file Game.cpp)
-C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\Game.cpp(85,14): error C2039: 'ProcessComsumption': is not a member of 'Poo'
-C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\Poo.h(6): message : see declaration of 'Poo'
-C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\Game.cpp(94,2): error C2059: syntax error: 'else'
-C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\Game.cpp(95,2): error C2143: syntax error: missing ';' before '{'
-C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\Game.cpp(95,2): error C2447: '{': missing function header (old-style formal list?)
-C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\Game.cpp(102,1): error C2059: syntax error: '}'
-C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\Game.cpp(102,1): error C2143: syntax error: missing ';' before '}'
-C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\Game.cpp(105,1): error C2143: syntax error: missing ';' before '{'
-C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\Game.cpp(105,1): error C2447: '{': missing function header (old-style formal list?)
+C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\Goal.cpp(70,16): error C2662: 'void Goal::ClampToScreen(void)': cannot convert 'this' pointer from 'const Goal' to 'Goal &'
+C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\Goal.cpp(70,2): message : Conversion loses qualifiers
+C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Engine\Goal.h(16,7): message : see declaration of 'Goal::ClampToScreen' (compiling source file Goal.cpp)
