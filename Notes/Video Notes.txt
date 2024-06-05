@@ -220,3 +220,12 @@ June 1, 2024
 	** Extra Challenge: Make the square cycle between white and red
 	**					Add a graphic to the top left that lengthens when you collect the 
 	**					red squares
+
+June 2, 2024
+	Video 13 Homework
+	-My solution was to copy the Poo class and rename it to Goal, then adjust e.g. velocity = 0
+	-Make a Game Over function to freeze everything in place
+
+June 5, 2024
+	Video 13 Homework
+	-Make the Game Over screen freeze

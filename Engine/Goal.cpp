@@ -70,18 +70,18 @@ void Goal::Draw(Graphics& gfx)
 	//Update colour
 	if (goingUp)
 	{
-		green++;
-		blue++;
-		if (green > 254 || blue > 254)
+		green += 5;
+		blue += 5;
+		if (green > 250 || blue > 250)
 		{
 			goingUp = false;
 		}
 	}
 	else
 	{
-		green--;
-		blue--;
-		if (green < 1 || blue < 1)
+		green -= 5;
+		blue -= 5;
+		if (green < 5 || blue < 5)
 		{
 			goingUp = true;
 		}

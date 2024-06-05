@@ -26,5 +26,5 @@ class Goal
 	int red = 255;
 	int green = 0;
 	int blue = 0;
-	bool goingUp = true;
+	bool goingUp = true; //For the colour value (pulsing)
 };//The semi-colon after classes is a common error (reminder)
