@@ -58,40 +58,42 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	if (!gameIsover)
-	{}
-	if (isStarted)
+	if (!gameIsOver)
 	{
-		//Dude
-		dude.Update(wnd.kbd);
-		dude.ClampToScreen();
+			//
 
-		//Goal
-		goal->Update();
-		goal->ProcessConsumption(dude);
-		if (goal->IsEaten())
+		if (isStarted)
 		{
-			numGoalsEaten++;
-			delete goal;
-			goal = new Goal;
-			goal->Init(xDist(rng), yDist(rng), 0, 0);
+			//Dude
+			dude.Update(wnd.kbd);
+			dude.ClampToScreen();
+
+			//Goal
+			goal->Update();
+			goal->ProcessConsumption(dude);
+			if (goal->IsEaten())
+			{
+				numGoalsEaten++;
+				delete goal;
+				goal = new Goal;
+				goal->Init(xDist(rng), yDist(rng), 0, 0);
+			}
+
+			//Poos
+			for (int i = 0; i < nPoo; i++)
+			{
+				poos[i].Update();
+				poos[i].ProcessConsumption(dude);
+			}
 		}
-
-		//Poos
-		for (int i = 0; i < nPoo; i++)
+		else
 		{
-			poos[i].Update();
-			poos[i].ProcessConsumption(dude);
+			if (wnd.kbd.KeyIsPressed(VK_RETURN))
+			{
+				isStarted = true;
+			}
 		}
 	}
-	else
-	{
-		if (wnd.kbd.KeyIsPressed(VK_RETURN))
-		{
-			isStarted = true;
-		}
-	}
-
 }
 
 void Game::DrawGameOver(int x, int y)
@@ -28479,6 +28481,7 @@ void Game::ComposeFrame()
 		//Draw the Game Over graphic last so it is on top
 		if (anyEaten == true)
 		{
+			gameIsOver = true;
 			DrawGameOver(358, 268);
 		}
 
@@ -28503,7 +28506,6 @@ void Game::ComposeFrame()
 	//
 	//int result = sum / size;
 	/********************************/
-}
 
 
 void Game::InitializePooArr()
