@@ -236,3 +236,5 @@ constexpr - keyword to set a value to const at the time of compilation
 
 ***** Investigate Iterators instead of traditional for-loops.
 ***** Consider using alternate for-loops.
+
+***** Turned off automatic brace completion (annoying new line added whe typing "{}").

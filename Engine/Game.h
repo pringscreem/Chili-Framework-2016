@@ -65,5 +65,7 @@ private:
 
 	Goal* goal = new Goal;
 	int numGoalsEaten = 0;
+
+	bool gameIsOver = false;
 	/********************************/
 };

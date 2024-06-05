@@ -58,6 +58,8 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	if (!gameIsover)
+	{}
 	if (isStarted)
 	{
 		//Dude
@@ -28444,7 +28446,7 @@ void Game::ComposeFrame()
 {
 	if (!isStarted)
 	{
-		DrawTitleScreen(325,211);
+		DrawTitleScreen(325, 211);
 	}
 	else
 	{
@@ -28483,6 +28485,7 @@ void Game::ComposeFrame()
 		//Draw the Score Meter
 		gfx.DrawRectDim(10, 10, numGoalsEaten * 10, 10, Colors::Blue);
 	}
+}
 
 	/********************************/
 	/*  Array Tutorial Variables    */
