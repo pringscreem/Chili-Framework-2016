@@ -28458,7 +28458,7 @@ void Game::ComposeFrame()
 		for (int i = 0; i < nPoo; i++)
 		{
 			anyEaten = anyEaten || poos[i].IsEaten();
-			if (anyEaten)
+			if (anyEaten) //This quits the for-loop as soon as possible
 			{
 				break;
 			}

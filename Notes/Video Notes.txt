@@ -228,4 +228,5 @@ June 2, 2024
 
 June 5, 2024
 	Video 13 Homework
-	-Make the Game Over screen freeze
+	-Make the Game Over screen freeze -> Wrap everything in an if statement for the game 
+										 over condition?

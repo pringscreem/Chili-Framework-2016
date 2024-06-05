@@ -233,3 +233,6 @@ constexpr - keyword to set a value to const at the time of compilation
 *************************************************************************************************
 
 ***** The DrawRect function that he made doesn't clamp to the screen (mine does)
+
+***** Investigate Iterators instead of traditional for-loops.
+***** Consider using alternate for-loops.
