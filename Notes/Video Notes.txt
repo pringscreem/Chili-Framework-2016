@@ -230,3 +230,14 @@ June 5, 2024
 	Video 13 Homework
 	-Make the Game Over screen freeze -> Wrap everything in an if statement for the game 
 										 over condition?
+	-He refactors Poo -> Changes the ProcessConsumption function and makes changes to adapt.
+					  -> My version made no changes to Poo and minimal changes to Game.
+					  -> I could name my bool better (start with "is" instead of putting it in 
+						 the middle of the name).
+					  -> He made a Goal class as well.
+					  -> He wrote his Goal class from scratch.
+					  -> He copies some stuff from Poo.
+					  -> I used a pointer and just re-instantiated the Goal on the Heap, but 
+						 he has not covered pointers yet, so he makes a Respawn function.
+					  -> He also uses a bool for solving the colour pulsing problem.
+					  -> He created a Meter class for illustrating number of goals collected.

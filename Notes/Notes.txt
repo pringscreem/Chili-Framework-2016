@@ -238,3 +238,6 @@ constexpr - keyword to set a value to const at the time of compilation
 ***** Consider using alternate for-loops.
 
 ***** Turned off automatic brace completion (annoying new line added whe typing "{}").
+
+***** Sequential if-statements can be replaced by two conditions in the same if-statement 
+***** (this will depend on the particular circumstances).
