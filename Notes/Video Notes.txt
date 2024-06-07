@@ -241,3 +241,6 @@ June 5, 2024
 						 he has not covered pointers yet, so he makes a Respawn function.
 					  -> He also uses a bool for solving the colour pulsing problem.
 					  -> He created a Meter class for illustrating number of goals collected.
+
+June 7, 2024
+	Video 14a
