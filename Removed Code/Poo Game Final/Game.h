@@ -23,6 +23,11 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
+#include "Poo.h"
+#include "Dude.h"
+#include "MyRectangle.h"
+#include <random>
+#include "Goal.h"
 
 class Game
 {
@@ -36,11 +41,31 @@ private:
 	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
+	void DrawGameOver(int x, int y);
+	void DrawTitleScreen(int x, int y);
+	void InitializePooArr();
+	void RequestOutputTxt(/*std::string requestedOutput1,*/ int requestedOutputNum/*, std::string requestedOutput2*/);
 	/********************************/
 private:
 	MainWindow& wnd;
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
+	std::random_device rd;
+	std::mt19937 rng;
+	std::uniform_int_distribution<int> xDist; //0, 770
+	std::uniform_int_distribution<int> yDist;//0, 570
+	Dude dude;
+
+	static constexpr int nPoo = 1;
+	Poo poos[nPoo];
+
+	MyRectangle myRect;
+	bool isStarted = false;
+
+	Goal* goal = new Goal;
+	int numGoalsEaten = 0;
+
+	bool gameIsOver = false;
 	/********************************/
 };

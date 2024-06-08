@@ -241,3 +241,6 @@ constexpr - keyword to set a value to const at the time of compilation
 
 ***** Sequential if-statements can be replaced by two conditions in the same if-statement 
 ***** (this will depend on the particular circumstances).
+
+***** Restarting Visual Studio fixed the error caused by updating the code to the new downloaded 
+***** version (wouldn't start before, now it does).
