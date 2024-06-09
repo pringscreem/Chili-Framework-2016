@@ -20,11 +20,14 @@
  ******************************************************************************************/
 #include "MainWindow.h"
 #include "Game.h"
+#include "Location.h"
 
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+	brd(gfx),
+	rng(std::random_device()())
 {
 }
 
@@ -42,4 +45,26 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
+	int red = 0;
+	int green = 0;
+	int blue = 0;
+	Color colour(red, green, blue);
+	Location loc = { 0, 0 };
+	for (int i = 0; i < brd.squareWidth /*- 1*/; i++)
+	{
+		for (int j = 0; j < brd.squareHeight /*- 1*/; j++)
+		{
+			brd.DrawCell(loc, colour);
+			loc.y = j;
+			red += 26;
+			green += 26;
+			blue += 26;
+			colour = (red, green, blue);
+		}
+		loc.x = i;
+		red += 26;
+		green += 26;
+		blue += 26;
+		colour = ( red, green, blue );
+	}
 }

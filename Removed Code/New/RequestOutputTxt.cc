@@ -1,4 +1,4 @@
-
+#include <fstream>
 //Class Declaration
 void RequestOutputTxt(/*std::string requestedOutput1,*/ int requestedOutputNum/*, std::string requestedOutput2*/);
 

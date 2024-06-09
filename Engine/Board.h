@@ -8,6 +8,8 @@ class Board
 	public:
 		Board(Graphics& gfx);
 		void DrawCell(Location& loc, Color c);
+		int squareWidth = gfx.ScreenWidth / dimension;
+		int squareHeight = gfx.ScreenHeight/ dimension;
 	private:
 		static constexpr int dimension = 20; //These are the pixel dimensions of the squares
 		static constexpr int width = 10;

@@ -258,3 +258,5 @@ constexpr - keyword to set a value to const at the time of compilation
 ***** The Class Wizard is awesome.
 
 ***** Ctrl + period to open the Quick Refactoring menu (create definition for functions/classes).
+
+***** He uses 32 asterisks for his "User Variable" and "User Function" dividers in classes.

@@ -1,4 +1,5 @@
 #include "Board.h"
+#include <assert.h>
 
 Board::Board(Graphics& gfx)
 	:
@@ -8,5 +9,9 @@ Board::Board(Graphics& gfx)
 
 void Board::DrawCell(Location& loc, Color c)
 {
-	gfx.DrawRectDim(loc.x * dimension, loc.y * dimension);
+	assert(loc.x >= 0);
+	assert(loc.x < gfx.ScreenWidth);
+	assert(loc.y >= 0);
+	assert(loc.y < gfx.ScreenHeight);
+	gfx.DrawRectDim(loc.x * dimension, loc.y * dimension, dimension, dimension, c);
 }
