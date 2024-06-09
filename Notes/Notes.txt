@@ -244,3 +244,17 @@ constexpr - keyword to set a value to const at the time of compilation
 
 ***** Restarting Visual Studio fixed the error caused by updating the code to the new downloaded 
 ***** version (wouldn't start before, now it does).
+
+*****		Classes vs Structs
+***** Classes default to private.
+***** Structs default to public.
+***** 
+***** Generally:
+***** Classes are used for objects with complicated behaviour.
+***** Structs are used for objects with no complicated behaviour associated with them.
+***** 
+***** Other languages (e.g. C#) have structs that cannot have functions.
+
+***** The Class Wizard is awesome.
+
+***** Ctrl + period to open the Quick Refactoring menu (create definition for functions/classes).
