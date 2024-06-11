@@ -15,3 +15,13 @@ void Board::DrawCell(Location& loc, Color c)
 	assert(loc.y < gfx.ScreenHeight);
 	gfx.DrawRectDim(loc.x * dimension, loc.y * dimension, dimension, dimension, c);
 }
+
+int Board::GetGridHeight()
+{
+	return gfx.ScreenHeight / dimension;
+}
+
+int Board::GetGridWidth()
+{
+	return gfx.ScreenWidth / dimension;
+}

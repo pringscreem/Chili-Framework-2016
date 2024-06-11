@@ -45,12 +45,26 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
+	std::uniform_int_distribution<int> colorDist(0, 255);
+	for (int y = 0; y < brd.GetGridHeight(); y++)
+	{
+		for (int x = 0; x < brd.GetGridWidth(); x++)
+		{
+			Location loc = { x, y };
+			Color c(colorDist(rng), colorDist(rng), colorDist(rng));
+			brd.DrawCell(loc, c);
+		}
+	}
+}
+
+void Game::TestBoard()
+{
 	int red = 0;
 	int green = 0;
 	int blue = 0;
 	Color colour(red, green, blue);
 	Location loc = { 0, 0 };
-	for (int i = 0; i < brd.squareWidth /*- 1*/; i++)
+	for (int i = 0; i < brd.squareWidth /*- 1*/; i++) //He made some functions for calculating grid width/height (probably more flexible e.g. resolution change during play)
 	{
 		for (int j = 0; j < brd.squareHeight /*- 1*/; j++)
 		{
@@ -65,6 +79,6 @@ void Game::ComposeFrame()
 		red += 26;
 		green += 26;
 		blue += 26;
-		colour = ( red, green, blue );
+		colour = (red, green, blue);
 	}
 }

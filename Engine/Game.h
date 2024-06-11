@@ -38,6 +38,7 @@ private:
 	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
+	void TestBoard();
 	/********************************/
 private:
 	MainWindow& wnd;
@@ -49,5 +50,7 @@ private:
 	std::mt19937 rng;
 	//std::uniform_int_distribution<int> xDist;
 	//std::uniform_int_distribution<int> yDist;
+	int slowCount = 0;
+	Color keepColour;
 	/********************************/
 };

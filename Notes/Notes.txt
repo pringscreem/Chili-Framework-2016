@@ -255,7 +255,7 @@ constexpr - keyword to set a value to const at the time of compilation
 ***** 
 ***** Other languages (e.g. C#) have structs that cannot have functions.
 
-***** The Class Wizard is awesome.
+***** The "Add Class" button/menu is awesome.
 
 ***** Ctrl + period to open the Quick Refactoring menu (create definition for functions/classes).
 
