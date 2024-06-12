@@ -16,8 +16,37 @@ void Snake::MoveBy(const Location& delta_loc)
 
 void Snake::Grow()
 {
+	//Increase the number of segments being used
+	if(nSegments < nSegmentsMax)
+	{
+		nSegments++;
+	}
 }
 
 void Snake::Draw(Board& brd) const
+{
+	for(int i = 0; i < nSegments; i++)
+	{
+		segments[i].Draw(brd);
+	}
+}
+
+void Snake::Segment::InitHead(const Location& in_loc)
+{
+}
+
+void Snake::Segment::InitBody()
+{
+}
+
+void Snake::Segment::Follow(const Segment& next)
+{
+}
+
+void Snake::Segment::MoveBy(const Location& delta_loc)
+{
+}
+
+void Snake::Segment::Draw(Board& brd) const
 {
 }
