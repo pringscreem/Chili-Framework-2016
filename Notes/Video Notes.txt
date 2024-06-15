@@ -246,6 +246,16 @@ June 7, 2024
 	Video 14a
 	-Continue
 
-June 11, 2024
+June 14, 2024
 	Video 14a
 	-Continue
+
+June 15, 2024
+	Video 14b
+	-Completed basic Snake setup
+	-Still needs a Snake rendered on the Board, keyboard input, and initialization of new 
+	 Segments:
+	 Board: pick a start location (set in constructor) and a starting direction (delta_loc)
+	 Keyboard Input: same as before, change delta_loc to reflect input
+	 Initialization of New Segments: set the loc to just behind the last Segment and c to 
+									 bodyColor

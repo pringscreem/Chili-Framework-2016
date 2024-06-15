@@ -64,9 +64,9 @@ void Game::TestBoard()
 	int blue = 0;
 	Color colour(red, green, blue);
 	Location loc = { 0, 0 };
-	for (int i = 0; i < brd.squareWidth /*- 1*/; i++) //He made some functions for calculating grid width/height (probably more flexible e.g. resolution change during play)
+	for (int i = 0; i < brd.squareWidth; i++) //He made some functions for calculating grid width/height (probably more flexible e.g. resolution change during play)
 	{
-		for (int j = 0; j < brd.squareHeight /*- 1*/; j++)
+		for (int j = 0; j < brd.squareHeight; j++)
 		{
 			brd.DrawCell(loc, colour);
 			loc.y = j;

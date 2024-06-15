@@ -1,4 +1,5 @@
 #include "Snake.h"
+#include <assert.h>
 
 Snake::Snake(const Location& loc)
 {
@@ -34,6 +35,7 @@ void Snake::Draw(Board& brd) const
 void Snake::Segment::InitHead(const Location& in_loc)
 {
 	loc = in_loc;
+	c = Snake::headColor; //Segment is inside Snake, so it can access Snake's Private Members
 }
 
 void Snake::Segment::InitBody()
@@ -42,14 +44,16 @@ void Snake::Segment::InitBody()
 
 void Snake::Segment::Follow(const Segment& next)
 {
+	loc = next.loc;
 }
 
 void Snake::Segment::MoveBy(const Location& delta_loc)
 {
-	loc.x = loc.x += delta_loc.x;
-	loc.y = loc.y += delta_loc.y;
+	assert(abs(delta_loc.x) + abs(delta_loc.x) == 1);
+	loc.Add(delta_loc);
 }
 
 void Snake::Segment::Draw(Board& brd) const
 {
+	brd.DrawCell(loc, c);
 }
