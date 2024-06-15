@@ -21,13 +21,15 @@ class Snake
 				Color c;
 		};
 	public:
-	Snake(const Location& loc);
-	void MoveBy(const Location& delta_loc);
-	void Grow();
-	void Draw(Board& brd) const;
+		Snake(const Location& loc);
+		void MoveBy(const Location& delta_loc);
+		void Grow();
+		void Draw(Board& brd) const;
 
 	private:
-		static constexpr int nSegmentsMax = 100;
+		static constexpr Color headColor = Colors::Yellow;
+		static constexpr Color bodyColor = Colors::Green;
+		static constexpr int nSegmentsMax = 100; //Static variables are shared by all instances of the class
 		Segment segments[nSegmentsMax];
 		int nSegments = 1;
 };

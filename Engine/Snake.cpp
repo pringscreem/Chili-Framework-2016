@@ -33,6 +33,7 @@ void Snake::Draw(Board& brd) const
 
 void Snake::Segment::InitHead(const Location& in_loc)
 {
+	loc = in_loc;
 }
 
 void Snake::Segment::InitBody()
@@ -45,9 +46,10 @@ void Snake::Segment::Follow(const Segment& next)
 
 void Snake::Segment::MoveBy(const Location& delta_loc)
 {
+	loc.x = loc.x += delta_loc.x;
+	loc.y = loc.y += delta_loc.y;
 }
 
 void Snake::Segment::Draw(Board& brd) const
 {
 }
-000

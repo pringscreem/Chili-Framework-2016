@@ -260,3 +260,32 @@ constexpr - keyword to set a value to const at the time of compilation
 ***** Ctrl + period to open the Quick Refactoring menu (create definition for functions/classes).
 
 ***** He uses 32 asterisks for his "User Variable" and "User Function" dividers in classes.
+
+
+*****		The "static" Keyword
+***** 
+***** "static" does different things depending on the context:
+*****	Inside a Function - the value is retained between function calls
+*****	Global - visible within its' own file
+*****	
+*****	Inside a Class - belong to the class definition instead of an individual instance
+*****				   - variable that is shared by all instances of the class
+***** 
+*****	Functions in Classes - belong to the class definition
+*****						 - can be called without any instances of the class
+*****						 - no access to the "this" pointer
+***** 
+*****	Class within a Function - limits the scope of the created class to inside the function
+***** 
+*****	Assertions - a type of assertion used to check a condition at compile time
+
+***** "object" and "instance" are equivalent terms
+
+***** "constexpr" is used to evaluate things at compile time, which improves efficiency at 
+***** runtime.
+***** 
+***** Variables - the value of the variable is computed at compile time
+***** 
+***** Functions - if it only uses const's and constexpr's, the function is computed at compile
+*****			  time (e.g. square(3*3), pow(3, 4) )
+*****			- there are restrictions on how you can write the function body
