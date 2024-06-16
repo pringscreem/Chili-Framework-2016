@@ -38,7 +38,9 @@ private:
 	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
-	void TestBoard();
+	void MyTestBoard();
+	void HisTestBoard();
+	void CheckKeys(const Keyboard& kbd);
 	/********************************/
 private:
 	MainWindow& wnd;
@@ -46,11 +48,10 @@ private:
 	/********************************/
 	/*  User Variables              */
 	Board brd;
-	//std::random_device rd;
 	std::mt19937 rng;
-	//std::uniform_int_distribution<int> xDist;
-	//std::uniform_int_distribution<int> yDist;
 	int slowCount = 0;
 	Color keepColour;
+
+	Location delta_loc = { 0, 0 };
 	/********************************/
 };

@@ -41,23 +41,18 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	CheckKeys(wnd.kbd);
+	//Check for Goal collision - make a Goal class (copy from Poo Game)
+	//						   - call snake.Grow() (position the new Segment properly)
+	//Check for tail collision
+	//Check for wall collision
 }
 
 void Game::ComposeFrame()
 {
-	std::uniform_int_distribution<int> colorDist(0, 255);
-	for (int y = 0; y < brd.GetGridHeight(); y++)
-	{
-		for (int x = 0; x < brd.GetGridWidth(); x++)
-		{
-			Location loc = { x, y };
-			Color c(colorDist(rng), colorDist(rng), colorDist(rng));
-			brd.DrawCell(loc, c);
-		}
-	}
 }
 
-void Game::TestBoard()
+void Game::MyTestBoard() //This renders each square with a slightly different colour in a gradient
 {
 	int red = 0;
 	int green = 0;
@@ -80,5 +75,44 @@ void Game::TestBoard()
 		green += 26;
 		blue += 26;
 		colour = (red, green, blue);
+	}
+}
+
+void Game::HisTestBoard() //This renders each square with a random colour
+{
+	std::uniform_int_distribution<int> colorDist(0, 255);
+	for(int y = 0; y < brd.GetGridHeight(); y++)
+	{
+		for(int x = 0; x < brd.GetGridWidth(); x++)
+		{
+			Location loc = { x, y };
+			Color c(colorDist(rng), colorDist(rng), colorDist(rng));
+			brd.DrawCell(loc, c);
+		}
+	}
+}
+
+void Game::CheckKeys(const Keyboard& kbd)
+{
+	if(kbd.KeyIsPressed(VK_RIGHT))
+	{
+		delta_loc.x = 1;
+		delta_loc.y = 0;
+		//delta_loc.Add({ 1, 0 }); //Prediction
+	}
+	if(kbd.KeyIsPressed(VK_LEFT))
+	{
+		delta_loc.x = -1;
+		delta_loc.y = 0;
+	}
+	if(kbd.KeyIsPressed(VK_DOWN))
+	{
+		delta_loc.x = 0;
+		delta_loc.y = 1;
+	}
+	if(kbd.KeyIsPressed(VK_UP))
+	{
+		delta_loc.x = 0;
+		delta_loc.y = -1;
 	}
 }
