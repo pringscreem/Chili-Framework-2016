@@ -46,10 +46,13 @@ void Game::UpdateModel()
 	//						   - call snake.Grow() (position the new Segment properly)
 	//Check for tail collision
 	//Check for wall collision
+	//Update Snake position
 }
 
 void Game::ComposeFrame()
 {
+	//Draw the Snake
+	//Draw the Goal
 }
 
 void Game::MyTestBoard() //This renders each square with a slightly different colour in a gradient
