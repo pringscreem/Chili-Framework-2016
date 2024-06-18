@@ -47,12 +47,16 @@ void Game::UpdateModel()
 	//Check for tail collision
 	//Check for wall collision
 	//Update Snake position
+
+	//Life Update
 }
 
 void Game::ComposeFrame()
 {
 	//Draw the Snake
 	//Draw the Goal
+
+	//Life Compose
 }
 
 void Game::MyTestBoard() //This renders each square with a slightly different colour in a gradient
@@ -118,4 +122,36 @@ void Game::CheckKeys(const Keyboard& kbd)
 		delta_loc.x = 0;
 		delta_loc.y = -1;
 	}
+}
+
+void Game::LifeComposeFrame()
+{
+}
+
+void Game::LifeUpdateModel()
+{
+}
+
+void Game::LifeCheckKeys(const Keyboard& kbd)
+{
+	if(kbd.KeyIsPressed(VK_RIGHT))
+	{
+		position.Add({1, 0});
+	}
+	if(kbd.KeyIsPressed(VK_LEFT))
+	{
+		position.Add({-1, 0});
+	}
+	if(kbd.KeyIsPressed(VK_DOWN))
+	{
+		position.Add({0, 1});
+	}
+	if(kbd.KeyIsPressed(VK_UP))
+	{
+		position.Add({0, -1});
+	}
+}
+
+void Game::LifeDrawPosition(const Location& position)
+{
 }

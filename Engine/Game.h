@@ -41,6 +41,11 @@ private:
 	void MyTestBoard();
 	void HisTestBoard();
 	void CheckKeys(const Keyboard& kbd);
+	//Life Functions
+	void LifeComposeFrame();
+	void LifeUpdateModel();
+	void LifeCheckKeys(const Keyboard& kbd);
+	void LifeDrawPosition(const Location& position);
 	/********************************/
 private:
 	MainWindow& wnd;
@@ -53,5 +58,7 @@ private:
 	Color keepColour;
 
 	Location delta_loc = { 0, 0 };
+	//Life Functions
+	Location position = {0, 0};
 	/********************************/
 };
