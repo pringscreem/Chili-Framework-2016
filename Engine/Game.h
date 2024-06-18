@@ -46,6 +46,7 @@ private:
 	void LifeUpdateModel();
 	void LifeCheckKeys(const Keyboard& kbd);
 	void LifeDrawPosition(const Location& position);
+	void LifeClampPosition();
 	/********************************/
 private:
 	MainWindow& wnd;

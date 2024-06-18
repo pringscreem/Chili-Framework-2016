@@ -41,14 +41,16 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	CheckKeys(wnd.kbd);
+	//Snake
+	//CheckKeys(wnd.kbd);
+
 	//Check for Goal collision - make a Goal class (copy from Poo Game)
 	//						   - call snake.Grow() (position the new Segment properly)
 	//Check for tail collision
 	//Check for wall collision
 	//Update Snake position
 
-	//Life Update
+	LifeUpdateModel();
 }
 
 void Game::ComposeFrame()
@@ -56,7 +58,7 @@ void Game::ComposeFrame()
 	//Draw the Snake
 	//Draw the Goal
 
-	//Life Compose
+	LifeComposeFrame();
 }
 
 void Game::MyTestBoard() //This renders each square with a slightly different colour in a gradient
@@ -126,10 +128,12 @@ void Game::CheckKeys(const Keyboard& kbd)
 
 void Game::LifeComposeFrame()
 {
+	LifeDrawPosition(position);
 }
 
 void Game::LifeUpdateModel()
 {
+	LifeCheckKeys(wnd.kbd);
 }
 
 void Game::LifeCheckKeys(const Keyboard& kbd)
@@ -150,8 +154,30 @@ void Game::LifeCheckKeys(const Keyboard& kbd)
 	{
 		position.Add({0, -1});
 	}
+	LifeClampPosition();
 }
 
 void Game::LifeDrawPosition(const Location& position)
 {
+	brd.DrawCell(position, Colors::Cyan);
+}
+
+void Game::LifeClampPosition()
+{
+	if(position.x < 0)
+	{
+		position.x = 0;
+	}
+	if(position.x > brd.GetGridWidth() - 1)
+	{
+		position.x = brd.GetGridWidth() - 1;
+	}
+	if(position.y < 0)
+	{
+		position.y = 0;
+	}
+	if(position.y > brd.GetGridHeight() - 1)
+	{
+		position.y = brd.GetGridHeight() - 1;
+	}
 }
