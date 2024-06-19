@@ -25,3 +25,20 @@ int Board::GetGridWidth()
 {
 	return gfx.ScreenWidth / dimension;
 }
+
+void Board::LifeInitLifeBoard(std::vector<std::vector<int>>& LifeBoard)
+{
+	int x = GetGridWidth();
+	int y = GetGridHeight();
+	LifeBoard.resize(x);
+	for(int i = 0; i < x; i++)
+	{
+		LifeBoard[i].resize(y);
+	}
+
+	for(int i = 0; i < x; i++)
+		for(int j = 0; j < y; j++)
+		{
+			LifeBoard[i][j] = 0;
+		}
+}
