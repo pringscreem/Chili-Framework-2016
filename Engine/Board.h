@@ -2,6 +2,7 @@
 
 #include "Graphics.h"
 #include "Location.h"
+#include <vector>
 
 class Board
 {
@@ -12,9 +13,12 @@ class Board
 		int squareHeight = gfx.ScreenHeight/ dimension;
 		int GetGridHeight();
 		int GetGridWidth();
+		//Life Functions
 	private:
 		static constexpr int dimension = 20; //These are the pixel dimensions of the squares
 		static constexpr int width = 10;
 		static constexpr int height = 10;
 		Graphics& gfx; //We can store a reference to something so that we don't have to put it in the function parameters every time.
+		//Life Variables
+
 };
