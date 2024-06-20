@@ -259,3 +259,13 @@ June 15, 2024
 	 Keyboard Input: same as before, change delta_loc to reflect input
 	 Initialization of New Segments: set the loc to just behind the last Segment and c to 
 									 bodyColor
+
+June 18, 2024
+	Life Extension
+	-Continue (add some functions)
+	
+June 19, 2024
+	Life Extension
+	-Continue
+	-Changed the "Edit.InsertNextMatchingCaret" shortcut to Ctrl + Alt + F (for "find", 
+	 because it is a different type of find/replace action)
