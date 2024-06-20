@@ -16,6 +16,7 @@ class Board
 		//Life Functions
 		void LifeInitLifeBoard(std::vector<std::vector<int>>& LifeBoard);
 		void LifeFlipPosition(const Location& position);
+		void LifeDrawBoard();
 	private:
 		static constexpr int dimension = 20; //These are the pixel dimensions of the squares
 		static constexpr int width = 10;

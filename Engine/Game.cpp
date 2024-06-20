@@ -128,6 +128,7 @@ void Game::CheckKeys(const Keyboard& kbd)
 
 void Game::LifeComposeFrame()
 {
+	brd.LifeDrawBoard();
 	LifeDrawPosition(position);
 }
 

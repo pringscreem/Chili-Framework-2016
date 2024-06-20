@@ -5,6 +5,7 @@ Board::Board(Graphics& gfx)
 	:
 	gfx(gfx) //Note that there are two different variables named "gfx" here (function parameter and class variable)
 {
+	LifeInitLifeBoard(LifeBoard);
 }
 
 void Board::DrawCell(const Location& loc, Color c)
@@ -55,4 +56,21 @@ void Board::LifeFlipPosition(const Location& position)
 	{
 		LifeBoard[x][y] = 0;
 	}
+}
+
+void Board::LifeDrawBoard() //Is there any point in passing the reference?
+{
+	int x = GetGridWidth();
+	int y = GetGridHeight();
+	Location drawPos = { 0, 0 };
+	for(int i = 0; i < x; i++)
+		for(int j = 0; j < y; j++)
+		{
+			if(LifeBoard[i][j] == 1)
+			{
+				drawPos.x = i;
+				drawPos.y = j;
+				DrawCell(drawPos, Colors::Green); //Maybe the {i, j} will work as a struct
+			}
+		}
 }

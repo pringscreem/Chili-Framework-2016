@@ -268,4 +268,11 @@ June 19, 2024
 	Life Extension
 	-Continue
 	-Changed the "Edit.InsertNextMatchingCaret" shortcut to Ctrl + Alt + F (for "find", 
-	 because it is a different type of find/replace action)
+	 because it is a different type of find/replace action).
+	-LifeFlipPosition--This changes the value in the LifeBoard (two-dimensional vector).......
+	-Set spacebar to the Flip Position key.
+	-LifeDrawBoard--This draws all of the squares that have flipped values in the LifeBoard.
+	-Can cause a "vector subscript out of range" error by holding down an arrow key and pressing 
+	 spacebar to flip the position (tries to access the next value e.g. -1).
+	-Sometimes the spacebar does not cause the position to flip (doesn't turn green).
+	-Seems like the position flip is laggy.
