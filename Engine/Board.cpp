@@ -42,3 +42,17 @@ void Board::LifeInitLifeBoard(std::vector<std::vector<int>>& LifeBoard)
 			LifeBoard[i][j] = 0;
 		}
 }
+
+void Board::LifeFlipPosition(const Location& position)
+{
+	int x = position.x;
+	int y = position.y;
+	if(LifeBoard[x][y] == 0)
+	{
+		LifeBoard[x][y] = 1;
+	}
+	else
+	{
+		LifeBoard[x][y] = 0;
+	}
+}

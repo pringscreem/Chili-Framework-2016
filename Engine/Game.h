@@ -59,7 +59,7 @@ private:
 	Color keepColour;
 
 	Location delta_loc = { 0, 0 };
-	//Life Functions
+	//Life Variables
 	Location position = {0, 0};
 	/********************************/
 };
