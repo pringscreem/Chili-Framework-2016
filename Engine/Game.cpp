@@ -130,6 +130,17 @@ void Game::LifeComposeFrame()
 {
 	brd.LifeDrawBoard();
 	LifeDrawPosition(position);
+	//This flashes blue and black on alternating frames.
+	if(flip % 2 == 0)
+	{
+		brd.LifeDrawColorBoard(Colors::Blue);
+		flip++;
+	}
+	else
+	{
+		brd.LifeDrawColorBoard(Colors::Black);
+		flip++;
+	}
 }
 
 void Game::LifeUpdateModel()
@@ -158,8 +169,16 @@ void Game::LifeCheckKeys(const Keyboard& kbd)
 	LifeClampPosition();
 	if(kbd.KeyIsPressed(VK_SPACE))
 	{
-		brd.LifeDrawColorBoard(Colors::Magenta);
-		brd.LifeFlipPosition(position);
+		if(spacebarTimerCounter % spacebarDelayFrames == 0)
+		{
+			brd.LifeDrawColorBoard(Colors::Magenta);
+			brd.LifeFlipPosition(position);
+		}
+		spacebarTimerCounter++;
+	}
+	else
+	{
+		spacebarTimerCounter = 0;
 	}
 }
 

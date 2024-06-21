@@ -61,5 +61,8 @@ private:
 	Location delta_loc = {0, 0};
 	//Life Variables
 	Location position = {0, 0};
+	int spacebarDelayFrames = 10;
+	int spacebarTimerCounter = 0;
+	int flip = 0;
 	/********************************/
 };
