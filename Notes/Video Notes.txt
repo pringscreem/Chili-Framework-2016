@@ -292,3 +292,7 @@ June 20, 2024
 	 the it was.
 	-This might also be the reason that the ball would sometimes pass through the paddles in Pong.
 	-The engine seems to run at 60hz.
+	-Wrote a blue/black flash to show the framerate visually.
+	-It would be better to just write a timer and test how long a frame takes (put the output in
+	 the text file).
+	-The simple example in Chat GPT worked (700 nanoseconds to do nothing).

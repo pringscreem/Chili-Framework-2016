@@ -25,6 +25,7 @@
 #include "Graphics.h"
 #include "Board.h"
 #include <random>
+#include <chrono>
 
 class Game
 {
@@ -47,6 +48,7 @@ private:
 	void LifeCheckKeys(const Keyboard& kbd);
 	void LifeDrawPosition(const Location& position);
 	void LifeClampPosition();
+	void LifeTestFrameTime();
 	/********************************/
 private:
 	MainWindow& wnd;
@@ -64,5 +66,10 @@ private:
 	int spacebarDelayFrames = 10;
 	int spacebarTimerCounter = 0;
 	int flip = 0;
+	bool isTestedOnce = false;
+	bool isDoneTest = false;
+	std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
+	std::chrono::high_resolution_clock::time_point end = std::chrono::high_resolution_clock::now();
+	std::chrono::nanoseconds duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
 	/********************************/
 };

@@ -22,6 +22,7 @@
 #include "Game.h"
 #include "Location.h"
 
+
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
@@ -37,6 +38,10 @@ void Game::Go()
 	UpdateModel();
 	ComposeFrame();
 	gfx.EndFrame();
+	//std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
+	//std::chrono::high_resolution_clock::time_point end = std::chrono::high_resolution_clock::now();
+	//std::chrono::nanoseconds duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+
 }
 
 void Game::UpdateModel()
@@ -131,7 +136,7 @@ void Game::LifeComposeFrame()
 	brd.LifeDrawBoard();
 	LifeDrawPosition(position);
 	//This flashes blue and black on alternating frames.
-	if(flip % 2 == 0)
+	if(flip % 60 == 0)
 	{
 		brd.LifeDrawColorBoard(Colors::Blue);
 		flip++;
@@ -146,6 +151,7 @@ void Game::LifeComposeFrame()
 void Game::LifeUpdateModel()
 {
 	LifeCheckKeys(wnd.kbd);
+	LifeTestFrameTime();
 }
 
 void Game::LifeCheckKeys(const Keyboard& kbd)
@@ -204,5 +210,23 @@ void Game::LifeClampPosition()
 	if(position.y > brd.GetGridHeight() - 1)
 	{
 		position.y = brd.GetGridHeight() - 1;
+	}
+}
+
+void Game::LifeTestFrameTime()
+{
+	if(!isTestedOnce)
+	{
+		start = std::chrono::high_resolution_clock::now();
+		isTestedOnce = true;
+	}
+	else
+	{
+		if(!isDoneTest)
+		{
+			isDoneTest = true;
+			end = std::chrono::high_resolution_clock::now();
+			duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+		}
 	}
 }
