@@ -296,3 +296,4 @@ June 20, 2024
 	-It would be better to just write a timer and test how long a frame takes (put the output in
 	 the text file).
 	-The simple example in Chat GPT worked (700 nanoseconds to do nothing).
+	-The test is not working properly yet (need to get it to test a single frame).
