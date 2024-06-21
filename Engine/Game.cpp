@@ -152,7 +152,10 @@ void Game::LifeUpdateModel()
 {
 	LifeCheckKeys(wnd.kbd);
 	LifeTestFrameTime();
-	//
+	if(isDoneTest)
+	{
+		int myBool = true;
+	}
 }
 
 void Game::LifeCheckKeys(const Keyboard& kbd)

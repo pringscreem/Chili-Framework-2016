@@ -297,3 +297,6 @@ June 20, 2024
 	 the text file).
 	-The simple example in Chat GPT worked (700 nanoseconds to do nothing).
 	-The test is not working properly yet (need to get it to test a single frame).
+
+June 21, 2024
+	Life Extension
