@@ -58,7 +58,7 @@ private:
 	int slowCount = 0;
 	Color keepColour;
 
-	Location delta_loc = { 0, 0 };
+	Location delta_loc = {0, 0};
 	//Life Variables
 	Location position = {0, 0};
 	/********************************/

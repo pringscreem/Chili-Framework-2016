@@ -158,6 +158,7 @@ void Game::LifeCheckKeys(const Keyboard& kbd)
 	LifeClampPosition();
 	if(kbd.KeyIsPressed(VK_SPACE))
 	{
+		brd.LifeDrawColorBoard(Colors::Magenta);
 		brd.LifeFlipPosition(position);
 	}
 }

@@ -74,3 +74,20 @@ void Board::LifeDrawBoard() //Is there any point in passing the reference?
 			}
 		}
 }
+
+void Board::LifeDrawColorBoard(Color c)
+{
+	int x = GetGridWidth();
+	int y = GetGridHeight();
+	Location drawPos = { 0, 0 };
+	for(int i = 0; i < x; i++)
+		for(int j = 0; j < y; j++)
+		{
+			//if(LifeBoard[i][j] == 1)
+			//{
+				drawPos.x = i;
+				drawPos.y = j;
+				DrawCell(drawPos, c); //Maybe the {i, j} will work as a struct
+			//}
+		}
+}
