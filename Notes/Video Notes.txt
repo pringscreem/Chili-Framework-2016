@@ -280,3 +280,4 @@ June 19, 2024
 June 20, 2024
 	Life Extension
 	-Flip Position sometimes doesn't work on a square when holding spacebar and an arrow key.
+	-Fixed the vector out of bounds bug by moving the clamp ahead of the assignment (the flip).

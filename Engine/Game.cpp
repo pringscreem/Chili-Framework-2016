@@ -155,11 +155,11 @@ void Game::LifeCheckKeys(const Keyboard& kbd)
 	{
 		position.Add({0, -1});
 	}
+	LifeClampPosition();
 	if(kbd.KeyIsPressed(VK_SPACE))
 	{
 		brd.LifeFlipPosition(position);
 	}
-	LifeClampPosition();
 }
 
 void Game::LifeDrawPosition(const Location& position)
