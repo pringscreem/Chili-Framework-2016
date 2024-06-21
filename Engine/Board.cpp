@@ -36,7 +36,7 @@ void Board::LifeInitLifeBoard(std::vector<std::vector<int>>& LifeBoard)
 	{
 		LifeBoard[i].resize(y);
 	}
-
+	 
 	for(int i = 0; i < x; i++)
 		for(int j = 0; j < y; j++)
 		{

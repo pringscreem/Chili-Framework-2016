@@ -276,3 +276,7 @@ June 19, 2024
 	 spacebar to flip the position (tries to access the next value e.g. -1).
 	-Sometimes the spacebar does not cause the position to flip (doesn't turn green).
 	-Seems like the position flip is laggy.
+
+June 20, 2024
+	Life Extension
+	-Flip Position sometimes doesn't work on a square when holding spacebar and an arrow key.
