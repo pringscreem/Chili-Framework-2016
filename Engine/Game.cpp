@@ -152,10 +152,6 @@ void Game::LifeUpdateModel()
 {
 	LifeCheckKeys(wnd.kbd);
 	LifeTestFrameTime();
-	if(isDoneTest)
-	{
-		int myBool = true;
-	}
 }
 
 void Game::LifeCheckKeys(const Keyboard& kbd)
@@ -219,18 +215,45 @@ void Game::LifeClampPosition()
 
 void Game::LifeTestFrameTime()
 {
-	if(!isTestedOnce)
+	if(!startFlag)
 	{
 		start = std::chrono::high_resolution_clock::now();
-		isTestedOnce = true;
+		startFlag = true;
 	}
 	else
 	{
-		if(!isDoneTest)
+		if(!endFlag)
 		{
-			isDoneTest = true;
+			endFlag = true;
 			end = std::chrono::high_resolution_clock::now();
 			duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+			int myBool = true;
 		}
 	}
+
+//Come back to this
+//	if(frameCounter % 2 == 0)
+//	{
+//		//
+//	}
+//		start2 = std::chrono::high_resolution_clock::now();
+//		end2 = std::chrono::high_resolution_clock::now();
+//		duration2 = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+//	RequestOutputTxt(static_cast<int>(duration2.count()));
+}
+
+void Game::RequestOutputTxt(/*std::string requestedOutput1,*/ int requestedOutputNum/*, std::string requestedOutput2*/)
+{
+	//The output file is in :
+	//C:\msys64\home\ssonn\GitHub2023\Chili - Framework - 2016\Debug
+	std::ofstream MyOutputFile;
+	MyOutputFile.open("MyOutput.txt", std::ios_base::app);
+
+	static int frameCounter = 0;
+	//MyOutputFile << "The value of requested output string is " << requestedOutputN1 << '\n';
+	MyOutputFile << "Frame[ "<< frameCounter << "]: " << requestedOutputNum << '\n';
+	//MyOutputFile << "The value of requested output 2 is " << requestedOutput2 << '\n';
+	frameCounter++;
+
+	MyOutputFile.close();
 }

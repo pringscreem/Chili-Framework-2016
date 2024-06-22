@@ -11,6 +11,7 @@ void Game::RequestOutputTxt(/*std::string requestedOutput1,*/ int requestedOutpu
 	std::ofstream MyOutputFile;
 	MyOutputFile.open("MyOutput.txt", std::ios_base::app);
 
+	//MyOutputFile << "The value of requested output string is " << requestedOutputN1 << '\n';
 	MyOutputFile << "The value of requested output number is " << requestedOutputNum << '\n';
 	//MyOutputFile << "The value of requested output 2 is " << requestedOutput2 << '\n';
 

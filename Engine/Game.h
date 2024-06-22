@@ -26,6 +26,7 @@
 #include "Board.h"
 #include <random>
 #include <chrono>
+#include <fstream>
 
 class Game
 {
@@ -49,6 +50,10 @@ private:
 	void LifeDrawPosition(const Location& position);
 	void LifeClampPosition();
 	void LifeTestFrameTime();
+
+	//Class Declaration
+	void RequestOutputTxt(/*std::string requestedOutput1,*/ int requestedOutputNum/*, std::string requestedOutput2*/);
+
 	/********************************/
 private:
 	MainWindow& wnd;
@@ -66,10 +71,18 @@ private:
 	int spacebarDelayFrames = 10;
 	int spacebarTimerCounter = 0;
 	int flip = 0;
-	bool isTestedOnce = false;
-	bool isDoneTest = false;
+	bool startFlag = false;
+	bool endFlag = false;
+	
+	//Frame Rate Testing Variables
 	std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
 	std::chrono::high_resolution_clock::time_point end = std::chrono::high_resolution_clock::now();
 	std::chrono::nanoseconds duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+	
+	//Repeated Test for Text Output
+	int frameCounter;
+	std::chrono::high_resolution_clock::time_point start2 = std::chrono::high_resolution_clock::now();
+	std::chrono::high_resolution_clock::time_point end2 = std::chrono::high_resolution_clock::now();
+	std::chrono::nanoseconds duration2 = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
 	/********************************/
 };
