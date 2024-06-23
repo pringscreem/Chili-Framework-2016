@@ -253,7 +253,7 @@ void Game::RequestOutputTxt(/*std::string requestedOutput1,*/ float requestedOut
 	std::ofstream MyOutputFile;
 	MyOutputFile.open("MyOutput.txt", std::ios_base::app);
 
-	static int outputFrameCounter = 0;
+	static int outputFrameCounter = 0; //"static" keeps the variable alive between function calls (value continues counting up instead of recreating the variable each time)
 	//MyOutputFile << "The value of requested output string is " << requestedOutputN1 << '\n';
 	MyOutputFile << "Frame[ "<< outputFrameCounter << "]: " << requestedOutputNum << "ns = " 
 				 << requestedOutputNum / 1000000 << "ms\n";
