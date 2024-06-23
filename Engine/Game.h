@@ -51,9 +51,9 @@ private:
 	void LifeClampPosition();
 	void LifeTestFrameTime();
 
-	//Class Declaration
-	void RequestOutputTxt(/*std::string requestedOutput1,*/ int requestedOutputNum/*, std::string requestedOutput2*/);
-
+	//Output to Text File
+	void RequestOutputTxt(/*std::string requestedOutput1,*/ float requestedOutputNum/*, std::string requestedOutput2*/);
+	void LineInOutputTxt();
 	/********************************/
 private:
 	MainWindow& wnd;
@@ -80,7 +80,7 @@ private:
 	std::chrono::nanoseconds duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
 	
 	//Repeated Test for Text Output
-	int frameCounter;
+	int frameCounter = 0;
 	std::chrono::high_resolution_clock::time_point start2 = std::chrono::high_resolution_clock::now();
 	std::chrono::high_resolution_clock::time_point end2 = std::chrono::high_resolution_clock::now();
 	std::chrono::nanoseconds duration2 = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);

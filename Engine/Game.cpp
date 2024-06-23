@@ -217,6 +217,7 @@ void Game::LifeTestFrameTime()
 {
 	if(!startFlag)
 	{
+		LineInOutputTxt();
 		start = std::chrono::high_resolution_clock::now();
 		startFlag = true;
 	}
@@ -231,29 +232,43 @@ void Game::LifeTestFrameTime()
 		}
 	}
 
-//Come back to this
-//	if(frameCounter % 2 == 0)
-//	{
-//		//
-//	}
-//		start2 = std::chrono::high_resolution_clock::now();
-//		end2 = std::chrono::high_resolution_clock::now();
-//		duration2 = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-//	RequestOutputTxt(static_cast<int>(duration2.count()));
+	if(frameCounter % 2 == 0)
+	{
+		frameCounter++;
+		start2 = std::chrono::high_resolution_clock::now();
+	}
+	else
+	{
+		frameCounter++;
+		end2 = std::chrono::high_resolution_clock::now();
+		duration2 = std::chrono::duration_cast<std::chrono::nanoseconds>(end2 - start2);
+		RequestOutputTxt(static_cast<float>(duration2.count()));
+	}
 }
 
-void Game::RequestOutputTxt(/*std::string requestedOutput1,*/ int requestedOutputNum/*, std::string requestedOutput2*/)
+void Game::RequestOutputTxt(/*std::string requestedOutput1,*/ float requestedOutputNum/*, std::string requestedOutput2*/)
 {
 	//The output file is in :
-	//C:\msys64\home\ssonn\GitHub2023\Chili - Framework - 2016\Debug
+	//C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Debug
 	std::ofstream MyOutputFile;
 	MyOutputFile.open("MyOutput.txt", std::ios_base::app);
 
-	static int frameCounter = 0;
+	static int outputFrameCounter = 0;
 	//MyOutputFile << "The value of requested output string is " << requestedOutputN1 << '\n';
-	MyOutputFile << "Frame[ "<< frameCounter << "]: " << requestedOutputNum << '\n';
+	MyOutputFile << "Frame[ "<< outputFrameCounter << "]: " << requestedOutputNum << "ns = " 
+				 << requestedOutputNum / 1000000 << "ms\n";
 	//MyOutputFile << "The value of requested output 2 is " << requestedOutput2 << '\n';
-	frameCounter++;
+	outputFrameCounter++;
 
+	MyOutputFile.close();
+}
+
+void Game::LineInOutputTxt()
+{
+	//C:\msys64\home\ssonn\GitHub2023\Chili-Framework-2016\Debug
+	std::ofstream MyOutputFile;
+	MyOutputFile.open("MyOutput.txt", std::ios_base::app);
+	MyOutputFile << "**************************************************************************************"
+		<< "\n**************************************************************************************\n"; //172x *'s
 	MyOutputFile.close();
 }
