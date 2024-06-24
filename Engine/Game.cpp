@@ -216,7 +216,7 @@ void Game::LifeCheckCells()
 		{
 			loc.x = i;
 			loc.y = j;
-			if(LifeCellShouldLive()) //Currently returns true all the time
+			if(LifeCellShouldLive(loc)) //Currently returns true all the time
 			{
 				brd.SetLifeBoardPositionValue(loc, 1);
 			}
@@ -227,9 +227,57 @@ void Game::LifeCheckCells()
 		}
 }
 
-bool Game::LifeCellShouldLive()
+bool Game::LifeCellShouldLive(const Location& loc)
 {
 	//Test the location of the cell and apply the middle or one of the edge tests
+	
+	//Left Side
+	if(loc.x == 0)
+	{
+		if(loc.y == 0)
+		{
+			//Top Left Corner
+		}
+		else if(loc.y == brd.GetGridHeight() - 1)
+		{
+			//Bottom Left Corner
+		}
+		else
+		{
+			//Left Edge
+		}
+	}
+	//Right Side
+	else if(loc.x == brd.GetGridWidth() - 1)
+	{
+		if(loc.y == 0)
+		{
+			//Top Right Corner
+		}
+		else if(loc.y == brd.GetGridHeight() - 1)
+		{
+			//Bottom Right Corner
+		}
+		else
+		{
+			//Right Edge
+		}
+	}
+
+	//Top Side
+	else if((loc.y == 0) 
+		 && (loc.x > 0) 
+		 && (loc.x < brd.GetGridHeight() - 1))
+	{
+		//Top Middle
+	}
+	//Bottom Side
+	else if((loc.y == brd.GetGridHeight() - 1)
+		&& (loc.x > 0)
+		&& (loc.x < brd.GetGridHeight() - 1))
+	{
+		//Bottom Middle
+	}
 	return true;
 }
 
