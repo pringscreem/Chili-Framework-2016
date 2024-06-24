@@ -50,6 +50,7 @@ private:
 	void LifeDrawPosition(const Location& position);
 	void LifeClampPosition();
 	void LifeCheckCells();
+	bool LifeCellShouldLive();
 
 	//Frame Rate Functions
 	void LifeTestFrameTime();

@@ -92,7 +92,8 @@ void Board::LifeDrawColorBoard(Color c)
 		}
 }
 
-int Board::GetLifeBoardPosition(const Location& loc)
+//Returns the value stored at the LifeBoard position
+int Board::GetLifeBoardPositionValue(const Location& loc)
 {
 	return LifeBoard[loc.x][loc.y];
 }

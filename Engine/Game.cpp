@@ -207,15 +207,28 @@ void Game::LifeClampPosition()
 
 void Game::LifeCheckCells()
 {
-	//for(;;)
-	//{
-	//	//
-	//}
-	//Check middle
-	//Simple for-loop
+	int x = brd.GetGridWidth();
+	int y = brd.GetGridHeight();
+	Location loc = {0, 0};
+	for(int i = 0; i < x; i++)
+		for(int j = 0; j < y; j++)
+		{
+			if(LifeCellShouldLive())
+			{
+				brd.GetLifeBoardPosition();
+				LifeBoard[i][j] = 1;
+			}
+			else
+			{
+				LifeBoard[i][j] = 0;
+			}
+		}
+}
 
-	//Check edges
-	//Use a switch statement?
+bool Game::LifeCellShouldLive()
+{
+	//Test the location of the cell and apply the middle or one of the edge tests
+	return true;
 }
 
 void Game::LifeTestFrameTime()
