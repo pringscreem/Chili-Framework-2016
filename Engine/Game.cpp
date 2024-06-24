@@ -143,6 +143,7 @@ void Game::LifeComposeFrame()
 void Game::LifeUpdateModel()
 {
 	LifeCheckKeys(wnd.kbd);
+	LifeCheckCells();
 	//LifeTestFrameTime();
 }
 
@@ -213,14 +214,15 @@ void Game::LifeCheckCells()
 	for(int i = 0; i < x; i++)
 		for(int j = 0; j < y; j++)
 		{
-			if(LifeCellShouldLive())
+			loc.x = i;
+			loc.y = j;
+			if(LifeCellShouldLive()) //Currently returns true all the time
 			{
-				brd.GetLifeBoardPosition();
-				LifeBoard[i][j] = 1;
+				brd.SetLifeBoardPositionValue(loc, 1);
 			}
 			else
 			{
-				LifeBoard[i][j] = 0;
+				brd.SetLifeBoardPositionValue(loc, 1);
 			}
 		}
 }

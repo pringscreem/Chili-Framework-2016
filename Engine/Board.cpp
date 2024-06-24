@@ -98,7 +98,7 @@ int Board::GetLifeBoardPositionValue(const Location& loc)
 	return LifeBoard[loc.x][loc.y];
 }
 
-void Board::SetLifeBoardPosition(const Location& loc, int inputInt)
+void Board::SetLifeBoardPositionValue(const Location& loc, int inputInt)
 {
 	LifeBoard[loc.x][loc.y] = inputInt;
 }
