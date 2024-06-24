@@ -239,9 +239,9 @@ bool Game::LifeCellShouldLive(const Location& loc)
 	
 	//Double check the logic
 	//Left Side
-	if(x == 0)
+	if(x == left)
 	{
-		if(y == 0)
+		if(y == top)
 		{
 			//Top Left Corner
 		}
@@ -257,7 +257,7 @@ bool Game::LifeCellShouldLive(const Location& loc)
 	//Right Side
 	else if(x == right)
 	{
-		if(y == 0)
+		if(y == top)
 		{
 			//Top Right Corner
 		}
@@ -272,16 +272,16 @@ bool Game::LifeCellShouldLive(const Location& loc)
 	}
 
 	//Top Side
-	else if((y == 0) 
-		 && (x > 0) 
-		 && (x < bottom))
+	else if((y == top) 
+		 && (x > left) 
+		 && (x < right))
 	{
 		//Top Middle
 	}
 	//Bottom Side
 	else if((y == bottom)
-		&& (x > 0)
-		&& (x < bottom))
+		&& (x > left)
+		&& (x < right))
 	{
 		//Bottom Middle
 	}
