@@ -134,7 +134,7 @@ void Game::CheckKeys(const Keyboard& kbd)
 
 void Game::LifeComposeFrame()
 {
-	LifeFrameRateFlash();
+	//LifeFrameRateFlash();
 	brd.LifeDrawBoard();
 	LifeDrawPosition(position);
 	
@@ -143,7 +143,7 @@ void Game::LifeComposeFrame()
 void Game::LifeUpdateModel()
 {
 	LifeCheckKeys(wnd.kbd);
-	LifeTestFrameTime();
+	//LifeTestFrameTime();
 }
 
 void Game::LifeCheckKeys(const Keyboard& kbd)
@@ -169,7 +169,7 @@ void Game::LifeCheckKeys(const Keyboard& kbd)
 	{
 		if(spacebarTimerCounter % spacebarDelayFrames == 0)
 		{
-			brd.LifeDrawColorBoard(Colors::Magenta);
+			//brd.LifeDrawColorBoard(Colors::Magenta);
 			brd.LifeFlipPosition(position);
 		}
 		spacebarTimerCounter++;
@@ -356,43 +356,3 @@ void Game::OutputFrameAverage()
 	MyOutputFile2.close();
 	//MyOutputFile.close();
 }
-
-
-//43.3975
-//22.9742
-//24.1581
-//22.4492
-//21.9283
-//22.3337
-//21.3142
-//22.5225
-//21.0439
-//21.1852
-//21.4104
-//21.3299
-//21.8046
-//21.4588
-//20.8562
-//21.8234
-//20.7501
-//20.3282
-//24.3657
-//21.3778
-//21.1660
-//21.3496
-//21.2805
-//21.2039
-//20.4719
-//20.1261
-//21.4728
-//20.2878
-//24.0992
-//20.5033
-//20.3523
-//20.0926
-//20.1309
-//20.0015
-//20.1610
-//20.2437
-//20.3311
-//20.1583
