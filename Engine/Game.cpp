@@ -207,6 +207,10 @@ void Game::LifeClampPosition()
 
 void Game::LifeCheckCells()
 {
+	//for(;;)
+	//{
+	//	//
+	//}
 	//Check middle
 	//Simple for-loop
 

@@ -91,3 +91,13 @@ void Board::LifeDrawColorBoard(Color c)
 			//}
 		}
 }
+
+int Board::GetLifeBoardPosition(const Location& loc)
+{
+	return LifeBoard[loc.x][loc.y];
+}
+
+void Board::SetLifeBoardPosition(const Location& loc, int inputInt)
+{
+	LifeBoard[loc.x][loc.y] = inputInt;
+}

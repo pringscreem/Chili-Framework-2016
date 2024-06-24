@@ -18,6 +18,8 @@ class Board
 		void LifeFlipPosition(const Location& position);
 		void LifeDrawBoard();
 		void LifeDrawColorBoard(Color c);
+		int GetLifeBoardPosition(const Location& loc);
+		void SetLifeBoardPosition(const Location& loc, int inputInt);
 	private:
 		static constexpr int dimension = 20; //These are the pixel dimensions of the squares
 		static constexpr int width = 10;
