@@ -55,6 +55,8 @@ private:
 	//Output to Text File
 	void RequestOutputTxt(/*std::string requestedOutput1,*/ float requestedOutputNum/*, std::string requestedOutput2*/);
 	void LineInOutputTxt();
+	void OutputTxtToFile(std::string requestedOutputStr, float requestedOutputNum);
+	void OutputFrameAverage();
 	/********************************/
 private:
 	MainWindow& wnd;
