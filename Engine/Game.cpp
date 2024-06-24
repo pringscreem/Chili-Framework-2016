@@ -231,7 +231,13 @@ bool Game::LifeCellShouldLive(const Location& loc)
 {
 	const int x = loc.x;
 	const int y = loc.y;
+	const int right = brd.GetGridWidth() - 1;
+	const int left = 0;
+	const int top = 0;
+	const int bottom = brd.GetGridHeight() - 1;
 	//Test the location of the cell and apply the middle or one of the edge tests
+	
+	//Double check the logic
 	//Left Side
 	if(x == 0)
 	{
@@ -239,7 +245,7 @@ bool Game::LifeCellShouldLive(const Location& loc)
 		{
 			//Top Left Corner
 		}
-		else if(y == brd.GetGridHeight() - 1)
+		else if(y == bottom)
 		{
 			//Bottom Left Corner
 		}
@@ -249,13 +255,13 @@ bool Game::LifeCellShouldLive(const Location& loc)
 		}
 	}
 	//Right Side
-	else if(x == brd.GetGridWidth() - 1)
+	else if(x == right)
 	{
 		if(y == 0)
 		{
 			//Top Right Corner
 		}
-		else if(y == brd.GetGridHeight() - 1)
+		else if(y == bottom)
 		{
 			//Bottom Right Corner
 		}
@@ -268,14 +274,14 @@ bool Game::LifeCellShouldLive(const Location& loc)
 	//Top Side
 	else if((y == 0) 
 		 && (x > 0) 
-		 && (x < brd.GetGridHeight() - 1))
+		 && (x < bottom))
 	{
 		//Top Middle
 	}
 	//Bottom Side
-	else if((y == brd.GetGridHeight() - 1)
+	else if((y == bottom)
 		&& (x > 0)
-		&& (x < brd.GetGridHeight() - 1))
+		&& (x < bottom))
 	{
 		//Bottom Middle
 	}
