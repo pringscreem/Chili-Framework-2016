@@ -21,6 +21,7 @@
 #include "MainWindow.h"
 #include "Game.h"
 #include "Location.h"
+#include <string>
 
 
 Game::Game( MainWindow& wnd )
@@ -210,6 +211,7 @@ void Game::LifeTestFrameTime()
 	{
 		LineInOutputTxt();
 		//start = std::chrono::high_resolution_clock::now();
+		OutputFrameAverage();
 		startFlag = true;
 	}
 	else
@@ -294,7 +296,7 @@ void Game::OutputFrameAverage()
 {
 	float sum = 0;
 	float average = 0;
-	std::string frameTimeInMS = 0;
+	std::string frameTimeInMS = "0";
 	//std::ofstream MyOutputFile;
 	std::ofstream MyOutputFile2;
 	//MyOutputFile.open("MyOutput.txt", std::ios_base::app);
@@ -345,10 +347,12 @@ void Game::OutputFrameAverage()
 	{
 		sum += myArray[i];
 	}
-	average = sum / sizeof(myArray) / sizeof(myArray[0]);
+	average = sum / ( ( sizeof(myArray) / sizeof(myArray[0]) ) - 1);
 
 	MyOutputFile2 << "Sum: " << sum << std::endl;
 	MyOutputFile2 << "Average: " << average << std::endl;
+	MyOutputFile2 << "sizeof(myArray) / sizeof(myArray[0]): " 
+				  << sizeof(myArray) / sizeof(myArray[0]) << std::endl;
 	MyOutputFile2.close();
 	//MyOutputFile.close();
 }
