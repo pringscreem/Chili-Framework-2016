@@ -49,6 +49,9 @@ private:
 	void LifeCheckKeys(const Keyboard& kbd);
 	void LifeDrawPosition(const Location& position);
 	void LifeClampPosition();
+	void LifeCheckCells();
+
+	//Frame Rate Functions
 	void LifeTestFrameTime();
 	void LifeFrameRateFlash();
 
@@ -57,6 +60,7 @@ private:
 	void LineInOutputTxt();
 	void OutputTxtToFile(std::string requestedOutputStr, float requestedOutputNum);
 	void OutputFrameAverage();
+
 	/********************************/
 private:
 	MainWindow& wnd;

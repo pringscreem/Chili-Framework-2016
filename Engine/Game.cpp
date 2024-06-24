@@ -205,6 +205,15 @@ void Game::LifeClampPosition()
 	}
 }
 
+void Game::LifeCheckCells()
+{
+	//Check middle
+	//Simple for-loop
+
+	//Check edges
+	//Use a switch statement?
+}
+
 void Game::LifeTestFrameTime()
 {
 	if(!startFlag)
