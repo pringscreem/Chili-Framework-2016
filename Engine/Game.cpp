@@ -133,19 +133,10 @@ void Game::CheckKeys(const Keyboard& kbd)
 
 void Game::LifeComposeFrame()
 {
+	LifeFrameRateFlash();
 	brd.LifeDrawBoard();
 	LifeDrawPosition(position);
-	//This flashes blue and black on alternating frames.
-	if(flip % 60 == 0)
-	{
-		brd.LifeDrawColorBoard(Colors::Blue);
-		flip++;
-	}
-	else
-	{
-		brd.LifeDrawColorBoard(Colors::Black);
-		flip++;
-	}
+
 }
 
 void Game::LifeUpdateModel()
@@ -243,6 +234,21 @@ void Game::LifeTestFrameTime()
 		end2 = std::chrono::high_resolution_clock::now();
 		duration2 = std::chrono::duration_cast<std::chrono::nanoseconds>(end2 - start2);
 		RequestOutputTxt(static_cast<float>(duration2.count()));
+	}
+}
+
+void Game::LifeFrameRateFlash()
+{
+	//This flashes blue and black on alternating frames.
+	if(flip % 60 == 0)
+	{
+		brd.LifeDrawColorBoard(Colors::Blue);
+		flip++;
+	}
+	else
+	{
+		brd.LifeDrawColorBoard(Colors::Black);
+		flip++;
 	}
 }
 

@@ -50,6 +50,7 @@ private:
 	void LifeDrawPosition(const Location& position);
 	void LifeClampPosition();
 	void LifeTestFrameTime();
+	void LifeFrameRateFlash();
 
 	//Output to Text File
 	void RequestOutputTxt(/*std::string requestedOutput1,*/ float requestedOutputNum/*, std::string requestedOutput2*/);
