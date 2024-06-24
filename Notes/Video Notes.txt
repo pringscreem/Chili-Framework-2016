@@ -289,7 +289,7 @@ June 20, 2024
 	 key, because it only has two possible outcomes and it is flipping back and forth every time 
 	 the engine goes through an update cycle.
 	-The solution is to put in a check to see if the key was pressed recently and set a timer if 
-	 the it was.
+	 it was.
 	-This might also be the reason that the ball would sometimes pass through the paddles in Pong.
 	-The engine seems to run at 60hz.
 	-Wrote a blue/black flash to show the framerate visually.
@@ -305,3 +305,7 @@ June 21, 2024
 June 22, 2024
 	Life Extension
 	-Completed frame time output to text file
+
+June 23, 2024
+	Life Extension
+	-Continue
