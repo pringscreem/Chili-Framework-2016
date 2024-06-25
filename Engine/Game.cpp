@@ -247,24 +247,27 @@ bool Game::LifeCellShouldLive(const Location& loc)
 			//Top Left Corner
 			testLoc.x = 0;
 			testLoc.y = 1;
-			if(brd.GetLifeBoardPositionValue(testLoc) != 0)
-			{
-				neighboursCount++;
-			}
-			testLoc.x = 1;		//There has got to be a better way to do this.
+			LifeTestNeighbour(testLoc, neighboursCount); //A function is better, but not great
+			testLoc.x = 1;
 			testLoc.y = 0;
-			if(brd.GetLifeBoardPositionValue(testLoc) != 0)
-			{
-				neighboursCount++;
-			}
+			LifeTestNeighbour(testLoc, neighboursCount);
 		}
 		else if(y == bottom)
 		{
 			//Bottom Left Corner
+			testLoc.x = bottom;
+			testLoc.y = left;
+			LifeTestNeighbour(testLoc, neighboursCount);
 		}
 		else
 		{
 			//Left Edge
+			testLoc.y = left;
+			for(int i = 0; i < bottom; i++)
+			{
+				testLoc.x = i;
+				LifeTestNeighbour(testLoc, neighboursCount);
+			}
 		}
 	}
 	//Right Side
@@ -299,6 +302,14 @@ bool Game::LifeCellShouldLive(const Location& loc)
 		//Bottom Middle
 	}
 	return true;
+}
+
+void Game::LifeTestNeighbour(const Location& testLoc, int& neighboursCount)
+{
+	if(brd.GetLifeBoardPositionValue(testLoc) != 0)
+	{
+		neighboursCount++;
+	}
 }
 
 void Game::LifeTestFrameTime()

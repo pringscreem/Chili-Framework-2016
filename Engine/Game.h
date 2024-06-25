@@ -51,6 +51,7 @@ private:
 	void LifeClampPosition();
 	void LifeCheckCells();
 	bool LifeCellShouldLive(const Location& loc);
+	void LifeTestNeighbour(const Location& testLoc, int& neighboursCount);
 
 	//Frame Rate Functions
 	void LifeTestFrameTime();
