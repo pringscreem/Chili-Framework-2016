@@ -264,18 +264,27 @@ bool Game::LifeCellShouldLive(const Location& loc)
 		if(y == top)
 		{
 			//Top Left Corner
-			testLoc.x = 0;
-			testLoc.y = 1;
+			testLoc.x = left;
+			testLoc.y = top + 1;
 			LifeTestNeighbour(testLoc, neighboursCount); //A function is better, but not great
-			testLoc.x = 1;
-			testLoc.y = 0;
+			testLoc.x = left + 1;
+			testLoc.y = top;
+			LifeTestNeighbour(testLoc, neighboursCount);
+			testLoc.x = left + 1;
+			testLoc.y = top + 1;
 			LifeTestNeighbour(testLoc, neighboursCount);
 		}
 		else if(y == bottom)
 		{
 			//Bottom Left Corner
-			testLoc.x = bottom;
+			testLoc.x = bottom - 1;
 			testLoc.y = left;
+			LifeTestNeighbour(testLoc, neighboursCount);
+			testLoc.x = bottom;
+			testLoc.y = left + 1;
+			LifeTestNeighbour(testLoc, neighboursCount);
+			testLoc.x = bottom - 1;
+			testLoc.y = left + 1;
 			LifeTestNeighbour(testLoc, neighboursCount);
 		}
 		else
@@ -296,14 +305,26 @@ bool Game::LifeCellShouldLive(const Location& loc)
 		{
 			//Top Right Corner
 			testLoc.x = right;
+			testLoc.y = top + 1;
+			LifeTestNeighbour(testLoc, neighboursCount);
+			testLoc.x = right - 1;
 			testLoc.y = top;
+			LifeTestNeighbour(testLoc, neighboursCount);
+			testLoc.x = right - 1;
+			testLoc.y = top + 1;
 			LifeTestNeighbour(testLoc, neighboursCount);
 		}
 		else if(y == bottom)
 		{
 			//Bottom Right Corner
 			testLoc.x = right;
+			testLoc.y = bottom - 1;
+			LifeTestNeighbour(testLoc, neighboursCount);
+			testLoc.x = right - 1;
 			testLoc.y = bottom;
+			LifeTestNeighbour(testLoc, neighboursCount);
+			testLoc.x = right - 1;
+			testLoc.y = bottom - 1;
 			LifeTestNeighbour(testLoc, neighboursCount);
 		}
 		else
@@ -344,7 +365,7 @@ bool Game::LifeCellShouldLive(const Location& loc)
 			LifeTestNeighbour(testLoc, neighboursCount);
 		}
 	}
-	return (neihboursCount > 1) && (neighboursCount < 4);
+	return (neighboursCount > 1) && (neighboursCount < 4);
 }
 
 void Game::LifeTestNeighbour(const Location& testLoc, int& neighboursCount)
