@@ -239,8 +239,27 @@ bool Game::LifeCellShouldLive(const Location& loc)
 	Location testLoc = {0, 0};
 
 	//Test the location of the cell and apply the middle or one of the edge tests
+	//Middle
+	if(	   (x > left) 
+		&& (x < right) 
+		&& (y > top) 
+		&& (y < bottom)	) //The closing parenthesis seems awkward.
+	{
+		//Middle
+		//This is the wrong loop.
+		//This loop should happen in the "LifeCheckCells" function, not here.
+		//What should happen here is a neighbour test for all eight neighbours of a cell that 
+		//is somewhere in the middle.
+		for(int i = 1; i < right; i++)
+			for(int j = 1; j < bottom; j++)
+			{
+				testLoc.x = i;
+				testLoc.y = j;
+				LifeTestNeighbour(testLoc, neighboursCount);
+			}
+	}
 	//Left Side
-	if(x == left)
+	else if(x == left)
 	{
 		if(y == top)
 		{
@@ -262,10 +281,10 @@ bool Game::LifeCellShouldLive(const Location& loc)
 		else
 		{
 			//Left Edge
-			testLoc.y = left;
-			for(int i = 0; i < bottom; i++)
+			testLoc.x = left;
+			for(int i = 1; i < bottom; i++) //The corners ("0") are already being tested.
 			{
-				testLoc.x = i;
+				testLoc.y = i;
 				LifeTestNeighbour(testLoc, neighboursCount);
 			}
 		}
@@ -276,14 +295,26 @@ bool Game::LifeCellShouldLive(const Location& loc)
 		if(y == top)
 		{
 			//Top Right Corner
+			testLoc.x = right;
+			testLoc.y = top;
+			LifeTestNeighbour(testLoc, neighboursCount);
 		}
 		else if(y == bottom)
 		{
 			//Bottom Right Corner
+			testLoc.x = right;
+			testLoc.y = bottom;
+			LifeTestNeighbour(testLoc, neighboursCount);
 		}
 		else
 		{
 			//Right Edge
+			testLoc.x = right;
+			for(int i = 1; i < bottom; i++)//The corners ("0") are already being tested.
+			{
+				testLoc.y = i;
+				LifeTestNeighbour(testLoc, neighboursCount);
+			}
 		}
 	}
 
@@ -293,6 +324,12 @@ bool Game::LifeCellShouldLive(const Location& loc)
 		 && (x < right))
 	{
 		//Top Middle
+		testLoc.y = top;
+		for(int i = 1; i < right; i++)//The corners ("0") are already being tested.
+		{
+			testLoc.x = i;
+			LifeTestNeighbour(testLoc, neighboursCount);
+		}
 	}
 	//Bottom Side
 	else if((y == bottom)
@@ -300,8 +337,14 @@ bool Game::LifeCellShouldLive(const Location& loc)
 		&& (x < right))
 	{
 		//Bottom Middle
+		testLoc.y = bottom;
+		for(int i = 1; i < right; i++)//The corners ("0") are already being tested.
+		{
+			testLoc.x = i;
+			LifeTestNeighbour(testLoc, neighboursCount);
+		}
 	}
-	return true;
+	return (neihboursCount > 1) && (neighboursCount < 4);
 }
 
 void Game::LifeTestNeighbour(const Location& testLoc, int& neighboursCount)

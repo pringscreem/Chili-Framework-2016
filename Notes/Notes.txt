@@ -289,3 +289,6 @@ constexpr - keyword to set a value to const at the time of compilation
 ***** Functions - if it only uses const's and constexpr's, the function is computed at compile
 *****			  time (e.g. square(3*3), pow(3, 4) )
 *****			- there are restrictions on how you can write the function body
+
+****************************** Changed the "Edit.InsertNextMatchingCaret" shortcut to Ctrl + Alt + F (for "find", 
+****************************** because it is a different type of find/replace action).
