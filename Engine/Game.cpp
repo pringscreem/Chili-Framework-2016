@@ -264,7 +264,7 @@ bool Game::LifeCellShouldLive(const Location& loc)
 		if(y == top)
 		{
 			//Top Left Corner
-			testLoc.x = left;
+			testLoc.x = left; //testLoc = {left, top + 1};
 			testLoc.y = top + 1;
 			LifeTestNeighbour(testLoc, neighboursCount); //A function is better, but not great
 			testLoc.x = left + 1;
