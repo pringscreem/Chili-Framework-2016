@@ -143,7 +143,10 @@ void Game::LifeComposeFrame()
 void Game::LifeUpdateModel()
 {
 	LifeCheckKeys(wnd.kbd);
-	LifeCheckCells();
+	if(!gameIsPaused)
+	{
+		LifeCheckCells();
+	}
 	//LifeTestFrameTime();
 }
 
@@ -154,7 +157,7 @@ void Game::LifeCheckKeys(const Keyboard& kbd)
 	{
 		if(gameIsPaused)
 		{
-			gameIsPause = false;
+			gameIsPaused = false;
 		}
 		else
 		{
