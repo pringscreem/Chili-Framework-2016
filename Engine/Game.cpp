@@ -149,6 +149,18 @@ void Game::LifeUpdateModel()
 
 void Game::LifeCheckKeys(const Keyboard& kbd)
 {
+	//Add a modulo frame counter check here to slow it down.
+	if(kbd.KeyIsPressed(VK_PAUSE))
+	{
+		if(gameIsPaused)
+		{
+			gameIsPause = false;
+		}
+		else
+		{
+			gameIsPaused = true;
+		}
+	}
 	if(kbd.KeyIsPressed(VK_RIGHT))
 	{
 		position.Add({1, 0});
@@ -222,14 +234,14 @@ void Game::LifeCheckCells()
 			}
 			else
 			{
-				brd.SetLifeBoardPositionValue(loc, 1);
+				brd.SetLifeBoardPositionValue(loc, 0);
 			}
 		}
 }
 
-bool Game::LifeCellShouldLive(const Location& loc)
+bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of long.
 {
-	const int x = loc.x;
+	const int x = loc.x; //It's not very efficient to declare a bunch of variables every frame like this.
 	const int y = loc.y;
 	const int right = brd.GetGridWidth() - 1;
 	const int left = 0;
@@ -250,12 +262,20 @@ bool Game::LifeCellShouldLive(const Location& loc)
 		//This loop should happen in the "LifeCheckCells" function, not here.
 		//What should happen here is a neighbour test for all eight neighbours of a cell that 
 		//is somewhere in the middle.
-		for(int i = 1; i < right; i++)
-			for(int j = 1; j < bottom; j++)
+		int testX = x - 1;
+		int testY = y - 1;
+		for(int i = 0; i < 3; i++)
+			for(int j = 0; j < 3; j++)
 			{
-				testLoc.x = i;
-				testLoc.y = j;
-				LifeTestNeighbour(testLoc, neighboursCount);
+				if((i == 1) && (j == 1))
+				{
+					continue;
+				}
+				else
+				{
+					testLoc = { i, j };
+					LifeTestNeighbour(testLoc, neighboursCount);
+				}
 			}
 	}
 	//Left Side
@@ -365,9 +385,10 @@ bool Game::LifeCellShouldLive(const Location& loc)
 			LifeTestNeighbour(testLoc, neighboursCount);
 		}
 	}
-	return (neighboursCount > 1) && (neighboursCount < 4);
+	return (neighboursCount > 1) && (neighboursCount < 4); //If it satisfies the survival rules, return true.
 }
 
+//This is a weird function that should probably be rewritten (return a bool, no change to neighboursCount)
 void Game::LifeTestNeighbour(const Location& testLoc, int& neighboursCount)
 {
 	if(brd.GetLifeBoardPositionValue(testLoc) != 0)

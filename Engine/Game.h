@@ -82,6 +82,7 @@ private:
 	int flip = 0;
 	bool startFlag = false;
 	bool endFlag = false;
+	bool gameIsPaused = true;
 	
 	//Frame Rate Testing Variables
 	std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();

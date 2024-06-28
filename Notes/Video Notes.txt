@@ -305,6 +305,7 @@ June 21, 2024
 June 22, 2024
 	Life Extension
 	-Completed frame time output to text file
+	-[Post Note: Frames took an average of about 20ms, except the first frame, which took about 43ms]
 
 June 23, 2024
 	Life Extension
@@ -312,4 +313,7 @@ June 23, 2024
 
 June 27, 2024
 	Life Extension
-	-Continue
+	-Finish LifeCellShouldLive
+	-Next steps: 
+		Add a pause button that still lets you move the cursor and edit position values
+		Slow the cursor down so you you can move it more precisely
