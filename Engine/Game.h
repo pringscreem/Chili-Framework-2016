@@ -85,11 +85,6 @@ private:
 	bool endFlag = false;
 	bool gameIsPaused = true;
 	bool isRandomizedBoard = false;
-
-	//Random Number Generating Variables
-	std::random_device rd;
-	//std::mt19937 rng;
-	std::uniform_int_distribution<int> aliveRandom; //0, 1
 	
 	//Frame Rate Testing Variables
 	std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();

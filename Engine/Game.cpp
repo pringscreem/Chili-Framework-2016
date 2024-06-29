@@ -29,8 +29,7 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd ),
 	brd(gfx),
-	rng(std::random_device()()),
-	aliveRandom(0, 1)
+	rng(std::random_device()())
 {
 }
 
@@ -143,6 +142,7 @@ void Game::LifeComposeFrame()
 
 void Game::LifeUpdateModel()
 {
+	LifeRandomizeBoard();
 	LifeCheckKeys(wnd.kbd);
 	if(!gameIsPaused)
 	{
@@ -405,15 +405,26 @@ void Game::LifeRandomizeBoard()
 {
 	if(!isRandomizedBoard)
 	{
+		isRandomizedBoard = true;
 		int x = brd.GetGridWidth();
 		int y = brd.GetGridHeight();
 		Location loc;
+
+		//Random Number Generating Variables
+		std::random_device rd;
+		std::mt19937 rng(rd());
+		const int min = 0;
+		const int max = 1;
+		std::uniform_int_distribution<int> aliveRandom(min, max); //0, 1
+		int randomInt = 0;
+
 		for(int i = 0; i < x; i++)
 			for(int j = 0; j < y; j++)
 			{
 				loc.x = i;
 				loc.y = j;
-				brd.SetLifeBoardPositionValue(loc, aliveRandom);
+				randomInt = aliveRandom(rng);
+				brd.SetLifeBoardPositionValue(loc, randomInt);
 			}
 	}
 }

@@ -292,3 +292,7 @@ constexpr - keyword to set a value to const at the time of compilation
 
 ****************************** Changed the "Edit.InsertNextMatchingCaret" shortcut to Ctrl + Alt + F (for "find", 
 ****************************** because it is a different type of find/replace action).
+
+******************************
+****************************** F9 is the hotkey to set a breakpoint.
+******************************
