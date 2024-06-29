@@ -400,6 +400,17 @@ void Game::LifeTestNeighbour(const Location& testLoc, int& neighboursCount)
 	}
 }
 
+void Game::LifeRandomizeBoard()
+{
+	for(int i = 0; i < x; i++)
+		for(int j = 0; j < y; j++)
+		{
+			loc.x = i;
+			loc.y = j;
+			brd.SetLifeBoardPositionValue(loc, 1);
+		}
+}
+
 void Game::LifeTestFrameTime()
 {
 	if(!startFlag)
