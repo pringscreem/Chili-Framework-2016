@@ -323,3 +323,6 @@ June 28, 2024
 	Life Extension
 	-Same bug: starts normally and then most of the screen switches to "alive"
 	-Pause is working: the bug must be in the cell checking functions.
+	-Wrote a function to initialize the board to random values (set it up to do it once at the beginning).
+	-Next time:
+		Add a break point to check what is happening to the values in LifeBoard during execution.
