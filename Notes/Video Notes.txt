@@ -321,4 +321,4 @@ June 27, 2024
 
 June 28, 2024
 	Life Extension
-	-Continue
+	-Same bug: starts normally and then most of the screen switches to "alive"
