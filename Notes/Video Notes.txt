@@ -322,3 +322,4 @@ June 27, 2024
 June 28, 2024
 	Life Extension
 	-Same bug: starts normally and then most of the screen switches to "alive"
+	-Pause is working: the bug must be in the cell checking functions.
