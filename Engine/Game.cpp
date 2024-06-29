@@ -29,7 +29,8 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd ),
 	brd(gfx),
-	rng(std::random_device()())
+	rng(std::random_device()()),
+	aliveRandom(0, 1)
 {
 }
 
@@ -400,15 +401,20 @@ void Game::LifeTestNeighbour(const Location& testLoc, int& neighboursCount)
 	}
 }
 
-void Game::LifeRandomizeBoard()
+void Game::LifeRandomizeBoard(Location& loc)
 {
-	for(int i = 0; i < x; i++)
-		for(int j = 0; j < y; j++)
-		{
-			loc.x = i;
-			loc.y = j;
-			brd.SetLifeBoardPositionValue(loc, 1);
-		}
+	if(!isRandomizedBoard)
+	{
+		int x = brd.GetGridWidth();
+		int y = brd.GetGridHeight();
+		for(int i = 0; i < x; i++)
+			for(int j = 0; j < y; j++)
+			{
+				loc.x = i;
+				loc.y = j;
+				brd.SetLifeBoardPositionValue(loc, 1);
+			}
+	}
 }
 
 void Game::LifeTestFrameTime()
