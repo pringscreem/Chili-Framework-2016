@@ -318,3 +318,7 @@ June 27, 2024
 		Add a pause button that still lets you move the cursor and edit position values
 		Slow the cursor down so you you can move it more precisely
 	-Weird bugs happening (rules not being applied properly yet).
+
+June 28, 2024
+	Life Extension
+	-Continue
