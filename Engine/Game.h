@@ -52,7 +52,7 @@ private:
 	void LifeCheckCells();
 	bool LifeCellShouldLive(const Location& loc);
 	void LifeTestNeighbour(const Location& testLoc, int& neighboursCount);
-	void LifeRandomizeBoard(Location& loc);
+	void LifeRandomizeBoard();
 
 	//Frame Rate Functions
 	void LifeTestFrameTime();

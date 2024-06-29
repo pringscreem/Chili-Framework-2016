@@ -401,18 +401,19 @@ void Game::LifeTestNeighbour(const Location& testLoc, int& neighboursCount)
 	}
 }
 
-void Game::LifeRandomizeBoard(Location& loc)
+void Game::LifeRandomizeBoard()
 {
 	if(!isRandomizedBoard)
 	{
 		int x = brd.GetGridWidth();
 		int y = brd.GetGridHeight();
+		Location loc;
 		for(int i = 0; i < x; i++)
 			for(int j = 0; j < y; j++)
 			{
 				loc.x = i;
 				loc.y = j;
-				brd.SetLifeBoardPositionValue(loc, 1);
+				brd.SetLifeBoardPositionValue(loc, aliveRandom);
 			}
 	}
 }
