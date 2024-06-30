@@ -266,7 +266,7 @@ bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of lo
 		//This loop should happen in the "LifeCheckCells" function, not here.
 		//What should happen here is a neighbour test for all eight neighbours of a cell that 
 		//is somewhere in the middle.
-		int testX = x - 1;
+		int testX = x - 1;//Probably don't need these two.
 		int testY = y - 1;
 		for(int i = 0; i < 3; i++)
 			for(int j = 0; j < 3; j++)
@@ -277,7 +277,7 @@ bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of lo
 				}
 				else
 				{
-					testLoc = { i, j };
+					testLoc = { i, j }; //This should add the value of the offset to the test location's point.
 					LifeTestNeighbour(testLoc, neighboursCount);
 				}
 			}

@@ -83,7 +83,7 @@ private:
 	int flip = 0;
 	bool startFlag = false;
 	bool endFlag = false;
-	bool gameIsPaused = true;
+	bool gameIsPaused = false;
 	bool isRandomizedBoard = false;
 	
 	//Frame Rate Testing Variables
