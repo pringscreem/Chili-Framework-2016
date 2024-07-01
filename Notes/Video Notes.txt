@@ -335,4 +335,8 @@ June 29, 2024
 
 June 30, 2024
 	Life Extension
-	-Continue
+	-Added a 100ms sleep to the UpdateModel function so that behaviour could be observed more
+	 easily.
+	-Removed randomized starting board.
+	-Testing a simple three-cell line caused unexpected behaviour (repeated in successive tests).
+	 There is definitely something wrong with the rules.

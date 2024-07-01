@@ -22,6 +22,8 @@
 #include "Game.h"
 #include "Location.h"
 #include <string>
+#include <chrono>
+#include <thread>
 
 
 Game::Game( MainWindow& wnd )
@@ -57,6 +59,7 @@ void Game::UpdateModel()
 	//Update Snake position
 
 	LifeUpdateModel();
+	std::this_thread::sleep_for(std::chrono::milliseconds(100));
 }
 
 void Game::ComposeFrame()
@@ -142,7 +145,7 @@ void Game::LifeComposeFrame()
 
 void Game::LifeUpdateModel()
 {
-	LifeRandomizeBoard();
+	//LifeRandomizeBoard();
 	LifeCheckKeys(wnd.kbd);
 	if(!gameIsPaused)
 	{
@@ -277,7 +280,7 @@ bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of lo
 				}
 				else
 				{
-					testLoc = { i, j }; //This should add the value of the offset to the test location's point.
+					testLoc = { testX + i, testY + j }; //This should add the value of the offset to the test location's point.
 					LifeTestNeighbour(testLoc, neighboursCount);
 				}
 			}
