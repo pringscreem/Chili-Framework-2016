@@ -332,3 +332,7 @@ June 29, 2024
 	-Looks like the bug is caused by not adding the offset to the point in question to get
 	 the neighbouring points.  This means it is picking some other point to test.
 	 This is happening on Line 280 in Game.cpp
+
+June 30, 2024
+	Life Extension
+	-Continue
