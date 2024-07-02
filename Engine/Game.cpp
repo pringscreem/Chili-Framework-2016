@@ -291,20 +291,20 @@ bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of lo
 		if(y == top)
 		{
 			//Top Left Corner
-			testLoc.x = left; //testLoc = {left, top + 1};
+			testLoc.x = left; //testLoc = {left, top + 1}; //The space below the current cell
 			testLoc.y = top + 1;
 			LifeTestNeighbour(testLoc, neighboursCount); //A function is better, but not great
-			testLoc.x = left + 1;
+			testLoc.x = left + 1;//The space to the right of the current cell
 			testLoc.y = top;
 			LifeTestNeighbour(testLoc, neighboursCount);
-			testLoc.x = left + 1;
+			testLoc.x = left + 1;//The space diagonal from the current cell
 			testLoc.y = top + 1;
 			LifeTestNeighbour(testLoc, neighboursCount);
 		}
 		else if(y == bottom)
 		{
 			//Bottom Left Corner
-			testLoc.x = bottom - 1;
+			testLoc.x = bottom - 1;//The x value should be left or right, not the bottom
 			testLoc.y = left;
 			LifeTestNeighbour(testLoc, neighboursCount);
 			testLoc.x = bottom;
@@ -321,7 +321,19 @@ bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of lo
 			for(int i = 1; i < bottom; i++) //The corners ("0") are already being tested.
 			{
 				testLoc.y = i;
-				LifeTestNeighbour(testLoc, neighboursCount);
+				LifeTestNeighbour(testLoc, neighboursCount);//This just goes through all the
+															//cells on the edge and counts the
+															//living ones.
+															//The algorithm we want is more 
+															//different.
+															//Remember that we are only testing 
+															//a single cell.
+															//So, it should just test all the neighbours 
+															//of the selected cell.
+															//The loop through each cell happens 
+															//in the "parent" (calling) function. 
+															//This function is just conducting the 
+															//test on a single cell.
 			}
 		}
 	}

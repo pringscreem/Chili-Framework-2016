@@ -344,3 +344,16 @@ June 30, 2024
 	 being tested.
 	-It might make more sense to rewrite the rule enforcement functions.  It might make more sense to
 	 plan it out first and then execute the plan.
+
+July 1, 2024
+	Life Extension
+	-Read through some of the testing functions.
+	-LifeCellShouldLive has errors in it.  The wrong actions are being taken.
+	-Part of the problem is the nested structure of the functions.  It is easier to lose track of
+	 what each layer is doing, especially when returning the next day.  One of the lower level 
+	 functions is doing part of the job of its' calling function.  The logic is incorrect anyways,
+	 which means that there was a logical slip when writing it (it got copied four times).
+	-Another part of the problem is that logical errors occurred during the initial writing and 
+	 the copy/adaptation of the code.
+	-Potential solutions are to slow down, re-read the code, and plan out the code before starting.
+	-This part of the code was not planned out, it was just written while thinking of the steps.
