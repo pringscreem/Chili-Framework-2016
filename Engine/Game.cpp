@@ -395,6 +395,7 @@ bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of lo
 	return (neighboursCount > 1) && (neighboursCount < 4); //If it satisfies the survival rules, return true.
 }
 
+//More like "LifeHasNeighbour"...  This increments the neighbour count.
 //This is a weird function that should probably be rewritten (return a bool, no change to neighboursCount)
 void Game::LifeTestNeighbour(const Location& testLoc, int& neighboursCount)
 {
