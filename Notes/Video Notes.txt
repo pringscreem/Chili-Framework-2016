@@ -363,3 +363,5 @@ July 2, 2024
 	Life Extension
 	-Started fixing LifeCheckCells.
 	-Visual Studio Code does not work for debugging the program.
+	-In theory the fix for one of the edges can be copied and altered for the other edges.
+	-All of the corners need checking to make sure they are checking the correct places.
