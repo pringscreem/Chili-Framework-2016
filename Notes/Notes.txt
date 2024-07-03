@@ -296,3 +296,5 @@ constexpr - keyword to set a value to const at the time of compilation
 ******************************
 ****************************** F9 is the hotkey to set a breakpoint.
 ******************************
+
+***** Visual Studio Code does not work for debugging the program.

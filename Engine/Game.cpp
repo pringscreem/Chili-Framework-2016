@@ -304,7 +304,7 @@ bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of lo
 		else if(y == bottom)
 		{
 			//Bottom Left Corner
-			testLoc.x = left + 1;//The x value should be left or right, not the bottom
+			testLoc.x = left + 1;
 			testLoc.y = bottom;
 			LifeTestNeighbour(testLoc, neighboursCount);
 			testLoc.x = left;
@@ -318,23 +318,23 @@ bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of lo
 		{
 			//Left Edge
 			testLoc.x = left;
-			for(int i = 1; i < bottom; i++) //The corners ("0") are already being tested.
-			{
-				testLoc.y = i;
-				LifeTestNeighbour(testLoc, neighboursCount);//This just goes through all the
-															//cells on the edge and counts the
-															//living ones.
-															//The algorithm we want is more 
-															//different.
-															//Remember that we are only testing 
-															//a single cell.
-															//So, it should just test all the neighbours 
-															//of the selected cell.
-															//The loop through each cell happens 
-															//in the "parent" (calling) function. 
-															//This function is just conducting the 
-															//test on a single cell.
-			}
+			// for(int i = 1; i < bottom; i++) //The corners ("0") are already being tested.
+			// {
+			// 	testLoc.y = i;
+			// 	LifeTestNeighbour(testLoc, neighboursCount);//This just goes through all the
+			// 												//cells on the edge and counts the
+			// 												//living ones.
+			// 												//The algorithm we want is more 
+			// 												//different.
+			// 												//Remember that we are only testing 
+			// 												//a single cell.
+			// 												//So, it should just test all the neighbours 
+			// 												//of the selected cell.
+			// 												//The loop through each cell happens 
+			// 												//in the "parent" (calling) function. 
+			// 												//This function is just conducting the 
+			// 												//test on a single cell.
+			// }
 		}
 	}
 	//Right Side

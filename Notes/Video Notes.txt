@@ -361,4 +361,5 @@ July 1, 2024
 
 July 2, 2024
 	Life Extension
-	-Started fixing LifeCheckCells
+	-Started fixing LifeCheckCells.
+	-Visual Studio Code does not work for debugging the program.
