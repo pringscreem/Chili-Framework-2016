@@ -304,14 +304,14 @@ bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of lo
 		else if(y == bottom)
 		{
 			//Bottom Left Corner
-			testLoc.x = bottom - 1;//The x value should be left or right, not the bottom
-			testLoc.y = left;
+			testLoc.x = left + 1;//The x value should be left or right, not the bottom
+			testLoc.y = bottom;
 			LifeTestNeighbour(testLoc, neighboursCount);
-			testLoc.x = bottom;
-			testLoc.y = left + 1;
+			testLoc.x = left;
+			testLoc.y = bottom + 1;
 			LifeTestNeighbour(testLoc, neighboursCount);
-			testLoc.x = bottom - 1;
-			testLoc.y = left + 1;
+			testLoc.x = left + 1;
+			testLoc.y = bottom + 1;
 			LifeTestNeighbour(testLoc, neighboursCount);
 		}
 		else

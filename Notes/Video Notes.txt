@@ -358,3 +358,7 @@ July 1, 2024
 	-Potential solutions are to slow down, re-read the code, and plan out the code before starting.
 	-This part of the code was not planned out, it was just written while thinking of the steps.
 	-I was probably tired when I wrote this part of the code.
+
+July 2, 2024
+	Life Extension
+	-Started fixing LifeCheckCells
