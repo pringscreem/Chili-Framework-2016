@@ -317,10 +317,21 @@ bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of lo
 		else
 		{
 			//Left Edge
-			testLoc.x = left;
-			testLoc.y = y - 1;
-			LifeTestNeighbour(testLoc, neighboursCount);
-			//Loop through six positions instead of hardcoding it.
+			// testLoc.x = left;
+			// testLoc.y = y - 1;
+			// LifeTestNeighbour(testLoc, neighboursCount);
+			// //Loop through six positions instead of hardcoding it.
+
+			for(int i = 0; i < 2; i++)
+				for(int j = -1; j < 2; j++)
+				{
+					testLoc.x = x + i;
+					testLoc.y = y + j;
+					if(testLoc.x != x && testLoc.y != y) 
+					{ //Only do the test if it's not the position of the cell in question.
+						LifeTestNeighbour(testLoc, neighboursCount);
+					}
+				}
 
 
 			// for(int i = 1; i < bottom; i++) //The corners ("0") are already being tested.
