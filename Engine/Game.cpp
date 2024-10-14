@@ -252,7 +252,7 @@ void Game::LifeCheckCells()
 bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of long.
 {
 	const int x = loc.x; //It's not very efficient to declare a bunch of variables every frame like this.
-	const int y = loc.y;
+	const int y = loc.y; // x and y are the actual cell position coordinates
 	const int right = brd.GetGridWidth() - 1;
 	const int left = 0;
 	const int top = 0;
@@ -321,30 +321,23 @@ bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of lo
 		else
 		{
 			//Left Edge
-			// testLoc.x = left;
-			// testLoc.y = y - 1;
-			// LifeTestNeighbour(testLoc, neighboursCount);
-			// //Loop through six positions instead of hardcoding it.
+			testLoc.x = x;
+			testLoc.y = y;
+			LifeTestNeighbour(testLoc, neighboursCount);
+			//Loop through six positions instead of hardcoding it.
 
-			//It is going out of bounds in this loop. // Oct. 14, 2024 Look at this
-			for(int i = 0; i < 2; i++)
-				for(int j = -1; j < 2; j++)
-				{
-					testLoc.x = x + i;
-					testLoc.y = y + j;
-					if(testLoc.x != x && testLoc.y != y) 
-					{ //Only do the test if it's not the position of the cell in question.
-						LifeTestNeighbour(testLoc, neighboursCount);
-					}
-				}
 
-			
-			for(int i = 0; i < Left; i++)
+			// Oct. 14, 2024 Have a look at this.
+
+			for(int i = 1; i < 2; i++) //We only need to test the left edge and one value beside it.
 				for(int j = 0; j < 2; j++)
 				{
-					if(testLoc.x != x && testLoc.y != y)
+					testLoc.x = x + i - 1; //Subtract one because it needs to be centred on the x and y of the current cell.
+					testLoc.y = y + j - 1; //It was testing to the right and down.
+					if(testLoc.x != x && testLoc.y != y) //Don't test the actual cell itself
 					{
-
+						LifeTestNeighbour(testLoc, neighboursCount); //This just tests the actual position at testLoc (alive/dead) and updates neighboursCount
+						//This is not the cause of the error.
 					}
 				}
 
