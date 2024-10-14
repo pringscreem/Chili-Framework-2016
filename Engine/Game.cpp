@@ -246,6 +246,9 @@ void Game::LifeCheckCells()
 		}
 }
 
+
+//This function is testing whether the cell should be turned on or off for the next turn.
+//It currently has errors that cause out of bounds access (Left Side test)
 bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of long.
 {
 	const int x = loc.x; //It's not very efficient to declare a bunch of variables every frame like this.
@@ -269,6 +272,7 @@ bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of lo
 		//This loop should happen in the "LifeCheckCells" function, not here.
 		//What should happen here is a neighbour test for all eight neighbours of a cell that 
 		//is somewhere in the middle.
+		// Oct. 14, 2024 Look at this
 		int testX = x - 1;//Probably don't need these two.
 		int testY = y - 1;
 		for(int i = 0; i < 3; i++)
@@ -322,7 +326,7 @@ bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of lo
 			// LifeTestNeighbour(testLoc, neighboursCount);
 			// //Loop through six positions instead of hardcoding it.
 
-			//It is going out of bounds in this loop.
+			//It is going out of bounds in this loop. // Oct. 14, 2024 Look at this
 			for(int i = 0; i < 2; i++)
 				for(int j = -1; j < 2; j++)
 				{
@@ -331,6 +335,16 @@ bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of lo
 					if(testLoc.x != x && testLoc.y != y) 
 					{ //Only do the test if it's not the position of the cell in question.
 						LifeTestNeighbour(testLoc, neighboursCount);
+					}
+				}
+
+			
+			for(int i = 0; i < Left; i++)
+				for(int j = 0; j < 2; j++)
+				{
+					if(testLoc.x != x && testLoc.y != y)
+					{
+
 					}
 				}
 
