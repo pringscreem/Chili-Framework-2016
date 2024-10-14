@@ -322,6 +322,7 @@ bool Game::LifeCellShouldLive(const Location& loc) //This function is kind of lo
 			// LifeTestNeighbour(testLoc, neighboursCount);
 			// //Loop through six positions instead of hardcoding it.
 
+			//It is going out of bounds in this loop.
 			for(int i = 0; i < 2; i++)
 				for(int j = -1; j < 2; j++)
 				{
