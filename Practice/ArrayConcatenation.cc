@@ -17,19 +17,28 @@ int main(int argc, char* argv[])
 	return 0;
 }
 
+//std::vector<int> getConcatenation(std::vector<int>& nums)
+//{
+//    std::vector<int> ans;
+//    ans.resize(2 * nums.size());
+//    for(int i = 0; i < nums.size(); i++)
+//    {
+//        std::cout << "First loop, i = " << i << std::endl;
+//        ans[i] = nums[i];
+//    }
+//    for(int i = 0; i < nums.size(); i++)
+//    {
+//        std::cout << "Second loop, i = " << i << std::endl;
+//        ans[i + nums.size()] = nums[i];
+//    }
+//    return ans;
+//}
+
 std::vector<int> getConcatenation(std::vector<int>& nums)
 {
     std::vector<int> ans;
-    ans.resize(2 * nums.size());
-    for(int i = 0; i < nums.size(); i++)
-    {
-        std::cout << "First loop, i = " << i << std::endl;
-        ans[i] = nums[i];
-    }
-    for(int i = 0; i < nums.size(); i++)
-    {
-        std::cout << "Second loop, i = " << i << std::endl;
-        ans[i + nums.size()] = nums[i];
-    }
+
+    ans = nums;
+    ans = ans + nums;
     return ans;
 }
