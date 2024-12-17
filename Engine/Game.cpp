@@ -248,7 +248,7 @@ void Game::LifeCheckCells()
 
 
 //This function is testing whether the cell should be turned on or off for the next turn.
-//It currently has errors that cause out of bounds access (Left Side test)//
+//It currently has errors that cause out of bounds access (Left Side test)
 bool Game::LifeCellShouldLive(const Location& loc)
 {
 	const int x = loc.x; //It's not very efficient to declare a bunch of variables every frame like this.
